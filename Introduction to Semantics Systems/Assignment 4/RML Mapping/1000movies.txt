@@ -1,0 +1,117 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix map: <http://mapping.example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix ex: <http://semantics.id/ns/example/film#> .
+
+
+_:TriplesMap1 a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "1000_movies_metadata.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+  rr:subjectMap [
+    rr:template "http://semantics.id/ns/example/film#film_{id}";
+    rr:class ex:Film;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ex:idIMDB;
+    rr:objectMap [
+        rml:reference "imdb_id" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ex:originalTitle;
+    rr:objectMap [
+        rml:reference "original_title" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ex:hasGenre;
+    rr:objectMap [
+      rr:template "http://semantics.id/ns/example/film#genre_{genres[*].id}";
+      rr:class ex:Genre;
+    ];
+  ];
+   rr:predicateObjectMap [
+    rr:predicate ex:hasProductionCountry;
+    rr:objectMap [
+      rr:template "{production_countries[*].iso_3166_1}";
+      rr:datatype xsd:string ;
+    ];
+  ];
+   rr:predicateObjectMap [
+    rr:predicate ex:hasSpokenLanguage;
+    rr:objectMap [
+      rr:template "{spoken_languages[*].iso_639_1}";
+      rr:datatype xsd:string ;
+    ];
+  ];
+  
+.
+
+_:TriplesMap2 a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "1000_movies_metadata.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+  rr:subjectMap [
+    rr:template "http://semantics.id/ns/example/film#genre_{genres[*].id}";
+    rr:class ex:Genre;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ex:idGenre;
+    rr:objectMap [
+        rml:reference "genres[*].id" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+   rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+        rml:reference "genres[*].name" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+.
+
+_:TriplesMap3 a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "1000_movies_metadata.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+  rr:subjectMap [
+    rr:template "http://semantics.id/ns/example/film#FilmStudio_{production_companies[*].id}";
+    rr:class ex:FilmStudio;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ex:idFilmStudio;
+    rr:objectMap [
+        rml:reference "production_companies[*].id" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+   rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+        rml:reference "production_companies[*].name" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+.
+
+
+
+
+
+
+

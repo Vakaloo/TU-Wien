@@ -1,0 +1,35 @@
+@prefix : <http://semantics.id/ns/example/university#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix ex: <http://example.org/ns/example#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+_:ExampleMapping a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "person.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]"
+  ];
+  rr:subjectMap [
+    rr:template "http://example.org/ns/example#{name}";
+    rr:class :Person;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate :hasRole;
+    rr:objectMap [
+        rml:reference "role" ;
+        rr:datatype xsd:string ;
+    ];
+  ];
+  rr:predicateObjectMap [
+    rr:predicate :hasTopic;
+    rr:objectMap [
+      rr:template "http://example.org/ns/example#topic_{topic[*].subject}";
+      rr:class :Genre;
+    ];
+  ];
+.

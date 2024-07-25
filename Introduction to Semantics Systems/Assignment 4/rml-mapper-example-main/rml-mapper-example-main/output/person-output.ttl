@@ -1,0 +1,15 @@
+
+<http://example.org/ns/example#Fajar> a <http://semantics.id/ns/example/university#Person>;
+  <http://semantics.id/ns/example/university#hasRole> "Lecturer";
+  <http://semantics.id/ns/example/university#hasTopic> <http://example.org/ns/example#topic_Auditability>,
+    <http://example.org/ns/example#topic_Semantic%20Web> .
+
+<http://example.org/ns/example#Marta> a <http://semantics.id/ns/example/university#Person>;
+  <http://semantics.id/ns/example/university#hasRole> "Professor";
+  <http://semantics.id/ns/example/university#hasTopic> <http://example.org/ns/example#topic_Human%20Computation>,
+    <http://example.org/ns/example#topic_Semantic%20Web> .
+
+<http://example.org/ns/example#Stefan> a <http://semantics.id/ns/example/university#Person>;
+  <http://semantics.id/ns/example/university#hasRole> "Lecturer";
+  <http://semantics.id/ns/example/university#hasTopic> <http://example.org/ns/example#topic_Machine%20Learning>,
+    <http://example.org/ns/example#topic_Semantic%20Web> .

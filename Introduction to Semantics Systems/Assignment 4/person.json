@@ -1,0 +1,44 @@
+[
+  {
+    "topic": [
+      {
+        "id": 1,
+        "subject": "Semantic Web"
+      },
+      {
+        "id": 2,
+        "subject": "Auditability"
+      }
+    ],
+    "name": "Fajar",
+    "role": "Lecturer"
+  },
+  {
+    "topic": [
+      {
+        "id": 1,
+        "subject": "Semantic Web"
+      },
+      {
+        "id": 3,
+        "subject": "Machine Learning"
+      }
+    ],
+    "name": "Stefan",
+    "role": "Lecturer"
+  },
+  {
+    "topic": [
+      {
+        "id": 1,
+        "subject": "Semantic Web"
+      },
+      {
+        "id": 4,
+        "subject": "Human Computation"
+      }
+    ],
+    "name": "Marta",
+    "role": "Professor"
+  }
+]

@@ -1,0 +1,534 @@
+@prefix : <http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/vaka1/ontologies/2022/9/Car> .
+
+<http://www.semanticweb.org/vaka1/ontologies/2022/9/Car> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#hasAspiration
+:hasAspiration rdf:type owl:ObjectProperty ;
+               rdfs:domain :Car ;
+               rdfs:range :Aspiration ;
+               rdfs:comment "A car has a certain type of aspiration"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#hasDrivewheels
+:hasDrivewheels rdf:type owl:ObjectProperty ;
+                rdfs:domain :Car ;
+                rdfs:range :DriveWheels ;
+                rdfs:comment "A car has a certain type of drive wheels"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#hasEnginelocation
+:hasEnginelocation rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Car ;
+                   rdfs:range :EngineLocation ;
+                   rdfs:comment "A car has his engine located somewhere in the car"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#hasFueltype
+:hasFueltype rdf:type owl:ObjectProperty ;
+             rdfs:domain :Car ;
+             rdfs:range :FuelType ;
+             rdfs:comment "A car has a certain type of fuel type"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#hasTransmissiontype
+:hasTransmissiontype rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Car ;
+                     rdfs:range :TransmissionType ;
+                     rdfs:comment "A car has a certain type of transmission type"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#isUsedfor
+:isUsedfor rdf:type owl:ObjectProperty ;
+           rdfs:domain :Car ;
+           rdfs:range :CarUsage ;
+           rdfs:comment "A car is used for different purposes"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#engine_cylinders
+:engine_cylinders rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Car ;
+                  rdfs:range xsd:int ;
+                  rdfs:comment "Indicates the number of cylinders that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#horsepower
+:horsepower rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Car ;
+            rdfs:range xsd:int ;
+            rdfs:comment "Indicates the horsepower that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Car ;
+      rdfs:range xsd:string ;
+      rdfs:comment "Indicates the name of a car"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#year
+:year rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Car ;
+      rdfs:range xsd:int ;
+      rdfs:comment "Indicates the year that a car was released"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Alfa_Romeo
+:Alfa_Romeo rdf:type owl:Class ;
+            rdfs:subClassOf :Italy ;
+            owl:disjointWith :Fiat ;
+            rdfs:comment "Subclass of the class Italy. Alfa Romeo is a Italian car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Aspiration
+:Aspiration rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Natural
+                                                :Super
+                                                :Turbo
+                                              )
+                                ] ;
+            rdfs:comment "This class denotes the different types of apiration that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Audi
+:Audi rdf:type owl:Class ;
+      rdfs:subClassOf :Germany ;
+      rdfs:comment "Subclass of the class Germany. Audi is a German car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Automatic
+:Automatic rdf:type owl:Class ;
+           rdfs:subClassOf :TransmissionType ;
+           rdfs:comment "Subclass of the class Transmission Type and indicates that the transmission type of a car is automatic"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#BMW
+:BMW rdf:type owl:Class ;
+     rdfs:subClassOf :Germany ;
+     rdfs:comment "Subclass of the class Germany. BMW is a German car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Business
+:Business rdf:type owl:Class ;
+          rdfs:subClassOf :CarUsage ;
+          rdfs:comment "Subclass of the CarUsage class and indicates which car brands are used for business purposes (i.e. taxi, uber, business trip, etc)"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasAspiration ;
+                       owl:allValuesFrom :Aspiration
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasDrivewheels ;
+                       owl:allValuesFrom :DriveWheels
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasEnginelocation ;
+                       owl:allValuesFrom :EngineLocation
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasFueltype ;
+                       owl:allValuesFrom :FuelType
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasTransmissiontype ;
+                       owl:allValuesFrom :TransmissionType
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isUsedfor ;
+                       owl:allValuesFrom :CarUsage
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasAspiration ;
+                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Aspiration
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasFueltype ;
+                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :FuelType
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasTransmissiontype ;
+                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :TransmissionType
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isUsedfor ;
+                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :CarUsage
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasEnginelocation ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :EngineLocation
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasDrivewheels ;
+                       owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                       owl:onClass :DriveWheels
+                     ] ;
+     rdfs:comment "This is the Car class which contains several car brands from different countries"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#CarUsage
+:CarUsage rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:unionOf ( :Business
+                                              :Private
+                                            )
+                              ] ;
+          rdfs:comment "The class CarUsage indicates for what purpose the different car brands are used"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Chevrolet
+:Chevrolet rdf:type owl:Class ;
+           rdfs:subClassOf :USA ;
+           rdfs:comment "Subclass of the class USA. Chevrolet is a American car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Citroen
+:Citroen rdf:type owl:Class ;
+         rdfs:subClassOf :France ;
+         rdfs:comment "Subclass of the class France. Citroen is a French car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Diesel
+:Diesel rdf:type owl:Class ;
+        rdfs:subClassOf :FuelType ;
+        rdfs:comment "Subclass of the class FuelType and indicates that the fuel type of a car is diesel"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#DriveWheels
+:DriveWheels rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( :Fwd
+                                               :Rwd
+                                               <http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#4wd>
+                                             )
+                                 ] ;
+             rdfs:comment "This is an enumerated class which denotes the different types of drive wheels that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Electric
+:Electric rdf:type owl:Class ;
+          rdfs:subClassOf :FuelType ;
+          rdfs:comment "Subclass of the class FuelType and indicates that the fuel type of a car is electric"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#EngineLocation
+:EngineLocation rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:oneOf ( :Front
+                                                  :Rear
+                                                )
+                                    ] ;
+                rdfs:comment "This is an enumerated class which denotes the different locations that an engine in a car could be"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Europe
+:Europe rdf:type owl:Class ;
+        rdfs:subClassOf :Car ;
+        rdfs:comment "Subclass of the class Car. Contains the European car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Fiat
+:Fiat rdf:type owl:Class ;
+      rdfs:subClassOf :Italy ;
+      rdfs:comment "Subclass of the class Italy. Fiat is a Italian car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Ford
+:Ford rdf:type owl:Class ;
+      rdfs:subClassOf :USA ;
+      rdfs:comment "Subclass of the class USA. Ford is a American car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#France
+:France rdf:type owl:Class ;
+        rdfs:subClassOf :Europe ;
+        rdfs:comment "Subclass of the class Europe. Contains the French car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#FuelType
+:FuelType rdf:type owl:Class ;
+          rdfs:comment "This class denotes the different types of fuel that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Germany
+:Germany rdf:type owl:Class ;
+         rdfs:subClassOf :Europe ;
+         rdfs:comment "Subclass of the class Europe. Contains the German car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Honda
+:Honda rdf:type owl:Class ;
+       rdfs:subClassOf :Japan ;
+       rdfs:comment "Subclass of the class Japan. Honda is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Hybrid
+:Hybrid rdf:type owl:Class ;
+        rdfs:subClassOf :FuelType ;
+        rdfs:comment "Subclass of the class FuelType and indicates that the fuel type of a car is hybrid"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Hyundai
+:Hyundai rdf:type owl:Class ;
+         rdfs:subClassOf :Korea ;
+         owl:disjointWith :Kia ;
+         rdfs:comment "Subclass of the class Korea. Hyundai is a Korean car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Italy
+:Italy rdf:type owl:Class ;
+       rdfs:subClassOf :Europe ;
+       rdfs:comment "Subclass of the class Europe. Contains the Italian car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Japan
+:Japan rdf:type owl:Class ;
+       rdfs:subClassOf :Car ;
+       rdfs:comment "Subclass of the class Car. Contains the Japanese car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Jeep
+:Jeep rdf:type owl:Class ;
+      rdfs:subClassOf :USA ;
+      rdfs:comment "Subclass of the class USA. Jeep is a American car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Kia
+:Kia rdf:type owl:Class ;
+     rdfs:subClassOf :Korea ;
+     rdfs:comment "Subclass of the class Korea. Kia is a Korean car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Korea
+:Korea rdf:type owl:Class ;
+       rdfs:subClassOf :Car ;
+       rdfs:comment "Subclass of the class Car. Contains the Korean car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Manual
+:Manual rdf:type owl:Class ;
+        rdfs:subClassOf :TransmissionType ;
+        rdfs:comment "Subclass of the class Transmission Type and indicates that the transmission type of a car is manual"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Mazda
+:Mazda rdf:type owl:Class ;
+       rdfs:subClassOf :Japan ;
+       rdfs:comment "Subclass of the class Japan. Mazda is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Mercedes
+:Mercedes rdf:type owl:Class ;
+          rdfs:subClassOf :Germany ;
+          rdfs:comment "Subclass of the class Germany. Mercedes is a German car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Mitsubishi
+:Mitsubishi rdf:type owl:Class ;
+            rdfs:subClassOf :Japan ;
+            rdfs:comment "Subclass of the class Japan. Mitsubishi is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Natural
+:Natural rdf:type owl:Class ;
+         rdfs:subClassOf :Aspiration ;
+         rdfs:comment "Subclass of the class Aspiration and indicates that the engine of a car is naturally aspirated"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Nissan
+:Nissan rdf:type owl:Class ;
+        rdfs:subClassOf :Japan ;
+        rdfs:comment "Subclass of the class Japan. Nissan is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Opel
+:Opel rdf:type owl:Class ;
+      rdfs:subClassOf :Germany ;
+      rdfs:comment "Subclass of the class Germany. Opel is a German car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Petrol
+:Petrol rdf:type owl:Class ;
+        rdfs:subClassOf :FuelType ;
+        rdfs:comment "Subclass of the class FuelType and indicates that the fuel type of a car is petrol"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Peugeot
+:Peugeot rdf:type owl:Class ;
+         rdfs:subClassOf :France ;
+         rdfs:comment "Subclass of the class France. Peugeot is a French car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Private
+:Private rdf:type owl:Class ;
+         rdfs:subClassOf :CarUsage ;
+         rdfs:comment "Subclass of the CarUsage class and indicates which car brands are used for personal purposes"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Renault
+:Renault rdf:type owl:Class ;
+         rdfs:subClassOf :France ;
+         rdfs:comment "Subclass of the class France. Renault is a French car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Super
+:Super rdf:type owl:Class ;
+       rdfs:subClassOf :Aspiration ;
+       rdfs:comment "Subclass of the class Aspiration and indicates that the engine of a car is supercharger"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Suzuki
+:Suzuki rdf:type owl:Class ;
+        rdfs:subClassOf :Japan ;
+        rdfs:comment "Subclass of the class Japan. Suzuki is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Tesla
+:Tesla rdf:type owl:Class ;
+       rdfs:subClassOf :USA ;
+       rdfs:comment "Subclass of the class USA. Tesla is a American car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Toyota
+:Toyota rdf:type owl:Class ;
+        rdfs:subClassOf :Japan ;
+        rdfs:comment "Subclass of the class Japan. Toyota is a Japanese car brand"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#TransmissionType
+:TransmissionType rdf:type owl:Class ;
+                  rdfs:comment "This class denotes the different types of transmission that a car could have"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Turbo
+:Turbo rdf:type owl:Class ;
+       rdfs:subClassOf :Aspiration ;
+       rdfs:comment "Subclass of the class Aspiration and indicates that the engine of a car is turbocharger"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#USA
+:USA rdf:type owl:Class ;
+     rdfs:subClassOf :Car ;
+     rdfs:comment "Subclass of the class Car. Contains the American car brands"@en .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Volkswagen
+:Volkswagen rdf:type owl:Class ;
+            rdfs:subClassOf :Germany ;
+            rdfs:comment "Subclass of the class Germany. Volkswagen is a German car brand"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Front
+:Front rdf:type owl:NamedIndividual ,
+                :EngineLocation .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Fwd
+:Fwd rdf:type owl:NamedIndividual ,
+              :DriveWheels .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Rear
+:Rear rdf:type owl:NamedIndividual ,
+               :EngineLocation .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#Rwd
+:Rwd rdf:type owl:NamedIndividual ,
+              :DriveWheels .
+
+
+###  http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#4wd
+<http://www.semanticweb.org/vaka1/ontologies/2022/9/Car#4wd> rdf:type owl:NamedIndividual ,
+                                                                      :DriveWheels .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Audi
+                :BMW
+                :Mercedes
+                :Opel
+                :Volkswagen
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Chevrolet
+                :Ford
+                :Jeep
+                :Tesla
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Citroen
+                :Peugeot
+                :Renault
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Europe
+                :Japan
+                :Korea
+                :USA
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :France
+                :Germany
+                :Italy
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Honda
+                :Mazda
+                :Mitsubishi
+                :Nissan
+                :Suzuki
+                :Toyota
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

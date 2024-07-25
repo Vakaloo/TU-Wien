@@ -1,0 +1,3523 @@
+@prefix ex: <http://semantics.id/ns/example/film#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+<http://127.0.0.1:3333/0> a ex:IMDBResource;
+ex:idIMDB "0114709";
+ex:url "https://www.imdb.com/title/tt0114709";
+a ex:Film;
+ex:id "862" .
+<http://127.0.0.1:3333/1> a ex:IMDBResource;
+ex:idIMDB "0113277";
+ex:url "https://www.imdb.com/title/tt0113277";
+a ex:Film;
+ex:id "949" .
+<http://127.0.0.1:3333/2> a ex:IMDBResource;
+ex:idIMDB "0113189";
+ex:url "https://www.imdb.com/title/tt0113189";
+a ex:Film;
+ex:id "710" .
+<http://127.0.0.1:3333/3> a ex:IMDBResource;
+ex:idIMDB "0112641";
+ex:url "https://www.imdb.com/title/tt0112641";
+a ex:Film;
+ex:id "524" .
+<http://127.0.0.1:3333/4> a ex:IMDBResource;
+ex:idIMDB "0113101";
+ex:url "https://www.imdb.com/title/tt0113101";
+a ex:Film;
+ex:id "5" .
+<http://127.0.0.1:3333/5> a ex:IMDBResource;
+ex:idIMDB "0113627";
+ex:url "https://www.imdb.com/title/tt0113627";
+a ex:Film;
+ex:id "451" .
+<http://127.0.0.1:3333/6> a ex:IMDBResource;
+ex:idIMDB "0112682";
+ex:url "https://www.imdb.com/title/tt0112682";
+a ex:Film;
+ex:id "902" .
+<http://127.0.0.1:3333/7> a ex:IMDBResource;
+ex:idIMDB "0114746";
+ex:url "https://www.imdb.com/title/tt0114746";
+a ex:Film;
+ex:id "63" .
+<http://127.0.0.1:3333/8> ex:url "https://www.imdb.com/title/tt0112818";
+ex:idIMDB "0112818";
+a ex:IMDBResource,ex:Film;
+ex:id "687" .
+<http://127.0.0.1:3333/9> a ex:IMDBResource;
+ex:idIMDB "0114681";
+ex:url "https://www.imdb.com/title/tt0114681";
+a ex:Film;
+ex:id "577" .
+<http://127.0.0.1:3333/10> a ex:IMDBResource;
+ex:idIMDB "0114369";
+ex:url "https://www.imdb.com/title/tt0114369";
+a ex:Film;
+ex:id "807" .
+<http://127.0.0.1:3333/11> a ex:IMDBResource;
+ex:idIMDB "0114814";
+ex:url "https://www.imdb.com/title/tt0114814";
+a ex:Film;
+ex:id "629" .
+<http://127.0.0.1:3333/12> a ex:IMDBResource;
+ex:idIMDB "0116367";
+ex:url "https://www.imdb.com/title/tt0116367";
+a ex:Film;
+ex:id "755" .
+<http://127.0.0.1:3333/13> a ex:IMDBResource;
+ex:idIMDB "0114660";
+ex:url "https://www.imdb.com/title/tt0114660";
+a ex:Film;
+ex:id "400" .
+<http://127.0.0.1:3333/14> a ex:IMDBResource;
+ex:idIMDB "0112379";
+ex:url "https://www.imdb.com/title/tt0112379";
+a ex:Film;
+ex:id "880" .
+<http://127.0.0.1:3333/15> a ex:IMDBResource;
+ex:idIMDB "0113247";
+ex:url "https://www.imdb.com/title/tt0113247";
+a ex:Film;
+ex:id "406" .
+<http://127.0.0.1:3333/16> a ex:IMDBResource;
+ex:idIMDB "0112579";
+ex:url "https://www.imdb.com/title/tt0112579";
+a ex:Film;
+ex:id "688" .
+<http://127.0.0.1:3333/17> a ex:IMDBResource;
+ex:idIMDB "0112573";
+ex:url "https://www.imdb.com/title/tt0112573";
+a ex:Film;
+ex:id "197" .
+<http://127.0.0.1:3333/18> a ex:IMDBResource;
+ex:idIMDB "0075314";
+ex:url "https://www.imdb.com/title/tt0075314";
+a ex:Film;
+ex:id "103" .
+<http://127.0.0.1:3333/19> a ex:IMDBResource;
+ex:idIMDB "0112384";
+ex:url "https://www.imdb.com/title/tt0112384";
+a ex:Film;
+ex:id "568" .
+<http://127.0.0.1:3333/20> a ex:IMDBResource;
+ex:idIMDB "0112462";
+ex:url "https://www.imdb.com/title/tt0112462";
+a ex:Film;
+ex:id "414" .
+<http://127.0.0.1:3333/21> a ex:IMDBResource;
+ex:idIMDB "0061395";
+ex:url "https://www.imdb.com/title/tt0061395";
+a ex:Film;
+ex:id "649" .
+<http://127.0.0.1:3333/22> a ex:IMDBResource;
+ex:idIMDB "0114558";
+ex:url "https://www.imdb.com/title/tt0114558";
+a ex:Film;
+ex:id "281" .
+<http://127.0.0.1:3333/23> a ex:IMDBResource;
+ex:idIMDB "0112471";
+ex:url "https://www.imdb.com/title/tt0112471";
+a ex:Film;
+ex:id "76" .
+<http://127.0.0.1:3333/24> a ex:IMDBResource;
+ex:idIMDB "0109707";
+ex:url "https://www.imdb.com/title/tt0109707";
+a ex:Film;
+ex:id "522" .
+<http://127.0.0.1:3333/25> a ex:IMDBResource;
+ex:idIMDB "0113117";
+ex:url "https://www.imdb.com/title/tt0113117";
+a ex:Film;
+ex:id "397" .
+<http://127.0.0.1:3333/26> a ex:IMDBResource;
+ex:idIMDB "0110148";
+ex:url "https://www.imdb.com/title/tt0110148";
+a ex:Film;
+ex:id "628" .
+<http://127.0.0.1:3333/27> a ex:IMDBResource;
+ex:idIMDB "0076759";
+ex:url "https://www.imdb.com/title/tt0076759";
+a ex:Film;
+ex:id "11" .
+<http://127.0.0.1:3333/28> a ex:IMDBResource;
+ex:idIMDB "0110632";
+ex:url "https://www.imdb.com/title/tt0110632";
+a ex:Film;
+ex:id "241" .
+<http://127.0.0.1:3333/29> a ex:IMDBResource;
+ex:idIMDB "0110729";
+ex:url "https://www.imdb.com/title/tt0110729";
+a ex:Film;
+ex:id "527" .
+<http://127.0.0.1:3333/30> a ex:IMDBResource;
+ex:idIMDB "0110413";
+ex:url "https://www.imdb.com/title/tt0110413";
+a ex:Film;
+ex:id "101" .
+<http://127.0.0.1:3333/31> a ex:IMDBResource;
+ex:idIMDB "0110912";
+ex:url "https://www.imdb.com/title/tt0110912";
+a ex:Film;
+ex:id "680" .
+<http://127.0.0.1:3333/32> a ex:IMDBResource;
+ex:idIMDB "0111495";
+ex:url "https://www.imdb.com/title/tt0111495";
+a ex:Film;
+ex:id "110" .
+<http://127.0.0.1:3333/33> a ex:IMDBResource;
+ex:idIMDB "0108394";
+ex:url "https://www.imdb.com/title/tt0108394";
+a ex:Film;
+ex:id "108" .
+<http://127.0.0.1:3333/34> a ex:IMDBResource;
+ex:idIMDB "0111507";
+ex:url "https://www.imdb.com/title/tt0111507";
+a ex:Film;
+ex:id "109" .
+<http://127.0.0.1:3333/35> a ex:IMDBResource;
+ex:idIMDB "0111161";
+ex:url "https://www.imdb.com/title/tt0111161";
+a ex:Film;
+ex:id "278" .
+<http://127.0.0.1:3333/36> a ex:IMDBResource;
+ex:idIMDB "0111280";
+ex:url "https://www.imdb.com/title/tt0111280";
+a ex:Film;
+ex:id "193" .
+<http://127.0.0.1:3333/37> a ex:IMDBResource;
+ex:idIMDB "0110598";
+ex:url "https://www.imdb.com/title/tt0110598";
+a ex:Film;
+ex:id "236" .
+<http://127.0.0.1:3333/38> a ex:IMDBResource;
+ex:idIMDB "0109813";
+ex:url "https://www.imdb.com/title/tt0109813";
+a ex:Film;
+ex:id "888" .
+<http://127.0.0.1:3333/39> a ex:IMDBResource;
+ex:idIMDB "0109830";
+ex:url "https://www.imdb.com/title/tt0109830";
+a ex:Film;
+ex:id "13" .
+<http://127.0.0.1:3333/40> a ex:IMDBResource;
+ex:idIMDB "0109831";
+ex:url "https://www.imdb.com/title/tt0109831";
+a ex:Film;
+ex:id "712" .
+<http://127.0.0.1:3333/41> a ex:IMDBResource;
+ex:idIMDB "0110475";
+ex:url "https://www.imdb.com/title/tt0110475";
+a ex:Film;
+ex:id "854" .
+<http://127.0.0.1:3333/42> a ex:IMDBResource;
+ex:idIMDB "0059170";
+ex:url "https://www.imdb.com/title/tt0059170";
+a ex:Film;
+ex:id "315" .
+<http://127.0.0.1:3333/43> a ex:IMDBResource;
+ex:idIMDB "0109254";
+ex:url "https://www.imdb.com/title/tt0109254";
+a ex:Film;
+ex:id "306" .
+<http://127.0.0.1:3333/44> a ex:IMDBResource;
+ex:idIMDB "0109303";
+ex:url "https://www.imdb.com/title/tt0109303";
+a ex:Film;
+ex:id "178" .
+<http://127.0.0.1:3333/45> a ex:IMDBResource;
+ex:idIMDB "0107286";
+ex:url "https://www.imdb.com/title/tt0107286";
+a ex:Film;
+ex:id "6" .
+<http://127.0.0.1:3333/46> a ex:IMDBResource;
+ex:idIMDB "0107290";
+ex:url "https://www.imdb.com/title/tt0107290";
+a ex:Film;
+ex:id "329" .
+<http://127.0.0.1:3333/47> a ex:IMDBResource;
+ex:idIMDB "0110265";
+ex:url "https://www.imdb.com/title/tt0110265";
+a ex:Film;
+ex:id "507" .
+<http://127.0.0.1:3333/48> a ex:IMDBResource;
+ex:idIMDB "0107614";
+ex:url "https://www.imdb.com/title/tt0107614";
+a ex:Film;
+ex:id "788" .
+<http://127.0.0.1:3333/49> a ex:IMDBResource;
+ex:idIMDB "0107822";
+ex:url "https://www.imdb.com/title/tt0107822";
+a ex:Film;
+ex:id "713" .
+<http://127.0.0.1:3333/50> a ex:IMDBResource;
+ex:idIMDB "0108052";
+ex:url "https://www.imdb.com/title/tt0108052";
+a ex:Film;
+ex:id "424" .
+<http://127.0.0.1:3333/51> a ex:IMDBResource;
+ex:idIMDB "0108122";
+ex:url "https://www.imdb.com/title/tt0108122";
+a ex:Film;
+ex:id "695" .
+<http://127.0.0.1:3333/52> a ex:IMDBResource;
+ex:idIMDB "0108160";
+ex:url "https://www.imdb.com/title/tt0108160";
+a ex:Film;
+ex:id "858" .
+<http://127.0.0.1:3333/53> a ex:IMDBResource;
+ex:idIMDB "0108162";
+ex:url "https://www.imdb.com/title/tt0108162";
+a ex:Film;
+ex:id "867" .
+<http://127.0.0.1:3333/54> a ex:IMDBResource;
+ex:idIMDB "0083658";
+ex:url "https://www.imdb.com/title/tt0083658";
+a ex:Film;
+ex:id "78" .
+<http://127.0.0.1:3333/55> a ex:IMDBResource;
+ex:idIMDB "0108399";
+ex:url "https://www.imdb.com/title/tt0108399";
+a ex:Film;
+ex:id "319" .
+<http://127.0.0.1:3333/56> a ex:IMDBResource;
+ex:idIMDB "0099785";
+ex:url "https://www.imdb.com/title/tt0099785";
+a ex:Film;
+ex:id "771" .
+<http://127.0.0.1:3333/57> a ex:IMDBResource;
+ex:idIMDB "0099653";
+ex:url "https://www.imdb.com/title/tt0099653";
+a ex:Film;
+ex:id "251" .
+<http://127.0.0.1:3333/58> a ex:IMDBResource;
+ex:idIMDB "0103639";
+ex:url "https://www.imdb.com/title/tt0103639";
+a ex:Film;
+ex:id "812" .
+<http://127.0.0.1:3333/59> a ex:IMDBResource;
+ex:idIMDB "0103064";
+ex:url "https://www.imdb.com/title/tt0103064";
+a ex:Film;
+ex:id "280" .
+<http://127.0.0.1:3333/60> a ex:IMDBResource;
+ex:idIMDB "0099348";
+ex:url "https://www.imdb.com/title/tt0099348";
+a ex:Film;
+ex:id "581" .
+<http://127.0.0.1:3333/61> a ex:IMDBResource;
+ex:idIMDB "0096895";
+ex:url "https://www.imdb.com/title/tt0096895";
+a ex:Film;
+ex:id "268" .
+<http://127.0.0.1:3333/62> a ex:IMDBResource;
+ex:idIMDB "0102926";
+ex:url "https://www.imdb.com/title/tt0102926";
+a ex:Film;
+ex:id "274" .
+<http://127.0.0.1:3333/63> a ex:IMDBResource;
+ex:idIMDB "0029583";
+ex:url "https://www.imdb.com/title/tt0029583";
+a ex:Film;
+ex:id "408" .
+<http://127.0.0.1:3333/64> a ex:IMDBResource;
+ex:idIMDB "0100405";
+ex:url "https://www.imdb.com/title/tt0100405";
+a ex:Film;
+ex:id "114" .
+<http://127.0.0.1:3333/65> a ex:IMDBResource;
+ex:idIMDB "0065214";
+ex:url "https://www.imdb.com/title/tt0065214";
+a ex:Film;
+ex:id "576" .
+<http://127.0.0.1:3333/66> a ex:IMDBResource;
+ex:idIMDB "0116282";
+ex:url "https://www.imdb.com/title/tt0116282";
+a ex:Film;
+ex:id "275" .
+<http://127.0.0.1:3333/67> a ex:IMDBResource;
+ex:idIMDB "0117060";
+ex:url "https://www.imdb.com/title/tt0117060";
+a ex:Film;
+ex:id "954" .
+<http://127.0.0.1:3333/68> a ex:IMDBResource;
+ex:idIMDB "0052572";
+ex:url "https://www.imdb.com/title/tt0052572";
+a ex:Film;
+ex:id "896" .
+<http://127.0.0.1:3333/69> a ex:IMDBResource;
+ex:idIMDB "0062952";
+ex:url "https://www.imdb.com/title/tt0062952";
+a ex:Film;
+ex:id "753" .
+<http://127.0.0.1:3333/70> a ex:IMDBResource;
+ex:idIMDB "0112817";
+ex:url "https://www.imdb.com/title/tt0112817";
+a ex:Film;
+ex:id "922" .
+<http://127.0.0.1:3333/71> a ex:IMDBResource;
+ex:idIMDB "0117998";
+ex:url "https://www.imdb.com/title/tt0117998";
+a ex:Film;
+ex:id "664" .
+<http://127.0.0.1:3333/72> a ex:IMDBResource;
+ex:idIMDB "0112691";
+ex:url "https://www.imdb.com/title/tt0112691";
+a ex:Film;
+ex:id "532" .
+<http://127.0.0.1:3333/73> a ex:IMDBResource;
+ex:idIMDB "0057012";
+ex:url "https://www.imdb.com/title/tt0057012";
+a ex:Film;
+ex:id "935" .
+<http://127.0.0.1:3333/74> a ex:IMDBResource;
+ex:idIMDB "0117951";
+ex:url "https://www.imdb.com/title/tt0117951";
+a ex:Film;
+ex:id "627" .
+<http://127.0.0.1:3333/75> a ex:IMDBResource;
+ex:idIMDB "0116629";
+ex:url "https://www.imdb.com/title/tt0116629";
+a ex:Film;
+ex:id "602" .
+<http://127.0.0.1:3333/76> a ex:IMDBResource;
+ex:idIMDB "0115632";
+ex:url "https://www.imdb.com/title/tt0115632";
+a ex:Film;
+ex:id "549" .
+<http://127.0.0.1:3333/77> a ex:IMDBResource;
+ex:idIMDB "0068646";
+ex:url "https://www.imdb.com/title/tt0068646";
+a ex:Film;
+ex:id "238" .
+<http://127.0.0.1:3333/78> a ex:IMDBResource;
+ex:idIMDB "0032904";
+ex:url "https://www.imdb.com/title/tt0032904";
+a ex:Film;
+ex:id "981" .
+<http://127.0.0.1:3333/79> a ex:IMDBResource;
+ex:idIMDB "0045152";
+ex:url "https://www.imdb.com/title/tt0045152";
+a ex:Film;
+ex:id "872" .
+<http://127.0.0.1:3333/80> a ex:IMDBResource;
+ex:idIMDB "0054698";
+ex:url "https://www.imdb.com/title/tt0054698";
+a ex:Film;
+ex:id "164" .
+<http://127.0.0.1:3333/81> a ex:IMDBResource;
+ex:idIMDB "0052357";
+ex:url "https://www.imdb.com/title/tt0052357";
+a ex:Film;
+ex:id "426" .
+<http://127.0.0.1:3333/82> a ex:IMDBResource;
+ex:idIMDB "0047396";
+ex:url "https://www.imdb.com/title/tt0047396";
+a ex:Film;
+ex:id "567" .
+<http://127.0.0.1:3333/83> a ex:IMDBResource;
+ex:idIMDB "0053125";
+ex:url "https://www.imdb.com/title/tt0053125";
+a ex:Film;
+ex:id "213" .
+<http://127.0.0.1:3333/84> a ex:IMDBResource;
+ex:idIMDB "0053604";
+ex:url "https://www.imdb.com/title/tt0053604";
+a ex:Film;
+ex:id "284" .
+<http://127.0.0.1:3333/85> a ex:IMDBResource;
+ex:idIMDB "0053291";
+ex:url "https://www.imdb.com/title/tt0053291";
+a ex:Film;
+ex:id "239" .
+<http://127.0.0.1:3333/86> a ex:IMDBResource;
+ex:idIMDB "0034583";
+ex:url "https://www.imdb.com/title/tt0034583";
+a ex:Film;
+ex:id "289" .
+<http://127.0.0.1:3333/87> a ex:IMDBResource;
+ex:idIMDB "0033870";
+ex:url "https://www.imdb.com/title/tt0033870";
+a ex:Film;
+ex:id "963" .
+<http://127.0.0.1:3333/88> a ex:IMDBResource;
+ex:idIMDB "0046250";
+ex:url "https://www.imdb.com/title/tt0046250";
+a ex:Film;
+ex:id "804" .
+<http://127.0.0.1:3333/89> a ex:IMDBResource;
+ex:idIMDB "0037059";
+ex:url "https://www.imdb.com/title/tt0037059";
+a ex:Film;
+ex:id "909" .
+<http://127.0.0.1:3333/90> a ex:IMDBResource;
+ex:idIMDB "0032138";
+ex:url "https://www.imdb.com/title/tt0032138";
+a ex:Film;
+ex:id "630" .
+<http://127.0.0.1:3333/91> a ex:IMDBResource;
+ex:idIMDB "0031381";
+ex:url "https://www.imdb.com/title/tt0031381";
+a ex:Film;
+ex:id "770" .
+<http://127.0.0.1:3333/92> a ex:IMDBResource;
+ex:idIMDB "0043014";
+ex:url "https://www.imdb.com/title/tt0043014";
+a ex:Film;
+ex:id "599" .
+<http://127.0.0.1:3333/93> a ex:IMDBResource;
+ex:idIMDB "0033467";
+ex:url "https://www.imdb.com/title/tt0033467";
+a ex:Film;
+ex:id "15" .
+<http://127.0.0.1:3333/94> a ex:IMDBResource;
+ex:idIMDB "0062622";
+ex:url "https://www.imdb.com/title/tt0062622";
+a ex:Film;
+ex:id "62" .
+<http://127.0.0.1:3333/95> a ex:IMDBResource;
+ex:idIMDB "0042192";
+ex:url "https://www.imdb.com/title/tt0042192";
+a ex:Film;
+ex:id "705" .
+<http://127.0.0.1:3333/96> a ex:IMDBResource;
+ex:idIMDB "0032976";
+ex:url "https://www.imdb.com/title/tt0032976";
+a ex:Film;
+ex:id "223" .
+<http://127.0.0.1:3333/97> a ex:IMDBResource;
+ex:idIMDB "0038787";
+ex:url "https://www.imdb.com/title/tt0038787";
+a ex:Film;
+ex:id "303" .
+<http://127.0.0.1:3333/98> a ex:IMDBResource;
+ex:idIMDB "0048728";
+ex:url "https://www.imdb.com/title/tt0048728";
+a ex:Film;
+ex:id "381" .
+<http://127.0.0.1:3333/99> a ex:IMDBResource;
+ex:idIMDB "0035446";
+ex:url "https://www.imdb.com/title/tt0035446";
+a ex:Film;
+ex:id "198" .
+<http://127.0.0.1:3333/100> ex:url "https://www.imdb.com/title/tt0048028";
+ex:idIMDB "0048028";
+a ex:IMDBResource;
+ex:id "220";
+a ex:Film .
+<http://127.0.0.1:3333/101> ex:url "https://www.imdb.com/title/tt0029947";
+a ex:IMDBResource;
+ex:idIMDB "0029947";
+a ex:Film;
+ex:id "900" .
+<http://127.0.0.1:3333/102> ex:url "https://www.imdb.com/title/tt0026029";
+a ex:IMDBResource;
+ex:idIMDB "0026029";
+ex:id "260";
+a ex:Film .
+<http://127.0.0.1:3333/103> ex:url "https://www.imdb.com/title/tt0043265";
+a ex:IMDBResource;
+ex:idIMDB "0043265";
+ex:id "488";
+a ex:Film .
+<http://127.0.0.1:3333/104> a ex:IMDBResource;
+ex:idIMDB "0051459";
+ex:url "https://www.imdb.com/title/tt0051459";
+a ex:Film;
+ex:id "261" .
+<http://127.0.0.1:3333/105> a ex:IMDBResource;
+ex:idIMDB "0046672";
+ex:url "https://www.imdb.com/title/tt0046672";
+a ex:Film;
+ex:id "173" .
+<http://127.0.0.1:3333/106> a ex:IMDBResource;
+ex:idIMDB "0106611";
+ex:url "https://www.imdb.com/title/tt0106611";
+a ex:Film;
+ex:id "864" .
+<http://127.0.0.1:3333/107> a ex:IMDBResource;
+ex:idIMDB "0058331";
+ex:url "https://www.imdb.com/title/tt0058331";
+a ex:Film;
+ex:id "433" .
+<http://127.0.0.1:3333/108> a ex:IMDBResource;
+ex:idIMDB "0095016";
+ex:url "https://www.imdb.com/title/tt0095016";
+a ex:Film;
+ex:id "562" .
+<http://127.0.0.1:3333/109> a ex:IMDBResource;
+ex:idIMDB "0117509";
+ex:url "https://www.imdb.com/title/tt0117509";
+a ex:Film;
+ex:id "454" .
+<http://127.0.0.1:3333/110> a ex:IMDBResource;
+ex:idIMDB "0117665";
+ex:url "https://www.imdb.com/title/tt0117665";
+a ex:Film;
+ex:id "819" .
+<http://127.0.0.1:3333/111> a ex:IMDBResource;
+ex:idIMDB "0067992";
+ex:url "https://www.imdb.com/title/tt0067992";
+a ex:Film;
+ex:id "252" .
+<http://127.0.0.1:3333/112> a ex:IMDBResource;
+ex:idIMDB "0095159";
+ex:url "https://www.imdb.com/title/tt0095159";
+a ex:Film;
+ex:id "623" .
+<http://127.0.0.1:3333/113> a ex:IMDBResource;
+ex:idIMDB "0079470";
+ex:url "https://www.imdb.com/title/tt0079470";
+a ex:Film;
+ex:id "583" .
+<http://127.0.0.1:3333/114> a ex:IMDBResource;
+ex:idIMDB "0061418";
+ex:url "https://www.imdb.com/title/tt0061418";
+a ex:Film;
+ex:id "475" .
+<http://127.0.0.1:3333/115> a ex:IMDBResource;
+ex:idIMDB "0046912";
+ex:url "https://www.imdb.com/title/tt0046912";
+a ex:Film;
+ex:id "521" .
+<http://127.0.0.1:3333/116> a ex:IMDBResource;
+ex:idIMDB "0092890";
+ex:url "https://www.imdb.com/title/tt0092890";
+a ex:Film;
+ex:id "88" .
+<http://127.0.0.1:3333/117> a ex:IMDBResource;
+ex:idIMDB "0105236";
+ex:url "https://www.imdb.com/title/tt0105236";
+a ex:Film;
+ex:id "500" .
+<http://127.0.0.1:3333/118> a ex:IMDBResource;
+ex:idIMDB "0091763";
+ex:url "https://www.imdb.com/title/tt0091763";
+a ex:Film;
+ex:id "792" .
+<http://127.0.0.1:3333/119> a ex:IMDBResource;
+ex:idIMDB "0103772";
+ex:url "https://www.imdb.com/title/tt0103772";
+a ex:Film;
+ex:id "402" .
+<http://127.0.0.1:3333/120> a ex:IMDBResource;
+ex:idIMDB "0083866";
+ex:url "https://www.imdb.com/title/tt0083866";
+a ex:Film;
+ex:id "601" .
+<http://127.0.0.1:3333/121> a ex:IMDBResource;
+ex:idIMDB "0092099";
+ex:url "https://www.imdb.com/title/tt0092099";
+a ex:Film;
+ex:id "744" .
+<http://127.0.0.1:3333/122> a ex:IMDBResource;
+ex:idIMDB "0048545";
+ex:url "https://www.imdb.com/title/tt0048545";
+a ex:Film;
+ex:id "221" .
+<http://127.0.0.1:3333/123> a ex:IMDBResource;
+ex:idIMDB "0044081";
+ex:url "https://www.imdb.com/title/tt0044081";
+a ex:Film;
+ex:id "702" .
+<http://127.0.0.1:3333/124> a ex:IMDBResource;
+ex:idIMDB "0080749";
+ex:url "https://www.imdb.com/title/tt0080749";
+a ex:Film;
+ex:id "790" .
+<http://127.0.0.1:3333/125> a ex:IMDBResource;
+ex:idIMDB "0071853";
+ex:url "https://www.imdb.com/title/tt0071853";
+a ex:Film;
+ex:id "762" .
+<http://127.0.0.1:3333/126> a ex:IMDBResource;
+ex:idIMDB "0108598";
+ex:url "https://www.imdb.com/title/tt0108598";
+a ex:Film;
+ex:id "531" .
+<http://127.0.0.1:3333/127> a ex:IMDBResource;
+ex:idIMDB "0078875";
+ex:url "https://www.imdb.com/title/tt0078875";
+a ex:Film;
+ex:id "659" .
+<http://127.0.0.1:3333/128> a ex:IMDBResource;
+ex:idIMDB "0101700";
+ex:url "https://www.imdb.com/title/tt0101700";
+a ex:Film;
+ex:id "892" .
+<http://127.0.0.1:3333/129> a ex:IMDBResource;
+ex:idIMDB "0050825";
+ex:url "https://www.imdb.com/title/tt0050825";
+a ex:Film;
+ex:id "975" .
+<http://127.0.0.1:3333/130> a ex:IMDBResource;
+ex:idIMDB "0116209";
+ex:url "https://www.imdb.com/title/tt0116209";
+a ex:Film;
+ex:id "409" .
+<http://127.0.0.1:3333/131> a ex:IMDBResource;
+ex:idIMDB "0073486";
+ex:url "https://www.imdb.com/title/tt0073486";
+a ex:Film;
+ex:id "510" .
+<http://127.0.0.1:3333/132> a ex:IMDBResource;
+ex:idIMDB "0082971";
+ex:url "https://www.imdb.com/title/tt0082971";
+a ex:Film;
+ex:id "85" .
+<http://127.0.0.1:3333/133> a ex:IMDBResource;
+ex:idIMDB "0088846";
+ex:url "https://www.imdb.com/title/tt0088846";
+a ex:Film;
+ex:id "68" .
+<http://127.0.0.1:3333/134> a ex:IMDBResource;
+ex:idIMDB "0090605";
+ex:url "https://www.imdb.com/title/tt0090605";
+a ex:Film;
+ex:id "679" .
+<http://127.0.0.1:3333/135> a ex:IMDBResource;
+ex:idIMDB "0060196";
+ex:url "https://www.imdb.com/title/tt0060196";
+a ex:Film;
+ex:id "429" .
+<http://127.0.0.1:3333/136> a ex:IMDBResource;
+ex:idIMDB "0050083";
+ex:url "https://www.imdb.com/title/tt0050083";
+a ex:Film;
+ex:id "389" .
+<http://127.0.0.1:3333/137> a ex:IMDBResource;
+ex:idIMDB "0056172";
+ex:url "https://www.imdb.com/title/tt0056172";
+a ex:Film;
+ex:id "947" .
+<http://127.0.0.1:3333/138> a ex:IMDBResource;
+ex:idIMDB "0066921";
+ex:url "https://www.imdb.com/title/tt0066921";
+a ex:Film;
+ex:id "185" .
+<http://127.0.0.1:3333/139> a ex:IMDBResource;
+ex:idIMDB "0056592";
+ex:url "https://www.imdb.com/title/tt0056592";
+a ex:Film;
+ex:id "595" .
+<http://127.0.0.1:3333/140> a ex:IMDBResource;
+ex:idIMDB "0078788";
+ex:url "https://www.imdb.com/title/tt0078788";
+a ex:Film;
+ex:id "28" .
+<http://127.0.0.1:3333/141> a ex:IMDBResource;
+ex:idIMDB "0064116";
+ex:url "https://www.imdb.com/title/tt0064116";
+a ex:Film;
+ex:id "335" .
+<http://127.0.0.1:3333/142> a ex:IMDBResource;
+ex:idIMDB "0093191";
+ex:url "https://www.imdb.com/title/tt0093191";
+a ex:Film;
+ex:id "144" .
+<http://127.0.0.1:3333/143> a ex:IMDBResource;
+ex:idIMDB "0099685";
+ex:url "https://www.imdb.com/title/tt0099685";
+a ex:Film;
+ex:id "769" .
+<http://127.0.0.1:3333/144> a ex:IMDBResource;
+ex:idIMDB "0078748";
+ex:url "https://www.imdb.com/title/tt0078748";
+a ex:Film;
+ex:id "348" .
+<http://127.0.0.1:3333/145> a ex:IMDBResource;
+ex:idIMDB "0106308";
+ex:url "https://www.imdb.com/title/tt0106308";
+a ex:Film;
+ex:id "766" .
+<http://127.0.0.1:3333/146> a ex:IMDBResource;
+ex:idIMDB "0095250";
+ex:url "https://www.imdb.com/title/tt0095250";
+a ex:Film;
+ex:id "175" .
+<http://127.0.0.1:3333/147> a ex:IMDBResource;
+ex:idIMDB "0054215";
+ex:url "https://www.imdb.com/title/tt0054215";
+a ex:Film;
+ex:id "539" .
+<http://127.0.0.1:3333/148> a ex:IMDBResource;
+ex:idIMDB "0080455";
+ex:url "https://www.imdb.com/title/tt0080455";
+a ex:Film;
+ex:id "525" .
+<http://127.0.0.1:3333/149> a ex:IMDBResource;
+ex:idIMDB "0071562";
+ex:url "https://www.imdb.com/title/tt0071562";
+a ex:Film;
+ex:id "240" .
+<http://127.0.0.1:3333/150> a ex:IMDBResource;
+ex:idIMDB "0093058";
+ex:url "https://www.imdb.com/title/tt0093058";
+a ex:Film;
+ex:id "600" .
+<http://127.0.0.1:3333/151> a ex:IMDBResource;
+ex:idIMDB "0104361";
+ex:url "https://www.imdb.com/title/tt0104361";
+a ex:Film;
+ex:id "530" .
+<http://127.0.0.1:3333/152> a ex:IMDBResource;
+ex:idIMDB "0086879";
+ex:url "https://www.imdb.com/title/tt0086879";
+a ex:Film;
+ex:id "279" .
+<http://127.0.0.1:3333/153> a ex:IMDBResource;
+ex:idIMDB "0087843";
+ex:url "https://www.imdb.com/title/tt0087843";
+a ex:Film;
+ex:id "311" .
+<http://127.0.0.1:3333/154> a ex:IMDBResource;
+ex:idIMDB "0075686";
+ex:url "https://www.imdb.com/title/tt0075686";
+a ex:Film;
+ex:id "703" .
+<http://127.0.0.1:3333/155> a ex:IMDBResource;
+ex:idIMDB "0082096";
+ex:url "https://www.imdb.com/title/tt0082096";
+a ex:Film;
+ex:id "387" .
+<http://127.0.0.1:3333/156> a ex:IMDBResource;
+ex:idIMDB "0067185";
+ex:url "https://www.imdb.com/title/tt0067185";
+a ex:Film;
+ex:id "343" .
+<http://127.0.0.1:3333/157> a ex:IMDBResource;
+ex:idIMDB "0050976";
+ex:url "https://www.imdb.com/title/tt0050976";
+a ex:Film;
+ex:id "490" .
+<http://127.0.0.1:3333/158> a ex:IMDBResource;
+ex:idIMDB "0088247";
+ex:url "https://www.imdb.com/title/tt0088247";
+a ex:Film;
+ex:id "218" .
+<http://127.0.0.1:3333/159> a ex:IMDBResource;
+ex:idIMDB "0103873";
+ex:url "https://www.imdb.com/title/tt0103873";
+a ex:Film;
+ex:id "763" .
+<http://127.0.0.1:3333/160> a ex:IMDBResource;
+ex:idIMDB "0079522";
+ex:url "https://www.imdb.com/title/tt0079522";
+a ex:Film;
+ex:id "696" .
+<http://127.0.0.1:3333/161> a ex:IMDBResource;
+ex:idIMDB "0100150";
+ex:url "https://www.imdb.com/title/tt0100150";
+a ex:Film;
+ex:id "379" .
+<http://127.0.0.1:3333/162> a ex:IMDBResource;
+ex:idIMDB "0097165";
+ex:url "https://www.imdb.com/title/tt0097165";
+a ex:Film;
+ex:id "207" .
+<http://127.0.0.1:3333/163> a ex:IMDBResource;
+ex:idIMDB "0050212";
+ex:url "https://www.imdb.com/title/tt0050212";
+a ex:Film;
+ex:id "826" .
+<http://127.0.0.1:3333/164> a ex:IMDBResource;
+ex:idIMDB "0056801";
+ex:url "https://www.imdb.com/title/tt0056801";
+a ex:Film;
+ex:id "422" .
+<http://127.0.0.1:3333/165> a ex:IMDBResource;
+ex:idIMDB "0071315";
+ex:url "https://www.imdb.com/title/tt0071315";
+a ex:Film;
+ex:id "829" .
+<http://127.0.0.1:3333/166> a ex:IMDBResource;
+ex:idIMDB "0043456";
+ex:url "https://www.imdb.com/title/tt0043456";
+a ex:Film;
+ex:id "828" .
+<http://127.0.0.1:3333/167> a ex:IMDBResource;
+ex:idIMDB "0081505";
+ex:url "https://www.imdb.com/title/tt0081505";
+a ex:Film;
+ex:id "694" .
+<http://127.0.0.1:3333/168> a ex:IMDBResource;
+ex:idIMDB "0092005";
+ex:url "https://www.imdb.com/title/tt0092005";
+a ex:Film;
+ex:id "235" .
+<http://127.0.0.1:3333/169> a ex:IMDBResource;
+ex:idIMDB "0022100";
+ex:url "https://www.imdb.com/title/tt0022100";
+a ex:Film;
+ex:id "832" .
+<http://127.0.0.1:3333/170> a ex:IMDBResource;
+ex:idIMDB "0092991";
+ex:url "https://www.imdb.com/title/tt0092991";
+a ex:Film;
+ex:id "765" .
+<http://127.0.0.1:3333/171> a ex:IMDBResource;
+ex:idIMDB "0107048";
+ex:url "https://www.imdb.com/title/tt0107048";
+a ex:Film;
+ex:id "137" .
+<http://127.0.0.1:3333/172> a ex:IMDBResource;
+ex:idIMDB "0105695";
+ex:url "https://www.imdb.com/title/tt0105695";
+a ex:Film;
+ex:id "33" .
+<http://127.0.0.1:3333/173> a ex:IMDBResource;
+ex:idIMDB "0056218";
+ex:url "https://www.imdb.com/title/tt0056218";
+a ex:Film;
+ex:id "982" .
+<http://127.0.0.1:3333/174> a ex:IMDBResource;
+ex:idIMDB "0036613";
+ex:url "https://www.imdb.com/title/tt0036613";
+a ex:Film;
+ex:id "212" .
+<http://127.0.0.1:3333/175> a ex:IMDBResource;
+ex:idIMDB "0088763";
+ex:url "https://www.imdb.com/title/tt0088763";
+a ex:Film;
+ex:id "105" .
+<http://127.0.0.1:3333/176> a ex:IMDBResource;
+ex:idIMDB "0094625";
+ex:url "https://www.imdb.com/title/tt0094625";
+a ex:Film;
+ex:id "149" .
+<http://127.0.0.1:3333/177> a ex:IMDBResource;
+ex:idIMDB "0061512";
+ex:url "https://www.imdb.com/title/tt0061512";
+a ex:Film;
+ex:id "903" .
+<http://127.0.0.1:3333/178> a ex:IMDBResource;
+ex:idIMDB "0102536";
+ex:url "https://www.imdb.com/title/tt0102536";
+a ex:Film;
+ex:id "339" .
+<http://127.0.0.1:3333/179> a ex:IMDBResource;
+ex:idIMDB "0032553";
+ex:url "https://www.imdb.com/title/tt0032553";
+a ex:Film;
+ex:id "914" .
+<http://127.0.0.1:3333/180> a ex:IMDBResource;
+ex:idIMDB "0032455";
+ex:url "https://www.imdb.com/title/tt0032455";
+a ex:Film;
+ex:id "756" .
+<http://127.0.0.1:3333/181> a ex:IMDBResource;
+ex:idIMDB "0044706";
+ex:url "https://www.imdb.com/title/tt0044706";
+a ex:Film;
+ex:id "288" .
+<http://127.0.0.1:3333/182> a ex:IMDBResource;
+ex:idIMDB "0038355";
+ex:url "https://www.imdb.com/title/tt0038355";
+a ex:Film;
+ex:id "910" .
+<http://127.0.0.1:3333/183> a ex:IMDBResource;
+ex:idIMDB "0052618";
+ex:url "https://www.imdb.com/title/tt0052618";
+a ex:Film;
+ex:id "665" .
+<http://127.0.0.1:3333/184> a ex:IMDBResource;
+ex:idIMDB "0097576";
+ex:url "https://www.imdb.com/title/tt0097576";
+a ex:Film;
+ex:id "89" .
+<http://127.0.0.1:3333/185> a ex:IMDBResource;
+ex:idIMDB "0083987";
+ex:url "https://www.imdb.com/title/tt0083987";
+a ex:Film;
+ex:id "783" .
+<http://127.0.0.1:3333/186> a ex:IMDBResource;
+ex:idIMDB "0087553";
+ex:url "https://www.imdb.com/title/tt0087553";
+a ex:Film;
+ex:id "625" .
+<http://127.0.0.1:3333/187> a ex:IMDBResource;
+ex:idIMDB "0049223";
+ex:url "https://www.imdb.com/title/tt0049223";
+a ex:Film;
+ex:id "830" .
+<http://127.0.0.1:3333/188> a ex:IMDBResource;
+ex:idIMDB "0073341";
+ex:url "https://www.imdb.com/title/tt0073341";
+a ex:Film;
+ex:id "983" .
+<http://127.0.0.1:3333/189> a ex:IMDBResource;
+ex:idIMDB "0064115";
+ex:url "https://www.imdb.com/title/tt0064115";
+a ex:Film;
+ex:id "642" .
+<http://127.0.0.1:3333/190> a ex:IMDBResource;
+ex:idIMDB "0087884";
+ex:url "https://www.imdb.com/title/tt0087884";
+a ex:Film;
+ex:id "655" .
+<http://127.0.0.1:3333/191> a ex:IMDBResource;
+ex:idIMDB "0098635";
+ex:url "https://www.imdb.com/title/tt0098635";
+a ex:Film;
+ex:id "639" .
+<http://127.0.0.1:3333/192> a ex:IMDBResource;
+ex:idIMDB "0082010";
+ex:url "https://www.imdb.com/title/tt0082010";
+a ex:Film;
+ex:id "814" .
+<http://127.0.0.1:3333/193> a ex:IMDBResource;
+ex:idIMDB "0056869";
+ex:url "https://www.imdb.com/title/tt0056869";
+a ex:Film;
+ex:id "571" .
+<http://127.0.0.1:3333/194> a ex:IMDBResource;
+ex:idIMDB "0026138";
+ex:url "https://www.imdb.com/title/tt0026138";
+a ex:Film;
+ex:id "229" .
+<http://127.0.0.1:3333/195> a ex:IMDBResource;
+ex:idIMDB "0087800";
+ex:url "https://www.imdb.com/title/tt0087800";
+a ex:Film;
+ex:id "377" .
+<http://127.0.0.1:3333/196> a ex:IMDBResource;
+ex:idIMDB "0013442";
+ex:url "https://www.imdb.com/title/tt0013442";
+a ex:Film;
+ex:id "653" .
+<http://127.0.0.1:3333/197> a ex:IMDBResource;
+ex:idIMDB "0075005";
+ex:url "https://www.imdb.com/title/tt0075005";
+a ex:Film;
+ex:id "794" .
+<http://127.0.0.1:3333/198> a ex:IMDBResource;
+ex:idIMDB "0115751";
+ex:url "https://www.imdb.com/title/tt0115751";
+a ex:Film;
+ex:id "145" .
+<http://127.0.0.1:3333/199> a ex:IMDBResource;
+ex:idIMDB "0117731";
+ex:url "https://www.imdb.com/title/tt0117731";
+a ex:Film;
+ex:id "199" .
+<http://127.0.0.1:3333/200> a ex:IMDBResource;
+ex:idIMDB "0079945";
+ex:url "https://www.imdb.com/title/tt0079945";
+a ex:Film;
+ex:id "152" .
+<http://127.0.0.1:3333/201> a ex:IMDBResource;
+ex:idIMDB "0102975";
+ex:url "https://www.imdb.com/title/tt0102975";
+a ex:Film;
+ex:id "174" .
+<http://127.0.0.1:3333/202> a ex:IMDBResource;
+ex:idIMDB "0098382";
+ex:url "https://www.imdb.com/title/tt0098382";
+a ex:Film;
+ex:id "172" .
+<http://127.0.0.1:3333/203> a ex:IMDBResource;
+ex:idIMDB "0084726";
+ex:url "https://www.imdb.com/title/tt0084726";
+a ex:Film;
+ex:id "154" .
+<http://127.0.0.1:3333/204> a ex:IMDBResource;
+ex:idIMDB "0088170";
+ex:url "https://www.imdb.com/title/tt0088170";
+a ex:Film;
+ex:id "157" .
+<http://127.0.0.1:3333/205> a ex:IMDBResource;
+ex:idIMDB "0092007";
+ex:url "https://www.imdb.com/title/tt0092007";
+a ex:Film;
+ex:id "168" .
+<http://127.0.0.1:3333/206> a ex:IMDBResource;
+ex:idIMDB "0103776";
+ex:url "https://www.imdb.com/title/tt0103776";
+a ex:Film;
+ex:id "364" .
+<http://127.0.0.1:3333/207> a ex:IMDBResource;
+ex:idIMDB "0077631";
+ex:url "https://www.imdb.com/title/tt0077631";
+a ex:Film;
+ex:id "621" .
+<http://127.0.0.1:3333/208> a ex:IMDBResource;
+ex:idIMDB "0073195";
+ex:url "https://www.imdb.com/title/tt0073195";
+a ex:Film;
+ex:id "578" .
+<http://127.0.0.1:3333/209> a ex:IMDBResource;
+ex:idIMDB "0077766";
+ex:url "https://www.imdb.com/title/tt0077766";
+a ex:Film;
+ex:id "579" .
+<http://127.0.0.1:3333/210> a ex:IMDBResource;
+ex:idIMDB "0116996";
+ex:url "https://www.imdb.com/title/tt0116996";
+a ex:Film;
+ex:id "75" .
+<http://127.0.0.1:3333/211> a ex:IMDBResource;
+ex:idIMDB "0093822";
+ex:url "https://www.imdb.com/title/tt0093822";
+a ex:Film;
+ex:id "378" .
+<http://127.0.0.1:3333/212> a ex:IMDBResource;
+ex:idIMDB "0116790";
+ex:url "https://www.imdb.com/title/tt0116790";
+ex:id "784";
+a ex:Film .
+<http://127.0.0.1:3333/213> ex:url "https://www.imdb.com/title/tt0118548";
+a ex:IMDBResource;
+ex:idIMDB "0118548";
+ex:id "66";
+a ex:Film .
+<http://127.0.0.1:3333/214> ex:url "https://www.imdb.com/title/tt0116922";
+a ex:IMDBResource;
+ex:idIMDB "0116922";
+a ex:Film;
+ex:id "638" .
+<http://127.0.0.1:3333/215> a ex:IMDBResource;
+ex:idIMDB "0115964";
+ex:url "https://www.imdb.com/title/tt0115964";
+a ex:Film;
+ex:id "884" .
+<http://127.0.0.1:3333/216> a ex:IMDBResource;
+ex:idIMDB "0118655";
+ex:url "https://www.imdb.com/title/tt0118655";
+a ex:Film;
+ex:id "816" .
+<http://127.0.0.1:3333/217> a ex:IMDBResource;
+ex:idIMDB "0119116";
+ex:url "https://www.imdb.com/title/tt0119116";
+a ex:Film;
+ex:id "18" .
+<http://127.0.0.1:3333/218> a ex:IMDBResource;
+ex:idIMDB "0119567";
+ex:url "https://www.imdb.com/title/tt0119567";
+ex:id "330";
+a ex:Film .
+<http://127.0.0.1:3333/219> ex:url "https://www.imdb.com/title/tt0118688";
+ex:idIMDB "0118688";
+a ex:IMDBResource,ex:Film;
+ex:id "415" .
+<http://127.0.0.1:3333/220> ex:idIMDB "0057345";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0057345";
+ex:id "266";
+a ex:Film .
+<http://127.0.0.1:3333/221> ex:url "https://www.imdb.com/title/tt0119094";
+ex:idIMDB "0119094";
+a ex:IMDBResource;
+ex:id "754";
+a ex:Film .
+<http://127.0.0.1:3333/222> ex:idIMDB "0119654";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0119654";
+a ex:Film;
+ex:id "607" .
+<http://127.0.0.1:3333/223> a ex:IMDBResource;
+ex:idIMDB "0118884";
+ex:url "https://www.imdb.com/title/tt0118884";
+a ex:Film;
+ex:id "686" .
+<http://127.0.0.1:3333/224> a ex:IMDBResource;
+ex:idIMDB "0102494";
+ex:url "https://www.imdb.com/title/tt0102494";
+a ex:Film;
+ex:id "468" .
+<http://127.0.0.1:3333/225> a ex:IMDBResource;
+ex:idIMDB "0120102";
+ex:url "https://www.imdb.com/title/tt0120102";
+a ex:Film;
+ex:id "978" .
+<http://127.0.0.1:3333/226> a ex:IMDBResource;
+ex:idIMDB "0119177";
+ex:url "https://www.imdb.com/title/tt0119177";
+a ex:Film;
+ex:id "782" .
+<http://127.0.0.1:3333/227> a ex:IMDBResource;
+ex:idIMDB "0120201";
+ex:url "https://www.imdb.com/title/tt0120201";
+a ex:Film;
+ex:id "563" .
+<http://127.0.0.1:3333/228> a ex:IMDBResource;
+ex:idIMDB "0119217";
+ex:url "https://www.imdb.com/title/tt0119217";
+a ex:Film;
+ex:id "489" .
+<http://127.0.0.1:3333/229> a ex:IMDBResource;
+ex:idIMDB "0120338";
+ex:url "https://www.imdb.com/title/tt0120338";
+a ex:Film;
+ex:id "597" .
+<http://127.0.0.1:3333/230> a ex:IMDBResource;
+ex:idIMDB "0120347";
+ex:url "https://www.imdb.com/title/tt0120347";
+a ex:Film;
+ex:id "714" .
+<http://127.0.0.1:3333/231> a ex:IMDBResource;
+ex:idIMDB "0119314";
+ex:url "https://www.imdb.com/title/tt0119314";
+a ex:Film;
+ex:id "547" .
+<http://127.0.0.1:3333/232> a ex:IMDBResource;
+ex:idIMDB "0119396";
+ex:url "https://www.imdb.com/title/tt0119396";
+a ex:Film;
+ex:id "184" .
+<http://127.0.0.1:3333/233> a ex:IMDBResource;
+ex:idIMDB "0118715";
+ex:url "https://www.imdb.com/title/tt0118715";
+a ex:Film;
+ex:id "115" .
+<http://127.0.0.1:3333/234> a ex:IMDBResource;
+ex:idIMDB "0120885";
+ex:url "https://www.imdb.com/title/tt0120885";
+a ex:Film;
+ex:id "586" .
+<http://127.0.0.1:3333/235> a ex:IMDBResource;
+ex:idIMDB "0120890";
+ex:url "https://www.imdb.com/title/tt0120890";
+a ex:Film;
+ex:id "617" .
+<http://127.0.0.1:3333/236> a ex:IMDBResource;
+ex:idIMDB "0120632";
+ex:url "https://www.imdb.com/title/tt0120632";
+a ex:Film;
+ex:id "795" .
+<http://127.0.0.1:3333/237> a ex:IMDBResource;
+ex:idIMDB "0118819";
+ex:url "https://www.imdb.com/title/tt0118819";
+a ex:Film;
+ex:id "267" .
+<http://127.0.0.1:3333/238> a ex:IMDBResource;
+ex:idIMDB "0120685";
+ex:url "https://www.imdb.com/title/tt0120685";
+a ex:Film;
+ex:id "929" .
+<http://127.0.0.1:3333/239> a ex:IMDBResource;
+ex:idIMDB "0120902";
+ex:url "https://www.imdb.com/title/tt0120902";
+a ex:Film;
+ex:id "846" .
+<http://127.0.0.1:3333/240> a ex:IMDBResource;
+ex:idIMDB "0120591";
+ex:url "https://www.imdb.com/title/tt0120591";
+a ex:Film;
+ex:id "95" .
+<http://127.0.0.1:3333/241> a ex:IMDBResource;
+ex:idIMDB "0122151";
+ex:url "https://www.imdb.com/title/tt0122151";
+a ex:Film;
+ex:id "944" .
+<http://127.0.0.1:3333/242> a ex:IMDBResource;
+ex:idIMDB "0138704";
+ex:url "https://www.imdb.com/title/tt0138704";
+a ex:Film;
+ex:id "473" .
+<http://127.0.0.1:3333/243> a ex:IMDBResource;
+ex:idIMDB "0129387";
+ex:url "https://www.imdb.com/title/tt0129387";
+a ex:Film;
+ex:id "544" .
+<http://127.0.0.1:3333/244> a ex:IMDBResource;
+ex:idIMDB "0020629";
+ex:url "https://www.imdb.com/title/tt0020629";
+a ex:Film;
+ex:id "143" .
+<http://127.0.0.1:3333/245> a ex:IMDBResource;
+ex:idIMDB "0036868";
+ex:url "https://www.imdb.com/title/tt0036868";
+a ex:Film;
+ex:id "887" .
+<http://127.0.0.1:3333/246> a ex:IMDBResource;
+ex:idIMDB "0047296";
+ex:url "https://www.imdb.com/title/tt0047296";
+a ex:Film;
+ex:id "654" .
+<http://127.0.0.1:3333/247> a ex:IMDBResource;
+ex:idIMDB "0060665";
+ex:url "https://www.imdb.com/title/tt0060665";
+a ex:Film;
+ex:id "874" .
+<http://127.0.0.1:3333/248> a ex:IMDBResource;
+ex:idIMDB "0089755";
+ex:url "https://www.imdb.com/title/tt0089755";
+a ex:Film;
+ex:id "606" .
+<http://127.0.0.1:3333/249> a ex:IMDBResource;
+ex:idIMDB "0093389";
+ex:url "https://www.imdb.com/title/tt0093389";
+a ex:Film;
+ex:id "746" .
+<http://127.0.0.1:3333/250> a ex:IMDBResource;
+ex:idIMDB "0095953";
+ex:url "https://www.imdb.com/title/tt0095953";
+a ex:Film;
+ex:id "380" .
+<http://127.0.0.1:3333/251> a ex:IMDBResource;
+ex:idIMDB "0097239";
+ex:url "https://www.imdb.com/title/tt0097239";
+a ex:Film;
+ex:id "403" .
+<http://127.0.0.1:3333/252> a ex:IMDBResource;
+ex:idIMDB "0067309";
+ex:url "https://www.imdb.com/title/tt0067309";
+a ex:Film;
+ex:id "466" .
+<http://127.0.0.1:3333/253> a ex:IMDBResource;
+ex:idIMDB "0077651";
+ex:url "https://www.imdb.com/title/tt0077651";
+a ex:Film;
+ex:id "948" .
+<http://127.0.0.1:3333/254> a ex:IMDBResource;
+ex:idIMDB "0084516";
+ex:url "https://www.imdb.com/title/tt0084516";
+a ex:Film;
+ex:id "609" .
+<http://127.0.0.1:3333/255> a ex:IMDBResource;
+ex:idIMDB "0093409";
+ex:url "https://www.imdb.com/title/tt0093409";
+a ex:Film;
+ex:id "941" .
+<http://127.0.0.1:3333/256> a ex:IMDBResource;
+ex:idIMDB "0097733";
+ex:url "https://www.imdb.com/title/tt0097733";
+a ex:Film;
+ex:id "942" .
+<http://127.0.0.1:3333/257> a ex:IMDBResource;
+ex:idIMDB "0104714";
+ex:url "https://www.imdb.com/title/tt0104714";
+a ex:Film;
+ex:id "943" .
+<http://127.0.0.1:3333/258> a ex:IMDBResource;
+ex:idIMDB "0087363";
+ex:url "https://www.imdb.com/title/tt0087363";
+a ex:Film;
+ex:id "927" .
+<http://127.0.0.1:3333/259> a ex:IMDBResource;
+ex:idIMDB "0099700";
+ex:url "https://www.imdb.com/title/tt0099700";
+a ex:Film;
+ex:id "928" .
+<http://127.0.0.1:3333/260> a ex:IMDBResource;
+ex:idIMDB "0017136";
+ex:url "https://www.imdb.com/title/tt0017136";
+a ex:Film;
+ex:id "19" .
+<http://127.0.0.1:3333/261> a ex:IMDBResource;
+ex:idIMDB "0096874";
+ex:url "https://www.imdb.com/title/tt0096874";
+a ex:Film;
+ex:id "165" .
+<http://127.0.0.1:3333/262> a ex:IMDBResource;
+ex:idIMDB "0099088";
+ex:url "https://www.imdb.com/title/tt0099088";
+a ex:Film;
+ex:id "196" .
+<http://127.0.0.1:3333/263> a ex:IMDBResource;
+ex:idIMDB "0069113";
+ex:url "https://www.imdb.com/title/tt0069113";
+a ex:Film;
+ex:id "551" .
+<http://127.0.0.1:3333/264> a ex:IMDBResource;
+ex:idIMDB "0047478";
+ex:url "https://www.imdb.com/title/tt0047478";
+a ex:Film;
+ex:id "346" .
+<http://127.0.0.1:3333/265> a ex:IMDBResource;
+ex:idIMDB "0094947";
+ex:url "https://www.imdb.com/title/tt0094947";
+a ex:Film;
+ex:id "859" .
+<http://127.0.0.1:3333/266> a ex:IMDBResource;
+ex:idIMDB "0087182";
+ex:url "https://www.imdb.com/title/tt0087182";
+a ex:Film;
+ex:id "841" .
+<http://127.0.0.1:3333/267> a ex:IMDBResource;
+ex:idIMDB "0099674";
+ex:url "https://www.imdb.com/title/tt0099674";
+a ex:Film;
+ex:id "242" .
+<http://127.0.0.1:3333/268> a ex:IMDBResource;
+ex:idIMDB "0120815";
+ex:url "https://www.imdb.com/title/tt0120815";
+a ex:Film;
+ex:id "857" .
+<http://127.0.0.1:3333/269> a ex:IMDBResource;
+ex:idIMDB "0039689";
+ex:url "https://www.imdb.com/title/tt0039689";
+a ex:Film;
+ex:id "678" .
+<http://127.0.0.1:3333/270> a ex:IMDBResource;
+ex:idIMDB "0059113";
+ex:url "https://www.imdb.com/title/tt0059113";
+a ex:Film;
+ex:id "907" .
+<http://127.0.0.1:3333/271> a ex:IMDBResource;
+ex:idIMDB "0090756";
+ex:url "https://www.imdb.com/title/tt0090756";
+a ex:Film;
+ex:id "793" .
+<http://127.0.0.1:3333/272> a ex:IMDBResource;
+ex:idIMDB "0084827";
+ex:url "https://www.imdb.com/title/tt0084827";
+a ex:Film;
+ex:id "97" .
+<http://127.0.0.1:3333/273> a ex:IMDBResource;
+ex:idIMDB "0086066";
+ex:url "https://www.imdb.com/title/tt0086066";
+a ex:Film;
+ex:id "227" .
+<http://127.0.0.1:3333/274> a ex:IMDBResource;
+ex:idIMDB "0087469";
+ex:url "https://www.imdb.com/title/tt0087469";
+a ex:Film;
+ex:id "87" .
+<http://127.0.0.1:3333/275> a ex:IMDBResource;
+ex:idIMDB "0077869";
+ex:url "https://www.imdb.com/title/tt0077869";
+a ex:Film;
+ex:id "123" .
+<http://127.0.0.1:3333/276> a ex:IMDBResource;
+ex:idIMDB "0061184";
+ex:url "https://www.imdb.com/title/tt0061184";
+a ex:Film;
+ex:id "396" .
+<http://127.0.0.1:3333/277> a ex:IMDBResource;
+ex:idIMDB "0063522";
+ex:url "https://www.imdb.com/title/tt0063522";
+a ex:Film;
+ex:id "805" .
+<http://127.0.0.1:3333/278> a ex:IMDBResource;
+ex:idIMDB "0068611";
+ex:url "https://www.imdb.com/title/tt0068611";
+a ex:Film;
+ex:id "573" .
+<http://127.0.0.1:3333/279> a ex:IMDBResource;
+ex:idIMDB "0058329";
+ex:url "https://www.imdb.com/title/tt0058329";
+a ex:Film;
+ex:id "506" .
+<http://127.0.0.1:3333/280> a ex:IMDBResource;
+ex:idIMDB "0049470";
+ex:url "https://www.imdb.com/title/tt0049470";
+a ex:Film;
+ex:id "574" .
+<http://127.0.0.1:3333/281> a ex:IMDBResource;
+ex:idIMDB "0044079";
+ex:url "https://www.imdb.com/title/tt0044079";
+a ex:Film;
+ex:id "845" .
+<http://127.0.0.1:3333/282> a ex:IMDBResource;
+ex:idIMDB "0096446";
+ex:url "https://www.imdb.com/title/tt0096446";
+a ex:Film;
+ex:id "847" .
+<http://127.0.0.1:3333/283> a ex:IMDBResource;
+ex:idIMDB "0094226";
+ex:url "https://www.imdb.com/title/tt0094226";
+a ex:Film;
+ex:id "117" .
+<http://127.0.0.1:3333/284> a ex:IMDBResource;
+ex:idIMDB "0030341";
+ex:url "https://www.imdb.com/title/tt0030341";
+a ex:Film;
+ex:id "940" .
+<http://127.0.0.1:3333/285> a ex:IMDBResource;
+ex:idIMDB "0019702";
+ex:url "https://www.imdb.com/title/tt0019702";
+a ex:Film;
+ex:id "543" .
+<http://127.0.0.1:3333/286> a ex:IMDBResource;
+ex:idIMDB "0123755";
+ex:url "https://www.imdb.com/title/tt0123755";
+a ex:Film;
+ex:id "431" .
+<http://127.0.0.1:3333/287> a ex:IMDBResource;
+ex:idIMDB "0104257";
+ex:url "https://www.imdb.com/title/tt0104257";
+a ex:Film;
+ex:id "881" .
+<http://127.0.0.1:3333/288> a ex:IMDBResource;
+ex:idIMDB "0099487";
+ex:url "https://www.imdb.com/title/tt0099487";
+a ex:Film;
+ex:id "162" .
+<http://127.0.0.1:3333/289> a ex:IMDBResource;
+ex:idIMDB "0118799";
+ex:url "https://www.imdb.com/title/tt0118799";
+a ex:Film;
+ex:id "637" .
+<http://127.0.0.1:3333/290> a ex:IMDBResource;
+ex:idIMDB "0120586";
+ex:url "https://www.imdb.com/title/tt0120586";
+a ex:Film;
+ex:id "73" .
+<http://127.0.0.1:3333/291> a ex:IMDBResource;
+ex:idIMDB "0119643";
+ex:url "https://www.imdb.com/title/tt0119643";
+a ex:Film;
+ex:id "297" .
+<http://127.0.0.1:3333/292> a ex:IMDBResource;
+ex:idIMDB "0140888";
+ex:url "https://www.imdb.com/title/tt0140888";
+a ex:Film;
+ex:id "666" .
+<http://127.0.0.1:3333/293> a ex:IMDBResource;
+ex:idIMDB "0154420";
+ex:url "https://www.imdb.com/title/tt0154420";
+a ex:Film;
+ex:id "309" .
+<http://127.0.0.1:3333/294> a ex:IMDBResource;
+ex:idIMDB "0069089";
+ex:url "https://www.imdb.com/title/tt0069089";
+a ex:Film;
+ex:id "692" .
+<http://127.0.0.1:3333/295> a ex:IMDBResource;
+ex:idIMDB "0024216";
+ex:url "https://www.imdb.com/title/tt0024216";
+a ex:Film;
+ex:id "244" .
+<http://127.0.0.1:3333/296> a ex:IMDBResource;
+ex:idIMDB "0090264";
+ex:url "https://www.imdb.com/title/tt0090264";
+a ex:Film;
+ex:id "707" .
+<http://127.0.0.1:3333/297> a ex:IMDBResource;
+ex:idIMDB "0120844";
+ex:url "https://www.imdb.com/title/tt0120844";
+a ex:Film;
+ex:id "200" .
+<http://127.0.0.1:3333/298> a ex:IMDBResource;
+ex:idIMDB "0145734";
+ex:url "https://www.imdb.com/title/tt0145734";
+a ex:Film;
+ex:id "825" .
+<http://127.0.0.1:3333/299> a ex:IMDBResource;
+ex:idIMDB "0091605";
+ex:url "https://www.imdb.com/title/tt0091605";
+a ex:Film;
+ex:id "192" .
+<http://127.0.0.1:3333/300> a ex:IMDBResource;
+ex:idIMDB "0063442";
+ex:url "https://www.imdb.com/title/tt0063442";
+a ex:Film;
+ex:id "871" .
+<http://127.0.0.1:3333/301> a ex:IMDBResource;
+ex:idIMDB "0139134";
+ex:url "https://www.imdb.com/title/tt0139134";
+a ex:Film;
+ex:id "796" .
+<http://127.0.0.1:3333/302> a ex:IMDBResource;
+ex:idIMDB "0120735";
+ex:url "https://www.imdb.com/title/tt0120735";
+a ex:Film;
+ex:id "100" .
+<http://127.0.0.1:3333/303> a ex:IMDBResource;
+ex:idIMDB "0133093";
+ex:url "https://www.imdb.com/title/tt0133093";
+a ex:Film;
+ex:id "603" .
+<http://127.0.0.1:3333/304> a ex:IMDBResource;
+ex:idIMDB "0120616";
+ex:url "https://www.imdb.com/title/tt0120616";
+a ex:Film;
+ex:id "564" .
+<http://127.0.0.1:3333/305> a ex:IMDBResource;
+ex:idIMDB "0021814";
+ex:url "https://www.imdb.com/title/tt0021814";
+a ex:Film;
+ex:id "138" .
+<http://127.0.0.1:3333/306> a ex:IMDBResource;
+ex:idIMDB "0125439";
+ex:url "https://www.imdb.com/title/tt0125439";
+a ex:Film;
+ex:id "509" .
+<http://127.0.0.1:3333/307> a ex:IMDBResource;
+ex:idIMDB "0145660";
+ex:url "https://www.imdb.com/title/tt0145660";
+a ex:Film;
+ex:id "817" .
+<http://127.0.0.1:3333/308> a ex:IMDBResource;
+ex:idIMDB "0130827";
+ex:url "https://www.imdb.com/title/tt0130827";
+a ex:Film;
+ex:id "104" .
+<http://127.0.0.1:3333/309> a ex:IMDBResource;
+ex:idIMDB "0120663";
+ex:url "https://www.imdb.com/title/tt0120663";
+ex:id "345";
+a ex:Film .
+<http://127.0.0.1:3333/310> ex:url "https://www.imdb.com/title/tt0087332";
+ex:idIMDB "0087332";
+a ex:IMDBResource;
+ex:id "620";
+a ex:Film .
+<http://127.0.0.1:3333/311> a ex:IMDBResource;
+ex:idIMDB "0141369";
+ex:url "https://www.imdb.com/title/tt0141369";
+ex:id "332";
+a ex:Film .
+<http://127.0.0.1:3333/312> a ex:IMDBResource;
+ex:idIMDB "0049406";
+ex:url "https://www.imdb.com/title/tt0049406";
+a ex:Film;
+ex:id "247" .
+<http://127.0.0.1:3333/313> a ex:IMDBResource;
+ex:idIMDB "0054331";
+ex:url "https://www.imdb.com/title/tt0054331";
+a ex:Film;
+ex:id "967" .
+<http://127.0.0.1:3333/314> a ex:IMDBResource;
+ex:idIMDB "0056193";
+ex:url "https://www.imdb.com/title/tt0056193";
+a ex:Film;
+ex:id "802" .
+<http://127.0.0.1:3333/315> a ex:IMDBResource;
+ex:idIMDB "0053198";
+ex:url "https://www.imdb.com/title/tt0053198";
+a ex:Film;
+ex:id "147" .
+<http://127.0.0.1:3333/316> a ex:IMDBResource;
+ex:idIMDB "0088939";
+ex:url "https://www.imdb.com/title/tt0088939";
+a ex:Film;
+ex:id "873" .
+<http://127.0.0.1:3333/317> a ex:IMDBResource;
+ex:idIMDB "0167404";
+ex:url "https://www.imdb.com/title/tt0167404";
+a ex:Film;
+ex:id "745" .
+<http://127.0.0.1:3333/318> a ex:IMDBResource;
+ex:idIMDB "0155267";
+ex:url "https://www.imdb.com/title/tt0155267";
+a ex:Film;
+ex:id "913" .
+<http://127.0.0.1:3333/319> ex:url "https://www.imdb.com/title/tt0063688";
+ex:idIMDB "0063688";
+a ex:IMDBResource;
+ex:id "912";
+a ex:Film .
+<http://127.0.0.1:3333/320> a ex:IMDBResource;
+ex:idIMDB "0080339";
+ex:url "https://www.imdb.com/title/tt0080339";
+a ex:Film;
+ex:id "813" .
+<http://127.0.0.1:3333/321> a ex:IMDBResource;
+ex:idIMDB "0085334";
+ex:url "https://www.imdb.com/title/tt0085334";
+a ex:Film;
+ex:id "850" .
+<http://127.0.0.1:3333/322> ex:url "https://www.imdb.com/title/tt0169547";
+ex:idIMDB "0169547";
+a ex:IMDBResource,ex:Film;
+ex:id "14" .
+<http://127.0.0.1:3333/323> a ex:IMDBResource;
+ex:idIMDB "0058182";
+ex:url "https://www.imdb.com/title/tt0058182";
+a ex:Film;
+ex:id "704" .
+<http://127.0.0.1:3333/324> a ex:IMDBResource;
+ex:idIMDB "0171804";
+ex:url "https://www.imdb.com/title/tt0171804";
+a ex:Film;
+ex:id "226" .
+<http://127.0.0.1:3333/325> a ex:IMDBResource;
+ex:idIMDB "0100802";
+ex:url "https://www.imdb.com/title/tt0100802";
+a ex:Film;
+ex:id "861" .
+<http://127.0.0.1:3333/326> a ex:IMDBResource;
+ex:idIMDB "0037558";
+ex:url "https://www.imdb.com/title/tt0037558";
+a ex:Film;
+ex:id "851" .
+<http://127.0.0.1:3333/327> a ex:IMDBResource;
+ex:idIMDB "0085549";
+ex:url "https://www.imdb.com/title/tt0085549";
+a ex:Film;
+ex:id "535" .
+<http://127.0.0.1:3333/328> a ex:IMDBResource;
+ex:idIMDB "0058150";
+ex:url "https://www.imdb.com/title/tt0058150";
+a ex:Film;
+ex:id "658" .
+<http://127.0.0.1:3333/329> a ex:IMDBResource;
+ex:idIMDB "0057076";
+ex:url "https://www.imdb.com/title/tt0057076";
+a ex:Film;
+ex:id "657" .
+<http://127.0.0.1:3333/330> a ex:IMDBResource;
+ex:idIMDB "0055928";
+ex:url "https://www.imdb.com/title/tt0055928";
+a ex:Film;
+ex:id "646" .
+<http://127.0.0.1:3333/331> a ex:IMDBResource;
+ex:idIMDB "0058461";
+ex:url "https://www.imdb.com/title/tt0058461";
+a ex:Film;
+ex:id "391" .
+<http://127.0.0.1:3333/332> a ex:IMDBResource;
+ex:idIMDB "0104431";
+ex:url "https://www.imdb.com/title/tt0104431";
+a ex:Film;
+ex:id "772" .
+<http://127.0.0.1:3333/333> a ex:IMDBResource;
+ex:idIMDB "0137523";
+ex:url "https://www.imdb.com/title/tt0137523";
+a ex:Film;
+ex:id "550" .
+<http://127.0.0.1:3333/334> a ex:IMDBResource;
+ex:idIMDB "0166896";
+ex:url "https://www.imdb.com/title/tt0166896";
+a ex:Film;
+ex:id "404" .
+<http://127.0.0.1:3333/335> a ex:IMDBResource;
+ex:idIMDB "0096438";
+ex:url "https://www.imdb.com/title/tt0096438";
+a ex:Film;
+ex:id "856" .
+<http://127.0.0.1:3333/336> a ex:IMDBResource;
+ex:idIMDB "0082398";
+ex:url "https://www.imdb.com/title/tt0082398";
+a ex:Film;
+ex:id "699" .
+<http://127.0.0.1:3333/337> a ex:IMDBResource;
+ex:idIMDB "0097742";
+ex:url "https://www.imdb.com/title/tt0097742";
+a ex:Film;
+ex:id "709" .
+<http://127.0.0.1:3333/338> a ex:IMDBResource;
+ex:idIMDB "0070328";
+ex:url "https://www.imdb.com/title/tt0070328";
+a ex:Film;
+ex:id "253" .
+<http://127.0.0.1:3333/339> a ex:IMDBResource;
+ex:idIMDB "0059800";
+ex:url "https://www.imdb.com/title/tt0059800";
+a ex:Film;
+ex:id "660" .
+<http://127.0.0.1:3333/340> a ex:IMDBResource;
+ex:idIMDB "0120601";
+ex:url "https://www.imdb.com/title/tt0120601";
+a ex:Film;
+ex:id "492" .
+<http://127.0.0.1:3333/341> a ex:IMDBResource;
+ex:idIMDB "0119698";
+ex:url "https://www.imdb.com/title/tt0119698";
+a ex:Film;
+ex:id "128" .
+<http://127.0.0.1:3333/342> a ex:IMDBResource;
+ex:idIMDB "0097240";
+ex:url "https://www.imdb.com/title/tt0097240";
+a ex:Film;
+ex:id "476" .
+<http://127.0.0.1:3333/343> a ex:IMDBResource;
+ex:idIMDB "0017925";
+ex:url "https://www.imdb.com/title/tt0017925";
+a ex:Film;
+ex:id "961" .
+<http://127.0.0.1:3333/344> ex:url "https://www.imdb.com/title/tt0094012";
+ex:idIMDB "0094012";
+a ex:IMDBResource,ex:Film;
+ex:id "957" .
+<http://127.0.0.1:3333/345> ex:url "https://www.imdb.com/title/tt0185125";
+ex:idIMDB "0185125";
+a ex:IMDBResource,ex:Film;
+ex:id "99" .
+<http://127.0.0.1:3333/346> a ex:IMDBResource;
+ex:idIMDB "0032551";
+ex:url "https://www.imdb.com/title/tt0032551";
+a ex:Film;
+ex:id "596" .
+<http://127.0.0.1:3333/347> a ex:IMDBResource;
+ex:idIMDB "0105265";
+ex:url "https://www.imdb.com/title/tt0105265";
+a ex:Film;
+ex:id "293" .
+<http://127.0.0.1:3333/348> a ex:IMDBResource;
+ex:idIMDB "0101889";
+ex:url "https://www.imdb.com/title/tt0101889";
+a ex:Film;
+ex:id "177" .
+<http://127.0.0.1:3333/349> a ex:IMDBResource;
+ex:idIMDB "0120363";
+ex:url "https://www.imdb.com/title/tt0120363";
+a ex:Film;
+ex:id "863" .
+<http://127.0.0.1:3333/350> a ex:IMDBResource;
+ex:idIMDB "0028950";
+ex:url "https://www.imdb.com/title/tt0028950";
+a ex:Film;
+ex:id "777" .
+<http://127.0.0.1:3333/351> a ex:IMDBResource;
+ex:idIMDB "0120689";
+ex:url "https://www.imdb.com/title/tt0120689";
+a ex:Film;
+ex:id "497" .
+<http://127.0.0.1:3333/352> a ex:IMDBResource;
+ex:idIMDB "0175880";
+ex:url "https://www.imdb.com/title/tt0175880";
+a ex:Film;
+ex:id "334" .
+<http://127.0.0.1:3333/353> a ex:IMDBResource;
+ex:idIMDB "0064276";
+ex:url "https://www.imdb.com/title/tt0064276";
+a ex:Film;
+ex:id "624" .
+<http://127.0.0.1:3333/354> a ex:IMDBResource;
+ex:idIMDB "0177789";
+ex:url "https://www.imdb.com/title/tt0177789";
+a ex:Film;
+ex:id "926" .
+<http://127.0.0.1:3333/355> a ex:IMDBResource;
+ex:idIMDB "0046359";
+ex:url "https://www.imdb.com/title/tt0046359";
+a ex:Film;
+ex:id "632" .
+<http://127.0.0.1:3333/356> a ex:IMDBResource;
+ex:idIMDB "0103855";
+ex:url "https://www.imdb.com/title/tt0103855";
+a ex:Film;
+ex:id "619" .
+<http://127.0.0.1:3333/357> a ex:IMDBResource;
+ex:idIMDB "0021749";
+ex:url "https://www.imdb.com/title/tt0021749";
+a ex:Film;
+ex:id "901" .
+<http://127.0.0.1:3333/358> a ex:IMDBResource;
+ex:idIMDB "0164756";
+ex:url "https://www.imdb.com/title/tt0164756";
+a ex:Film;
+ex:id "139" .
+<http://127.0.0.1:3333/359> a ex:IMDBResource;
+ex:idIMDB "0142688";
+ex:url "https://www.imdb.com/title/tt0142688";
+a ex:Film;
+ex:id "622" .
+<http://127.0.0.1:3333/360> a ex:IMDBResource;
+ex:idIMDB "0094812";
+ex:url "https://www.imdb.com/title/tt0094812";
+a ex:Film;
+ex:id "287" .
+<http://127.0.0.1:3333/361> a ex:IMDBResource;
+ex:idIMDB "0072890";
+ex:url "https://www.imdb.com/title/tt0072890";
+a ex:Film;
+ex:id "968" .
+<http://127.0.0.1:3333/362> a ex:IMDBResource;
+ex:idIMDB "0069704";
+ex:url "https://www.imdb.com/title/tt0069704";
+a ex:Film;
+ex:id "838" .
+<http://127.0.0.1:3333/363> a ex:IMDBResource;
+ex:idIMDB "0102138";
+ex:url "https://www.imdb.com/title/tt0102138";
+a ex:Film;
+ex:id "820" .
+<http://127.0.0.1:3333/364> a ex:IMDBResource;
+ex:idIMDB "0092666";
+ex:url "https://www.imdb.com/title/tt0092666";
+a ex:Film;
+ex:id "918" .
+<http://127.0.0.1:3333/365> a ex:IMDBResource;
+ex:idIMDB "0195685";
+ex:url "https://www.imdb.com/title/tt0195685";
+a ex:Film;
+ex:id "462" .
+<http://127.0.0.1:3333/366> a ex:IMDBResource;
+ex:idIMDB "0097216";
+ex:url "https://www.imdb.com/title/tt0097216";
+a ex:Film;
+ex:id "925" .
+<http://127.0.0.1:3333/367> a ex:IMDBResource;
+ex:idIMDB "0036775";
+ex:url "https://www.imdb.com/title/tt0036775";
+a ex:Film;
+ex:id "996" .
+<http://127.0.0.1:3333/368> a ex:IMDBResource;
+ex:idIMDB "0093105";
+ex:url "https://www.imdb.com/title/tt0093105";
+a ex:Film;
+ex:id "801" .
+<http://127.0.0.1:3333/369> a ex:IMDBResource;
+ex:idIMDB "0054997";
+ex:url "https://www.imdb.com/title/tt0054997";
+a ex:Film;
+ex:id "990" .
+<http://127.0.0.1:3333/370> a ex:IMDBResource;
+ex:idIMDB "0075860";
+ex:url "https://www.imdb.com/title/tt0075860";
+a ex:Film;
+ex:id "840" .
+<http://127.0.0.1:3333/371> a ex:IMDBResource;
+ex:idIMDB "0089457";
+ex:url "https://www.imdb.com/title/tt0089457";
+a ex:Film;
+ex:id "526" .
+<http://127.0.0.1:3333/372> a ex:IMDBResource;
+ex:idIMDB "0146882";
+ex:url "https://www.imdb.com/title/tt0146882";
+a ex:Film;
+ex:id "243" .
+<http://127.0.0.1:3333/373> a ex:IMDBResource;
+ex:idIMDB "0102057";
+ex:url "https://www.imdb.com/title/tt0102057";
+a ex:Film;
+ex:id "879" .
+<http://127.0.0.1:3333/374> a ex:IMDBResource;
+ex:idIMDB "0069293";
+ex:url "https://www.imdb.com/title/tt0069293";
+a ex:Film;
+ex:id "593" .
+<http://127.0.0.1:3333/375> a ex:IMDBResource;
+ex:idIMDB "0093773";
+ex:url "https://www.imdb.com/title/tt0093773";
+a ex:Film;
+ex:id "106" .
+<http://127.0.0.1:3333/376> a ex:IMDBResource;
+ex:idIMDB "0158622";
+ex:url "https://www.imdb.com/title/tt0158622";
+a ex:Film;
+ex:id "889" .
+<http://127.0.0.1:3333/377> a ex:IMDBResource;
+ex:idIMDB "0154421";
+ex:url "https://www.imdb.com/title/tt0154421";
+a ex:Film;
+ex:id "452" .
+<http://127.0.0.1:3333/378> a ex:IMDBResource;
+ex:idIMDB "0172495";
+ex:url "https://www.imdb.com/title/tt0172495";
+a ex:Film;
+ex:id "98" .
+<http://127.0.0.1:3333/379> a ex:IMDBResource;
+ex:idIMDB "0120755";
+ex:url "https://www.imdb.com/title/tt0120755";
+a ex:Film;
+ex:id "955" .
+<http://127.0.0.1:3333/380> a ex:IMDBResource;
+ex:idIMDB "0015864";
+ex:url "https://www.imdb.com/title/tt0015864";
+a ex:Film;
+ex:id "962" .
+<http://127.0.0.1:3333/381> a ex:IMDBResource;
+ex:idIMDB "0064757";
+ex:url "https://www.imdb.com/title/tt0064757";
+a ex:Film;
+ex:id "668" .
+<http://127.0.0.1:3333/382> a ex:IMDBResource;
+ex:idIMDB "0076752";
+ex:url "https://www.imdb.com/title/tt0076752";
+a ex:Film;
+ex:id "691" .
+<http://127.0.0.1:3333/383> a ex:IMDBResource;
+ex:idIMDB "0079574";
+ex:url "https://www.imdb.com/title/tt0079574";
+a ex:Film;
+ex:id "698" .
+<http://127.0.0.1:3333/384> a ex:IMDBResource;
+ex:idIMDB "0071807";
+ex:url "https://www.imdb.com/title/tt0071807";
+a ex:Film;
+ex:id "682" .
+<http://127.0.0.1:3333/385> a ex:IMDBResource;
+ex:idIMDB "0060371";
+ex:url "https://www.imdb.com/title/tt0060371";
+a ex:Film;
+ex:id "21" .
+<http://127.0.0.1:3333/386> a ex:IMDBResource;
+ex:idIMDB "0074486";
+ex:url "https://www.imdb.com/title/tt0074486";
+a ex:Film;
+ex:id "985" .
+<http://127.0.0.1:3333/387> a ex:IMDBResource;
+ex:idIMDB "0048347";
+ex:url "https://www.imdb.com/title/tt0048347";
+a ex:Film;
+ex:id "541" .
+<http://127.0.0.1:3333/388> a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0059578";
+ex:idIMDB "0059578";
+ex:id "938";
+a ex:Film .
+<http://127.0.0.1:3333/389> a ex:IMDBResource;
+ex:idIMDB "0100403";
+ex:url "https://www.imdb.com/title/tt0100403";
+a ex:Film;
+ex:id "169" .
+<http://127.0.0.1:3333/390> a ex:IMDBResource;
+ex:idIMDB "0093894";
+ex:url "https://www.imdb.com/title/tt0093894";
+a ex:Film;
+ex:id "865" .
+<http://127.0.0.1:3333/391> a ex:IMDBResource;
+ex:idIMDB "0092563";
+ex:url "https://www.imdb.com/title/tt0092563";
+a ex:Film;
+ex:id "635" .
+<http://127.0.0.1:3333/392> a ex:IMDBResource;
+ex:idIMDB "0067741";
+ex:url "https://www.imdb.com/title/tt0067741";
+a ex:Film;
+ex:id "482" .
+<http://127.0.0.1:3333/393> a ex:IMDBResource;
+ex:idIMDB "0071360";
+ex:url "https://www.imdb.com/title/tt0071360";
+a ex:Film;
+ex:id "592" .
+<http://127.0.0.1:3333/394> a ex:IMDBResource;
+ex:idIMDB "0023622";
+ex:url "https://www.imdb.com/title/tt0023622";
+a ex:Film;
+ex:id "195" .
+<http://127.0.0.1:3333/395> a ex:IMDBResource;
+ex:idIMDB "0015648";
+ex:url "https://www.imdb.com/title/tt0015648";
+a ex:Film;
+ex:id "643" .
+<http://127.0.0.1:3333/396> a ex:IMDBResource;
+ex:idIMDB "0162650";
+ex:url "https://www.imdb.com/title/tt0162650";
+a ex:Film;
+ex:id "479" .
+<http://127.0.0.1:3333/397> a ex:IMDBResource;
+ex:idIMDB "0052561";
+ex:url "https://www.imdb.com/title/tt0052561";
+a ex:Film;
+ex:id "93" .
+<http://127.0.0.1:3333/398> a ex:IMDBResource;
+ex:idIMDB "0181875";
+ex:url "https://www.imdb.com/title/tt0181875";
+ex:id "786";
+a ex:Film .
+<http://127.0.0.1:3333/399> a ex:IMDBResource;
+ex:idIMDB "0168629";
+ex:url "https://www.imdb.com/title/tt0168629";
+a ex:Film;
+ex:id "16" .
+<http://127.0.0.1:3333/400> a ex:IMDBResource;
+ex:idIMDB "0088184";
+ex:url "https://www.imdb.com/title/tt0088184";
+a ex:Film;
+ex:id "469" .
+<http://127.0.0.1:3333/401> a ex:IMDBResource;
+ex:idIMDB "0032234";
+ex:url "https://www.imdb.com/title/tt0032234";
+a ex:Film;
+ex:id "911" .
+<http://127.0.0.1:3333/402> a ex:IMDBResource;
+ex:idIMDB "0180093";
+ex:url "https://www.imdb.com/title/tt0180093";
+a ex:Film;
+ex:id "641" .
+<http://127.0.0.1:3333/403> a ex:IMDBResource;
+ex:idIMDB "0249462";
+ex:url "https://www.imdb.com/title/tt0249462";
+a ex:Film;
+ex:id "71" .
+<http://127.0.0.1:3333/404> a ex:IMDBResource;
+ex:idIMDB "0066995";
+ex:url "https://www.imdb.com/title/tt0066995";
+a ex:Film;
+ex:id "681" .
+<http://127.0.0.1:3333/405> a ex:IMDBResource;
+ex:idIMDB "0190332";
+ex:url "https://www.imdb.com/title/tt0190332";
+a ex:Film;
+ex:id "146" .
+<http://127.0.0.1:3333/406> a ex:IMDBResource;
+ex:idIMDB "0093428";
+ex:url "https://www.imdb.com/title/tt0093428";
+a ex:Film;
+ex:id "708" .
+<http://127.0.0.1:3333/407> a ex:IMDBResource;
+ex:idIMDB "0208092";
+ex:url "https://www.imdb.com/title/tt0208092";
+a ex:Film;
+ex:id "107" .
+<http://127.0.0.1:3333/408> a ex:IMDBResource;
+ex:idIMDB "0241303";
+ex:url "https://www.imdb.com/title/tt0241303";
+a ex:Film;
+ex:id "392" .
+<http://127.0.0.1:3333/409> ex:idIMDB "0181536";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0181536";
+a ex:Film;
+ex:id "711" .
+<http://127.0.0.1:3333/410> a ex:IMDBResource;
+ex:idIMDB "0190590";
+ex:url "https://www.imdb.com/title/tt0190590";
+a ex:Film;
+ex:id "134" .
+<http://127.0.0.1:3333/411> a ex:IMDBResource;
+ex:idIMDB "0092644";
+ex:url "https://www.imdb.com/title/tt0092644";
+a ex:Film;
+ex:id "96" .
+<http://127.0.0.1:3333/412> a ex:IMDBResource;
+ex:idIMDB "0086960";
+ex:url "https://www.imdb.com/title/tt0086960";
+a ex:Film;
+ex:id "90" .
+<http://127.0.0.1:3333/413> a ex:IMDBResource;
+ex:idIMDB "0083907";
+ex:url "https://www.imdb.com/title/tt0083907";
+a ex:Film;
+ex:id "764" .
+<http://127.0.0.1:3333/414> a ex:IMDBResource;
+ex:idIMDB "0093300";
+ex:url "https://www.imdb.com/title/tt0093300";
+a ex:Film;
+ex:id "580" .
+<http://127.0.0.1:3333/415> a ex:IMDBResource;
+ex:idIMDB "0118694";
+ex:url "https://www.imdb.com/title/tt0118694";
+ex:id "843";
+a ex:Film .
+<http://127.0.0.1:3333/416> a ex:IMDBResource;
+ex:idIMDB "0120753";
+ex:url "https://www.imdb.com/title/tt0120753";
+a ex:Film;
+ex:id "318" .
+<http://127.0.0.1:3333/417> a ex:IMDBResource;
+ex:idIMDB "0215750";
+ex:url "https://www.imdb.com/title/tt0215750";
+a ex:Film;
+ex:id "853" .
+<http://127.0.0.1:3333/418> a ex:IMDBResource;
+ex:idIMDB "0209144";
+ex:url "https://www.imdb.com/title/tt0209144";
+a ex:Film;
+ex:id "77" .
+<http://127.0.0.1:3333/419> a ex:IMDBResource;
+ex:idIMDB "0245712";
+ex:url "https://www.imdb.com/title/tt0245712";
+a ex:Film;
+ex:id "55" .
+<http://127.0.0.1:3333/420> a ex:IMDBResource;
+ex:idIMDB "0243155";
+ex:url "https://www.imdb.com/title/tt0243155";
+a ex:Film;
+ex:id "634" .
+<http://127.0.0.1:3333/421> a ex:IMDBResource;
+ex:idIMDB "0086250";
+ex:url "https://www.imdb.com/title/tt0086250";
+a ex:Film;
+ex:id "111" .
+<http://127.0.0.1:3333/422> a ex:IMDBResource;
+ex:idIMDB "0085811";
+ex:url "https://www.imdb.com/title/tt0085811";
+a ex:Film;
+ex:id "849" .
+<http://127.0.0.1:3333/423> a ex:IMDBResource;
+ex:idIMDB "0048021";
+ex:url "https://www.imdb.com/title/tt0048021";
+a ex:Film;
+ex:id "934" .
+<http://127.0.0.1:3333/424> a ex:IMDBResource;
+ex:idIMDB "0126029";
+ex:url "https://www.imdb.com/title/tt0126029";
+a ex:Film;
+ex:id "808" .
+<http://127.0.0.1:3333/425> a ex:IMDBResource;
+ex:idIMDB "0203009";
+ex:url "https://www.imdb.com/title/tt0203009";
+a ex:Film;
+ex:id "824" .
+<http://127.0.0.1:3333/426> a ex:IMDBResource;
+ex:idIMDB "0213149";
+ex:url "https://www.imdb.com/title/tt0213149";
+a ex:Film;
+ex:id "676" .
+<http://127.0.0.1:3333/427> a ex:IMDBResource;
+ex:idIMDB "0054047";
+ex:url "https://www.imdb.com/title/tt0054047";
+a ex:Film;
+ex:id "966" .
+<http://127.0.0.1:3333/428> a ex:IMDBResource;
+ex:idIMDB "0053221";
+ex:url "https://www.imdb.com/title/tt0053221";
+a ex:Film;
+ex:id "301" .
+<http://127.0.0.1:3333/429> a ex:IMDBResource;
+ex:idIMDB "0045810";
+ex:url "https://www.imdb.com/title/tt0045810";
+a ex:Film;
+ex:id "759" .
+<http://127.0.0.1:3333/430> a ex:IMDBResource;
+ex:idIMDB "0212720";
+ex:url "https://www.imdb.com/title/tt0212720";
+a ex:Film;
+ex:id "644" .
+<http://127.0.0.1:3333/431> a ex:IMDBResource;
+ex:idIMDB "0051036";
+ex:url "https://www.imdb.com/title/tt0051036";
+a ex:Film;
+ex:id "976" .
+<http://127.0.0.1:3333/432> a ex:IMDBResource;
+ex:idIMDB "0094675";
+ex:url "https://www.imdb.com/title/tt0094675";
+a ex:Film;
+ex:id "2" .
+<http://127.0.0.1:3333/433> a ex:IMDBResource;
+ex:idIMDB "0163025";
+ex:url "https://www.imdb.com/title/tt0163025";
+a ex:Film;
+ex:id "331" .
+<http://127.0.0.1:3333/434> a ex:IMDBResource;
+ex:idIMDB "0222851";
+ex:url "https://www.imdb.com/title/tt0222851";
+a ex:Film;
+ex:id "327" .
+<http://127.0.0.1:3333/435> a ex:IMDBResource;
+ex:idIMDB "0133152";
+ex:url "https://www.imdb.com/title/tt0133152";
+a ex:Film;
+ex:id "869" .
+<http://127.0.0.1:3333/436> a ex:IMDBResource;
+ex:idIMDB "0237539";
+ex:url "https://www.imdb.com/title/tt0237539";
+a ex:Film;
+ex:id "552" .
+<http://127.0.0.1:3333/437> a ex:IMDBResource;
+ex:idIMDB "0098621";
+ex:url "https://www.imdb.com/title/tt0098621";
+a ex:Film;
+ex:id "249" .
+<http://127.0.0.1:3333/438> a ex:IMDBResource;
+ex:idIMDB "0203166";
+ex:url "https://www.imdb.com/title/tt0203166";
+a ex:Film;
+ex:id "742" .
+<http://127.0.0.1:3333/439> a ex:IMDBResource;
+ex:idIMDB "0055312";
+ex:url "https://www.imdb.com/title/tt0055312";
+a ex:Film;
+ex:id "248" .
+<http://127.0.0.1:3333/440> a ex:IMDBResource;
+ex:idIMDB "0066999";
+ex:url "https://www.imdb.com/title/tt0066999";
+a ex:Film;
+ex:id "984" .
+<http://127.0.0.1:3333/441> a ex:IMDBResource;
+ex:idIMDB "0120681";
+ex:url "https://www.imdb.com/title/tt0120681";
+a ex:Film;
+ex:id "768" .
+<http://127.0.0.1:3333/442> a ex:IMDBResource;
+ex:idIMDB "0272152";
+ex:url "https://www.imdb.com/title/tt0272152";
+a ex:Film;
+ex:id "167" .
+<http://127.0.0.1:3333/443> a ex:IMDBResource;
+ex:idIMDB "0246578";
+ex:url "https://www.imdb.com/title/tt0246578";
+a ex:Film;
+ex:id "141" .
+<http://127.0.0.1:3333/444> a ex:IMDBResource;
+ex:idIMDB "0198781";
+ex:url "https://www.imdb.com/title/tt0198781";
+ex:id "585";
+a ex:Film .
+<http://127.0.0.1:3333/445> ex:url "https://www.imdb.com/title/tt0241527";
+a ex:IMDBResource;
+ex:idIMDB "0241527";
+a ex:Film;
+ex:id "671" .
+<http://127.0.0.1:3333/446> a ex:IMDBResource;
+ex:idIMDB "0053472";
+ex:url "https://www.imdb.com/title/tt0053472";
+a ex:Film;
+ex:id "269" .
+<http://127.0.0.1:3333/447> a ex:IMDBResource;
+ex:idIMDB "0054135";
+ex:url "https://www.imdb.com/title/tt0054135";
+ex:id "299";
+a ex:Film .
+<http://127.0.0.1:3333/448> a ex:IMDBResource;
+ex:idIMDB "0240772";
+ex:url "https://www.imdb.com/title/tt0240772";
+a ex:Film;
+ex:id "161" .
+<http://127.0.0.1:3333/449> a ex:IMDBResource;
+ex:idIMDB "0020697";
+ex:url "https://www.imdb.com/title/tt0020697";
+a ex:Film;
+ex:id "228" .
+<http://127.0.0.1:3333/450> a ex:IMDBResource;
+ex:idIMDB "0211915";
+ex:url "https://www.imdb.com/title/tt0211915";
+a ex:Film;
+ex:id "194" .
+<http://127.0.0.1:3333/451> a ex:IMDBResource;
+ex:idIMDB "0120737";
+ex:url "https://www.imdb.com/title/tt0120737";
+a ex:Film;
+ex:id "120" .
+<http://127.0.0.1:3333/452> a ex:IMDBResource;
+ex:idIMDB "0268978";
+ex:url "https://www.imdb.com/title/tt0268978";
+a ex:Film;
+ex:id "453" .
+<http://127.0.0.1:3333/453> a ex:IMDBResource;
+ex:idIMDB "0265086";
+ex:url "https://www.imdb.com/title/tt0265086";
+a ex:Film;
+ex:id "855" .
+<http://127.0.0.1:3333/454> a ex:IMDBResource;
+ex:idIMDB "0082288";
+ex:url "https://www.imdb.com/title/tt0082288";
+a ex:Film;
+ex:id "848" .
+<http://127.0.0.1:3333/455> a ex:IMDBResource;
+ex:idIMDB "0083511";
+ex:url "https://www.imdb.com/title/tt0083511";
+a ex:Film;
+ex:id "150" .
+<http://127.0.0.1:3333/456> a ex:IMDBResource;
+ex:idIMDB "0243862";
+ex:url "https://www.imdb.com/title/tt0243862";
+a ex:Film;
+ex:id "112" .
+<http://127.0.0.1:3333/457> a ex:IMDBResource;
+ex:idIMDB "0066026";
+ex:url "https://www.imdb.com/title/tt0066026";
+a ex:Film;
+ex:id "651" .
+<http://127.0.0.1:3333/458> a ex:IMDBResource;
+ex:idIMDB "0069995";
+ex:url "https://www.imdb.com/title/tt0069995";
+a ex:Film;
+ex:id "931" .
+<http://127.0.0.1:3333/459> a ex:IMDBResource;
+ex:idIMDB "0069281";
+ex:url "https://www.imdb.com/title/tt0069281";
+a ex:Film;
+ex:id "993" .
+<http://127.0.0.1:3333/460> a ex:IMDBResource;
+ex:idIMDB "0265343";
+ex:url "https://www.imdb.com/title/tt0265343";
+a ex:Film;
+ex:id "480" .
+<http://127.0.0.1:3333/461> a ex:IMDBResource;
+ex:idIMDB "0050986";
+ex:url "https://www.imdb.com/title/tt0050986";
+a ex:Film;
+ex:id "614" .
+<http://127.0.0.1:3333/462> a ex:IMDBResource;
+ex:idIMDB "0035015";
+ex:url "https://www.imdb.com/title/tt0035015";
+a ex:Film;
+ex:id "965" .
+<http://127.0.0.1:3333/463> ex:url "https://www.imdb.com/title/tt0268380";
+ex:idIMDB "0268380";
+a ex:IMDBResource,ex:Film;
+ex:id "425" .
+<http://127.0.0.1:3333/464> a ex:IMDBResource;
+ex:idIMDB "0042876";
+ex:url "https://www.imdb.com/title/tt0042876";
+a ex:Film;
+ex:id "548" .
+<http://127.0.0.1:3333/465> a ex:IMDBResource;
+ex:idIMDB "0219822";
+ex:url "https://www.imdb.com/title/tt0219822";
+a ex:Film;
+ex:id "441" .
+<http://127.0.0.1:3333/466> ex:url "https://www.imdb.com/title/tt0038890";
+a ex:IMDBResource;
+ex:idIMDB "0038890";
+a ex:Film;
+ex:id "307" .
+<http://127.0.0.1:3333/467> a ex:IMDBResource;
+ex:idIMDB "0145487";
+ex:url "https://www.imdb.com/title/tt0145487";
+a ex:Film;
+ex:id "557" .
+<http://127.0.0.1:3333/468> a ex:IMDBResource;
+ex:idIMDB "0276751";
+ex:url "https://www.imdb.com/title/tt0276751";
+a ex:Film;
+ex:id "245" .
+<http://127.0.0.1:3333/469> a ex:IMDBResource;
+ex:idIMDB "0278504";
+ex:url "https://www.imdb.com/title/tt0278504";
+a ex:Film;
+ex:id "320" .
+<http://127.0.0.1:3333/470> a ex:IMDBResource;
+ex:idIMDB "0067756";
+ex:url "https://www.imdb.com/title/tt0067756";
+ex:id "811";
+a ex:Film .
+<http://127.0.0.1:3333/471> a ex:IMDBResource;
+ex:idIMDB "0181689";
+ex:url "https://www.imdb.com/title/tt0181689";
+a ex:Film;
+ex:id "180" .
+<http://127.0.0.1:3333/472> a ex:IMDBResource;
+ex:idIMDB "0120912";
+ex:url "https://www.imdb.com/title/tt0120912";
+a ex:Film;
+ex:id "608" .
+<http://127.0.0.1:3333/473> a ex:IMDBResource;
+ex:idIMDB "0295178";
+ex:url "https://www.imdb.com/title/tt0295178";
+a ex:Film;
+ex:id "818" .
+<http://127.0.0.1:3333/474> a ex:IMDBResource;
+ex:idIMDB "0022458";
+ex:url "https://www.imdb.com/title/tt0022458";
+a ex:Film;
+ex:id "977" .
+<http://127.0.0.1:3333/475> a ex:IMDBResource;
+ex:idIMDB "0080117";
+ex:url "https://www.imdb.com/title/tt0080117";
+a ex:Film;
+ex:id "233" .
+<http://127.0.0.1:3333/476> a ex:IMDBResource;
+ex:idIMDB "0250258";
+ex:url "https://www.imdb.com/title/tt0250258";
+a ex:Film;
+ex:id "575" .
+<http://127.0.0.1:3333/477> a ex:IMDBResource;
+ex:idIMDB "0245429";
+ex:url "https://www.imdb.com/title/tt0245429";
+a ex:Film;
+ex:id "129" .
+<http://127.0.0.1:3333/478> a ex:IMDBResource;
+ex:idIMDB "0298130";
+ex:url "https://www.imdb.com/title/tt0298130";
+a ex:Film;
+ex:id "565" .
+<http://127.0.0.1:3333/479> a ex:IMDBResource;
+ex:idIMDB "0298203";
+ex:url "https://www.imdb.com/title/tt0298203";
+a ex:Film;
+ex:id "65" .
+<http://127.0.0.1:3333/480> a ex:IMDBResource;
+ex:idIMDB "0295297";
+ex:url "https://www.imdb.com/title/tt0295297";
+a ex:Film;
+ex:id "672" .
+<http://127.0.0.1:3333/481> a ex:IMDBResource;
+ex:idIMDB "0313196";
+ex:url "https://www.imdb.com/title/tt0313196";
+a ex:Film;
+ex:id "542" .
+<http://127.0.0.1:3333/482> a ex:IMDBResource;
+ex:idIMDB "0287467";
+ex:url "https://www.imdb.com/title/tt0287467";
+a ex:Film;
+ex:id "64" .
+<http://127.0.0.1:3333/483> a ex:IMDBResource;
+ex:idIMDB "0253754";
+ex:url "https://www.imdb.com/title/tt0253754";
+a ex:Film;
+ex:id "201" .
+<http://127.0.0.1:3333/484> a ex:IMDBResource;
+ex:idIMDB "0167261";
+ex:url "https://www.imdb.com/title/tt0167261";
+a ex:Film;
+ex:id "121" .
+<http://127.0.0.1:3333/485> a ex:IMDBResource;
+ex:idIMDB "0264464";
+ex:url "https://www.imdb.com/title/tt0264464";
+a ex:Film;
+ex:id "640" .
+<http://127.0.0.1:3333/486> a ex:IMDBResource;
+ex:idIMDB "0274558";
+ex:url "https://www.imdb.com/title/tt0274558";
+a ex:Film;
+ex:id "590" .
+<http://127.0.0.1:3333/487> a ex:IMDBResource;
+ex:idIMDB "0253474";
+ex:url "https://www.imdb.com/title/tt0253474";
+a ex:Film;
+ex:id "423" .
+<http://127.0.0.1:3333/488> a ex:IMDBResource;
+ex:idIMDB "0085794";
+ex:url "https://www.imdb.com/title/tt0085794";
+a ex:Film;
+ex:id "262" .
+<http://127.0.0.1:3333/489> a ex:IMDBResource;
+ex:idIMDB "0317248";
+ex:url "https://www.imdb.com/title/tt0317248";
+a ex:Film;
+ex:id "598" .
+<http://127.0.0.1:3333/490> a ex:IMDBResource;
+ex:idIMDB "0074851";
+ex:url "https://www.imdb.com/title/tt0074851";
+a ex:Film;
+ex:id "991" .
+<http://127.0.0.1:3333/491> ex:url "https://www.imdb.com/title/tt0290673";
+a ex:IMDBResource;
+ex:idIMDB "0290673";
+ex:id "979";
+a ex:Film .
+<http://127.0.0.1:3333/492> ex:url "https://www.imdb.com/title/tt0286499";
+ex:idIMDB "0286499";
+a ex:IMDBResource,ex:Film;
+ex:id "455" .
+<http://127.0.0.1:3333/493> a ex:IMDBResource;
+ex:idIMDB "0067800";
+ex:url "https://www.imdb.com/title/tt0067800";
+a ex:Film;
+ex:id "994" .
+<http://127.0.0.1:3333/494> ex:url "https://www.imdb.com/title/tt0234215";
+a ex:IMDBResource;
+ex:idIMDB "0234215";
+ex:id "604";
+a ex:Film .
+<http://127.0.0.1:3333/495> a ex:IMDBResource;
+ex:idIMDB "0315327";
+ex:url "https://www.imdb.com/title/tt0315327";
+a ex:Film;
+ex:id "310" .
+<http://127.0.0.1:3333/496> a ex:IMDBResource;
+ex:idIMDB "0266543";
+ex:url "https://www.imdb.com/title/tt0266543";
+a ex:Film;
+ex:id "12" .
+<http://127.0.0.1:3333/497> a ex:IMDBResource;
+ex:idIMDB "0322259";
+ex:url "https://www.imdb.com/title/tt0322259";
+a ex:Film;
+ex:id "584" .
+<http://127.0.0.1:3333/498> a ex:IMDBResource;
+ex:idIMDB "0101410";
+ex:url "https://www.imdb.com/title/tt0101410";
+a ex:Film;
+ex:id "290" .
+<http://127.0.0.1:3333/499> a ex:IMDBResource;
+ex:idIMDB "0289043";
+ex:url "https://www.imdb.com/title/tt0289043";
+a ex:Film;
+ex:id "170" .
+<http://127.0.0.1:3333/500> a ex:IMDBResource;
+ex:idIMDB "0071141";
+ex:url "https://www.imdb.com/title/tt0071141";
+ex:id "216";
+a ex:Film .
+<http://127.0.0.1:3333/501> a ex:IMDBResource;
+ex:idIMDB "0181852";
+ex:url "https://www.imdb.com/title/tt0181852";
+a ex:Film;
+ex:id "296" .
+<http://127.0.0.1:3333/502> a ex:IMDBResource;
+ex:idIMDB "0324133";
+ex:url "https://www.imdb.com/title/tt0324133";
+a ex:Film;
+ex:id "302" .
+<http://127.0.0.1:3333/503> ex:idIMDB "0325980";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0325980";
+a ex:Film;
+ex:id "22" .
+<http://127.0.0.1:3333/504> a ex:IMDBResource;
+ex:idIMDB "0055256";
+ex:url "https://www.imdb.com/title/tt0055256";
+a ex:Film;
+ex:id "430" .
+<http://127.0.0.1:3333/505> a ex:IMDBResource;
+ex:idIMDB "0045274";
+ex:url "https://www.imdb.com/title/tt0045274";
+ex:id "833";
+a ex:Film .
+<http://127.0.0.1:3333/506> a ex:IMDBResource;
+ex:idIMDB "0066434";
+ex:url "https://www.imdb.com/title/tt0066434";
+a ex:Film;
+ex:id "636" .
+<http://127.0.0.1:3333/507> a ex:IMDBResource;
+ex:idIMDB "0057413";
+ex:url "https://www.imdb.com/title/tt0057413";
+a ex:Film;
+ex:id "936" .
+<http://127.0.0.1:3333/508> a ex:IMDBResource;
+ex:idIMDB "0116308";
+ex:url "https://www.imdb.com/title/tt0116308";
+a ex:Film;
+ex:id "513" .
+<http://127.0.0.1:3333/509> a ex:IMDBResource;
+ex:idIMDB "0335266";
+ex:url "https://www.imdb.com/title/tt0335266";
+a ex:Film;
+ex:id "153" .
+<http://127.0.0.1:3333/510> a ex:IMDBResource;
+ex:idIMDB "0320691";
+ex:url "https://www.imdb.com/title/tt0320691";
+a ex:Film;
+ex:id "277" .
+<http://127.0.0.1:3333/511> a ex:IMDBResource;
+ex:idIMDB "0330602";
+ex:url "https://www.imdb.com/title/tt0330602";
+a ex:Film;
+ex:id "321" .
+<http://127.0.0.1:3333/512> a ex:IMDBResource;
+ex:idIMDB "0314412";
+ex:url "https://www.imdb.com/title/tt0314412";
+a ex:Film;
+ex:id "20" .
+<http://127.0.0.1:3333/513> a ex:IMDBResource;
+ex:idIMDB "0086541";
+ex:url "https://www.imdb.com/title/tt0086541";
+a ex:Film;
+ex:id "837" .
+<http://127.0.0.1:3333/514> a ex:IMDBResource;
+ex:idIMDB "0055031";
+ex:url "https://www.imdb.com/title/tt0055031";
+a ex:Film;
+ex:id "821" .
+<http://127.0.0.1:3333/515> ex:idIMDB "0031885";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0031885";
+a ex:Film;
+ex:id "776" .
+<http://127.0.0.1:3333/516> a ex:IMDBResource;
+ex:idIMDB "0074119";
+ex:url "https://www.imdb.com/title/tt0074119";
+a ex:Film;
+ex:id "891" .
+<http://127.0.0.1:3333/517> a ex:IMDBResource;
+ex:idIMDB "0101507";
+ex:url "https://www.imdb.com/title/tt0101507";
+a ex:Film;
+ex:id "650" .
+<http://127.0.0.1:3333/518> a ex:IMDBResource;
+ex:idIMDB "0327056";
+ex:url "https://www.imdb.com/title/tt0327056";
+a ex:Film;
+ex:id "322" .
+<http://127.0.0.1:3333/519> a ex:IMDBResource;
+ex:idIMDB "0266697";
+ex:url "https://www.imdb.com/title/tt0266697";
+a ex:Film;
+ex:id "24" .
+<http://127.0.0.1:3333/520> a ex:IMDBResource;
+ex:idIMDB "0048956";
+ex:url "https://www.imdb.com/title/tt0048956";
+a ex:Film;
+ex:id "897" .
+<http://127.0.0.1:3333/521> a ex:IMDBResource;
+ex:idIMDB "0242653";
+ex:url "https://www.imdb.com/title/tt0242653";
+a ex:Film;
+ex:id "605" .
+<http://127.0.0.1:3333/522> a ex:IMDBResource;
+ex:idIMDB "0314331";
+ex:url "https://www.imdb.com/title/tt0314331";
+a ex:Film;
+ex:id "508" .
+<http://127.0.0.1:3333/523> a ex:IMDBResource;
+ex:idIMDB "0315733";
+ex:url "https://www.imdb.com/title/tt0315733";
+a ex:Film;
+ex:id "470" .
+<http://127.0.0.1:3333/524> a ex:IMDBResource;
+ex:idIMDB "0086567";
+ex:url "https://www.imdb.com/title/tt0086567";
+ex:id "860";
+a ex:Film .
+<http://127.0.0.1:3333/525> a ex:IMDBResource;
+ex:idIMDB "0019254";
+ex:url "https://www.imdb.com/title/tt0019254";
+a ex:Film;
+ex:id "780" .
+<http://127.0.0.1:3333/526> a ex:IMDBResource;
+ex:idIMDB "0010323";
+ex:url "https://www.imdb.com/title/tt0010323";
+a ex:Film;
+ex:id "234" .
+<http://127.0.0.1:3333/527> a ex:IMDBResource;
+ex:idIMDB "0099938";
+ex:url "https://www.imdb.com/title/tt0099938";
+a ex:Film;
+ex:id "951" .
+<http://127.0.0.1:3333/528> a ex:IMDBResource;
+ex:idIMDB "0100935";
+ex:url "https://www.imdb.com/title/tt0100935";
+a ex:Film;
+ex:id "483" .
+<http://127.0.0.1:3333/529> ex:idIMDB "0055798";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0055798";
+a ex:Film;
+ex:id "898" .
+<http://127.0.0.1:3333/530> a ex:IMDBResource;
+ex:idIMDB "0038348";
+ex:url "https://www.imdb.com/title/tt0038348";
+a ex:Film;
+ex:id "648" .
+<http://127.0.0.1:3333/531> a ex:IMDBResource;
+ex:idIMDB "0004972";
+ex:url "https://www.imdb.com/title/tt0004972";
+a ex:Film;
+ex:id "618" .
+<http://127.0.0.1:3333/532> a ex:IMDBResource;
+ex:idIMDB "0031971";
+ex:url "https://www.imdb.com/title/tt0031971";
+a ex:Film;
+ex:id "995" .
+<http://127.0.0.1:3333/533> a ex:IMDBResource;
+ex:idIMDB "0062765";
+ex:url "https://www.imdb.com/title/tt0062765";
+a ex:Film;
+ex:id "916" .
+<http://127.0.0.1:3333/534> a ex:IMDBResource;
+ex:idIMDB "0299977";
+ex:url "https://www.imdb.com/title/tt0299977";
+ex:id "79";
+a ex:Film .
+<http://127.0.0.1:3333/535> a ex:IMDBResource;
+ex:idIMDB "0071524";
+ex:url "https://www.imdb.com/title/tt0071524";
+a ex:Film;
+ex:id "987" .
+<http://127.0.0.1:3333/536> a ex:IMDBResource;
+ex:idIMDB "0087544";
+ex:url "https://www.imdb.com/title/tt0087544";
+a ex:Film;
+ex:id "81" .
+<http://127.0.0.1:3333/537> a ex:IMDBResource;
+ex:idIMDB "0046911";
+ex:url "https://www.imdb.com/title/tt0046911";
+a ex:Film;
+ex:id "827" .
+<http://127.0.0.1:3333/538> a ex:IMDBResource;
+ex:idIMDB "0062695";
+ex:url "https://www.imdb.com/title/tt0062695";
+a ex:Film;
+ex:id "255" .
+<http://127.0.0.1:3333/539> a ex:IMDBResource;
+ex:idIMDB "0325710";
+ex:url "https://www.imdb.com/title/tt0325710";
+a ex:Film;
+ex:id "616" .
+<http://127.0.0.1:3333/540> a ex:IMDBResource;
+ex:idIMDB "0319061";
+ex:url "https://www.imdb.com/title/tt0319061";
+a ex:Film;
+ex:id "587" .
+<http://127.0.0.1:3333/541> a ex:IMDBResource;
+ex:idIMDB "0167260";
+ex:url "https://www.imdb.com/title/tt0167260";
+a ex:Film;
+ex:id "122" .
+<http://127.0.0.1:3333/542> a ex:IMDBResource;
+ex:idIMDB "0340855";
+ex:url "https://www.imdb.com/title/tt0340855";
+a ex:Film;
+ex:id "504" .
+<http://127.0.0.1:3333/543> a ex:IMDBResource;
+ex:idIMDB "0050706";
+ex:url "https://www.imdb.com/title/tt0050706";
+a ex:Film;
+ex:id "427" .
+<http://127.0.0.1:3333/544> a ex:IMDBResource;
+ex:idIMDB "0046487";
+ex:url "https://www.imdb.com/title/tt0046487";
+a ex:Film;
+ex:id "778" .
+<http://127.0.0.1:3333/545> a ex:IMDBResource;
+ex:idIMDB "0047528";
+ex:url "https://www.imdb.com/title/tt0047528";
+a ex:Film;
+ex:id "405" .
+<http://127.0.0.1:3333/546> a ex:IMDBResource;
+ex:idIMDB "0329388";
+ex:url "https://www.imdb.com/title/tt0329388";
+a ex:Film;
+ex:id "337" .
+<http://127.0.0.1:3333/547> a ex:IMDBResource;
+ex:idIMDB "0335345";
+ex:url "https://www.imdb.com/title/tt0335345";
+ex:id "615";
+a ex:Film .
+<http://127.0.0.1:3333/548> a ex:IMDBResource;
+ex:idIMDB "0301357";
+ex:url "https://www.imdb.com/title/tt0301357";
+a ex:Film;
+ex:id "338" .
+<http://127.0.0.1:3333/549> a ex:IMDBResource;
+ex:idIMDB "0060827";
+ex:url "https://www.imdb.com/title/tt0060827";
+a ex:Film;
+ex:id "797" .
+<http://127.0.0.1:3333/550> a ex:IMDBResource;
+ex:idIMDB "0329767";
+ex:url "https://www.imdb.com/title/tt0329767";
+a ex:Film;
+ex:id "156" .
+<http://127.0.0.1:3333/551> a ex:IMDBResource;
+ex:idIMDB "0363547";
+ex:url "https://www.imdb.com/title/tt0363547";
+a ex:Film;
+ex:id "924" .
+<http://127.0.0.1:3333/552> a ex:IMDBResource;
+ex:idIMDB "0338013";
+ex:url "https://www.imdb.com/title/tt0338013";
+a ex:Film;
+ex:id "38" .
+<http://127.0.0.1:3333/553> a ex:IMDBResource;
+ex:idIMDB "0276919";
+ex:url "https://www.imdb.com/title/tt0276919";
+a ex:Film;
+ex:id "553" .
+<http://127.0.0.1:3333/554> a ex:IMDBResource;
+ex:idIMDB "0077402";
+ex:url "https://www.imdb.com/title/tt0077402";
+a ex:Film;
+ex:id "923" .
+<http://127.0.0.1:3333/555> a ex:IMDBResource;
+ex:idIMDB "0378194";
+ex:url "https://www.imdb.com/title/tt0378194";
+a ex:Film;
+ex:id "393" .
+<http://127.0.0.1:3333/556> a ex:IMDBResource;
+ex:idIMDB "0332452";
+ex:url "https://www.imdb.com/title/tt0332452";
+a ex:Film;
+ex:id "652" .
+<http://127.0.0.1:3333/557> a ex:IMDBResource;
+ex:idIMDB "0379217";
+ex:url "https://www.imdb.com/title/tt0379217";
+a ex:Film;
+ex:id "883" .
+<http://127.0.0.1:3333/558> a ex:IMDBResource;
+ex:idIMDB "0065780";
+ex:url "https://www.imdb.com/title/tt0065780";
+a ex:Film;
+ex:id "132" .
+<http://127.0.0.1:3333/559> a ex:IMDBResource;
+ex:idIMDB "0058083";
+ex:url "https://www.imdb.com/title/tt0058083";
+a ex:Film;
+ex:id "502" .
+<http://127.0.0.1:3333/560> a ex:IMDBResource;
+ex:idIMDB "0062512";
+ex:url "https://www.imdb.com/title/tt0062512";
+a ex:Film;
+ex:id "667" .
+<http://127.0.0.1:3333/561> a ex:IMDBResource;
+ex:idIMDB "0086034";
+ex:url "https://www.imdb.com/title/tt0086034";
+a ex:Film;
+ex:id "700" .
+<http://127.0.0.1:3333/562> a ex:IMDBResource;
+ex:idIMDB "0076734";
+ex:url "https://www.imdb.com/title/tt0076734";
+a ex:Film;
+ex:id "633" .
+<http://127.0.0.1:3333/563> a ex:IMDBResource;
+ex:idIMDB "0089015";
+ex:url "https://www.imdb.com/title/tt0089015";
+a ex:Film;
+ex:id "294" .
+<http://127.0.0.1:3333/564> a ex:IMDBResource;
+ex:idIMDB "0078966";
+ex:url "https://www.imdb.com/title/tt0078966";
+a ex:Film;
+ex:id "988" .
+<http://127.0.0.1:3333/565> a ex:IMDBResource;
+ex:idIMDB "0046268";
+ex:url "https://www.imdb.com/title/tt0046268";
+a ex:Film;
+ex:id "204" .
+<http://127.0.0.1:3333/566> a ex:IMDBResource;
+ex:idIMDB "0142032";
+ex:url "https://www.imdb.com/title/tt0142032";
+a ex:Film;
+ex:id "876" .
+<http://127.0.0.1:3333/567> ex:idIMDB "0067140";
+ex:url "https://www.imdb.com/title/tt0067140";
+a ex:IMDBResource,ex:Film;
+ex:id "336" .
+<http://127.0.0.1:3333/568> a ex:IMDBResource;
+ex:idIMDB "0017668";
+ex:url "https://www.imdb.com/title/tt0017668";
+a ex:Film;
+ex:id "222" .
+<http://127.0.0.1:3333/569> a ex:IMDBResource;
+ex:idIMDB "0374546";
+ex:url "https://www.imdb.com/title/tt0374546";
+a ex:Film;
+ex:id "113" .
+<http://127.0.0.1:3333/570> a ex:IMDBResource;
+ex:idIMDB "0070379";
+ex:url "https://www.imdb.com/title/tt0070379";
+a ex:Film;
+ex:id "203" .
+<http://127.0.0.1:3333/571> a ex:IMDBResource;
+ex:idIMDB "0304126";
+ex:url "https://www.imdb.com/title/tt0304126";
+a ex:Film;
+ex:id "316" .
+<http://127.0.0.1:3333/572> a ex:IMDBResource;
+ex:idIMDB "0180748";
+ex:url "https://www.imdb.com/title/tt0180748";
+a ex:Film;
+ex:id "250" .
+<http://127.0.0.1:3333/573> a ex:IMDBResource;
+ex:idIMDB "0018455";
+ex:url "https://www.imdb.com/title/tt0018455";
+a ex:Film;
+ex:id "631" .
+<http://127.0.0.1:3333/574> a ex:IMDBResource;
+ex:idIMDB "0053779";
+ex:url "https://www.imdb.com/title/tt0053779";
+a ex:Film;
+ex:id "439" .
+<http://127.0.0.1:3333/575> a ex:IMDBResource;
+ex:idIMDB "0193253";
+ex:url "https://www.imdb.com/title/tt0193253";
+ex:id "823";
+a ex:Film .
+<http://127.0.0.1:3333/576> a ex:IMDBResource;
+ex:idIMDB "0330229";
+ex:url "https://www.imdb.com/title/tt0330229";
+a ex:Film;
+ex:id "870" .
+<http://127.0.0.1:3333/577> a ex:IMDBResource;
+ex:idIMDB "0298148";
+ex:url "https://www.imdb.com/title/tt0298148";
+a ex:Film;
+ex:id "809" .
+<http://127.0.0.1:3333/578> a ex:IMDBResource;
+ex:idIMDB "0319262";
+ex:url "https://www.imdb.com/title/tt0319262";
+a ex:Film;
+ex:id "435" .
+<http://127.0.0.1:3333/579> a ex:IMDBResource;
+ex:idIMDB "0304141";
+ex:url "https://www.imdb.com/title/tt0304141";
+a ex:Film;
+ex:id "673" .
+<http://127.0.0.1:3333/580> a ex:IMDBResource;
+ex:idIMDB "0363226";
+ex:url "https://www.imdb.com/title/tt0363226";
+a ex:Film;
+ex:id "246" .
+<http://127.0.0.1:3333/581> a ex:IMDBResource;
+ex:idIMDB "0047577";
+ex:url "https://www.imdb.com/title/tt0047577";
+a ex:Film;
+ex:id "831" .
+<http://127.0.0.1:3333/582> a ex:IMDBResource;
+ex:idIMDB "0056119";
+ex:url "https://www.imdb.com/title/tt0056119";
+a ex:Film;
+ex:id "662" .
+<http://127.0.0.1:3333/583> a ex:IMDBResource;
+ex:idIMDB "0059037";
+ex:url "https://www.imdb.com/title/tt0059037";
+a ex:Film;
+ex:id "886" .
+<http://127.0.0.1:3333/584> a ex:IMDBResource;
+ex:idIMDB "0022913";
+ex:url "https://www.imdb.com/title/tt0022913";
+a ex:Film;
+ex:id "136" .
+<http://127.0.0.1:3333/585> a ex:IMDBResource;
+ex:idIMDB "0362227";
+ex:url "https://www.imdb.com/title/tt0362227";
+a ex:Film;
+ex:id "594" .
+<http://127.0.0.1:3333/586> a ex:IMDBResource;
+ex:idIMDB "0014341";
+ex:url "https://www.imdb.com/title/tt0014341";
+a ex:Film;
+ex:id "701" .
+<http://127.0.0.1:3333/587> a ex:IMDBResource;
+ex:idIMDB "0316654";
+ex:url "https://www.imdb.com/title/tt0316654";
+a ex:Film;
+ex:id "558" .
+<http://127.0.0.1:3333/588> a ex:IMDBResource;
+ex:idIMDB "0381681";
+ex:url "https://www.imdb.com/title/tt0381681";
+a ex:Film;
+ex:id "80" .
+<http://127.0.0.1:3333/589> a ex:IMDBResource;
+ex:idIMDB "0390221";
+ex:url "https://www.imdb.com/title/tt0390221";
+a ex:Film;
+ex:id "436" .
+<http://127.0.0.1:3333/590> a ex:IMDBResource;
+ex:idIMDB "0327554";
+ex:url "https://www.imdb.com/title/tt0327554";
+a ex:Film;
+ex:id "314" .
+<http://127.0.0.1:3333/591> ex:url "https://www.imdb.com/title/tt0333766";
+a ex:IMDBResource;
+ex:idIMDB "0333766";
+a ex:Film;
+ex:id "401" .
+<http://127.0.0.1:3333/592> a ex:IMDBResource;
+ex:idIMDB "0370263";
+ex:url "https://www.imdb.com/title/tt0370263";
+a ex:Film;
+ex:id "395" .
+<http://127.0.0.1:3333/593> a ex:IMDBResource;
+ex:idIMDB "0365748";
+ex:url "https://www.imdb.com/title/tt0365748";
+a ex:Film;
+ex:id "747" .
+<http://127.0.0.1:3333/594> a ex:IMDBResource;
+ex:idIMDB "0387564";
+ex:url "https://www.imdb.com/title/tt0387564";
+a ex:Film;
+ex:id "176" .
+<http://127.0.0.1:3333/595> a ex:IMDBResource;
+ex:idIMDB "0308644";
+ex:url "https://www.imdb.com/title/tt0308644";
+a ex:Film;
+ex:id "866" .
+<http://127.0.0.1:3333/596> a ex:IMDBResource;
+ex:idIMDB "0275491";
+ex:url "https://www.imdb.com/title/tt0275491";
+a ex:Film;
+ex:id "140" .
+<http://127.0.0.1:3333/597> a ex:IMDBResource;
+ex:idIMDB "0349903";
+ex:url "https://www.imdb.com/title/tt0349903";
+a ex:Film;
+ex:id "163" .
+<http://127.0.0.1:3333/598> a ex:IMDBResource;
+ex:idIMDB "0015324";
+ex:url "https://www.imdb.com/title/tt0015324";
+a ex:Film;
+ex:id "992" .
+<http://127.0.0.1:3333/599> a ex:IMDBResource;
+ex:idIMDB "0016220";
+ex:url "https://www.imdb.com/title/tt0016220";
+a ex:Film;
+ex:id "964" .
+<http://127.0.0.1:3333/600> a ex:IMDBResource;
+ex:idIMDB "0018737";
+ex:url "https://www.imdb.com/title/tt0018737";
+a ex:Film;
+ex:id "905" .
+<http://127.0.0.1:3333/601> a ex:IMDBResource;
+ex:idIMDB "0020530";
+ex:url "https://www.imdb.com/title/tt0020530";
+a ex:Film;
+ex:id "626" .
+<http://127.0.0.1:3333/602> a ex:IMDBResource;
+ex:idIMDB "0023427";
+ex:url "https://www.imdb.com/title/tt0023427";
+a ex:Film;
+ex:id "877" .
+<http://127.0.0.1:3333/603> ex:url "https://www.imdb.com/title/tt0040536";
+ex:idIMDB "0040536";
+a ex:IMDBResource,ex:Film;
+ex:id "946" .
+<http://127.0.0.1:3333/604> a ex:IMDBResource;
+ex:idIMDB "0048434";
+ex:url "https://www.imdb.com/title/tt0048434";
+a ex:Film;
+ex:id "803" .
+<http://127.0.0.1:3333/605> a ex:IMDBResource;
+ex:idIMDB "0053168";
+ex:url "https://www.imdb.com/title/tt0053168";
+a ex:Film;
+ex:id "690" .
+<http://127.0.0.1:3333/606> a ex:IMDBResource;
+ex:idIMDB "0060107";
+ex:url "https://www.imdb.com/title/tt0060107";
+a ex:Film;
+ex:id "895" .
+<http://127.0.0.1:3333/607> a ex:IMDBResource;
+ex:idIMDB "0061589";
+ex:url "https://www.imdb.com/title/tt0061589";
+a ex:Film;
+ex:id "135" .
+<http://127.0.0.1:3333/608> a ex:IMDBResource;
+ex:idIMDB "0067023";
+ex:url "https://www.imdb.com/title/tt0067023";
+a ex:Film;
+ex:id "839" .
+<http://127.0.0.1:3333/609> a ex:IMDBResource;
+ex:idIMDB "0086216";
+ex:url "https://www.imdb.com/title/tt0086216";
+a ex:Film;
+ex:id "232" .
+<http://127.0.0.1:3333/610> a ex:IMDBResource;
+ex:idIMDB "0212712";
+ex:url "https://www.imdb.com/title/tt0212712";
+a ex:Film;
+ex:id "844" .
+<http://127.0.0.1:3333/611> a ex:IMDBResource;
+ex:idIMDB "0242527";
+ex:url "https://www.imdb.com/title/tt0242527";
+a ex:Film;
+ex:id "467" .
+<http://127.0.0.1:3333/612> a ex:IMDBResource;
+ex:idIMDB "0275230";
+ex:url "https://www.imdb.com/title/tt0275230";
+a ex:Film;
+ex:id "919" .
+<http://127.0.0.1:3333/613> a ex:IMDBResource;
+ex:idIMDB "0285492";
+ex:url "https://www.imdb.com/title/tt0285492";
+a ex:Film;
+ex:id "437" .
+<http://127.0.0.1:3333/614> a ex:IMDBResource;
+ex:idIMDB "0347048";
+ex:url "https://www.imdb.com/title/tt0347048";
+a ex:Film;
+ex:id "363" .
+<http://127.0.0.1:3333/615> a ex:IMDBResource;
+ex:idIMDB "0364569";
+ex:url "https://www.imdb.com/title/tt0364569";
+a ex:Film;
+ex:id "670" .
+<http://127.0.0.1:3333/616> a ex:IMDBResource;
+ex:idIMDB "0373926";
+ex:url "https://www.imdb.com/title/tt0373926";
+a ex:Film;
+ex:id "179" .
+<http://127.0.0.1:3333/617> a ex:IMDBResource;
+ex:idIMDB "0374102";
+ex:url "https://www.imdb.com/title/tt0374102";
+a ex:Film;
+ex:id "83" .
+<http://127.0.0.1:3333/618> a ex:IMDBResource;
+ex:idIMDB "0382330";
+ex:url "https://www.imdb.com/title/tt0382330";
+a ex:Film;
+ex:id "464" .
+<http://127.0.0.1:3333/619> a ex:IMDBResource;
+ex:idIMDB "0389326";
+ex:url "https://www.imdb.com/title/tt0389326";
+a ex:Film;
+ex:id "291" .
+<http://127.0.0.1:3333/620> a ex:IMDBResource;
+ex:idIMDB "0405159";
+ex:url "https://www.imdb.com/title/tt0405159";
+a ex:Film;
+ex:id "70" .
+<http://127.0.0.1:3333/621> a ex:IMDBResource;
+ex:idIMDB "0395169";
+ex:url "https://www.imdb.com/title/tt0395169";
+a ex:Film;
+ex:id "205" .
+<http://127.0.0.1:3333/622> a ex:IMDBResource;
+ex:idIMDB "0367594";
+ex:url "https://www.imdb.com/title/tt0367594";
+a ex:Film;
+ex:id "118" .
+<http://127.0.0.1:3333/623> a ex:IMDBResource;
+ex:idIMDB "0362270";
+ex:url "https://www.imdb.com/title/tt0362270";
+a ex:Film;
+ex:id "421" .
+<http://127.0.0.1:3333/624> a ex:IMDBResource;
+ex:idIMDB "0290002";
+ex:url "https://www.imdb.com/title/tt0290002";
+a ex:Film;
+ex:id "693" .
+<http://127.0.0.1:3333/625> a ex:IMDBResource;
+ex:idIMDB "0364961";
+ex:url "https://www.imdb.com/title/tt0364961";
+a ex:Film;
+ex:id "842" .
+<http://127.0.0.1:3333/626> a ex:IMDBResource;
+ex:idIMDB "0420206";
+ex:url "https://www.imdb.com/title/tt0420206";
+a ex:Film;
+ex:id "342" .
+<http://127.0.0.1:3333/627> ex:url "https://www.imdb.com/title/tt0363163";
+ex:idIMDB "0363163";
+a ex:IMDBResource,ex:Film;
+ex:id "613" .
+<http://127.0.0.1:3333/628> a ex:IMDBResource;
+ex:idIMDB "0276617";
+ex:url "https://www.imdb.com/title/tt0276617";
+a ex:Film;
+ex:id "273" .
+<http://127.0.0.1:3333/629> a ex:IMDBResource;
+ex:idIMDB "0079095";
+ex:url "https://www.imdb.com/title/tt0079095";
+a ex:Film;
+ex:id "661" .
+<http://127.0.0.1:3333/630> a ex:IMDBResource;
+ex:idIMDB "0360486";
+ex:url "https://www.imdb.com/title/tt0360486";
+a ex:Film;
+ex:id "561" .
+<http://127.0.0.1:3333/631> a ex:IMDBResource;
+ex:idIMDB "0065651";
+ex:url "https://www.imdb.com/title/tt0065651";
+a ex:Film;
+ex:id "258" .
+<http://127.0.0.1:3333/632> a ex:IMDBResource;
+ex:idIMDB "0352994";
+ex:url "https://www.imdb.com/title/tt0352994";
+a ex:Film;
+ex:id "26" .
+<http://127.0.0.1:3333/633> ex:url "https://www.imdb.com/title/tt0119472";
+a ex:IMDBResource;
+ex:idIMDB "0119472";
+a ex:Film;
+ex:id "158" .
+<http://127.0.0.1:3333/634> a ex:IMDBResource;
+ex:idIMDB "0401792";
+ex:url "https://www.imdb.com/title/tt0401792";
+a ex:Film;
+ex:id "187" .
+<http://127.0.0.1:3333/635> ex:idIMDB "0000417";
+a ex:IMDBResource;
+ex:url "https://www.imdb.com/title/tt0000417";
+a ex:Film;
+ex:id "775" .
+<http://127.0.0.1:3333/636> a ex:IMDBResource;
+ex:idIMDB "0351283";
+ex:url "https://www.imdb.com/title/tt0351283";
+a ex:Film;
+ex:id "953" .
+<http://127.0.0.1:3333/637> a ex:IMDBResource;
+ex:idIMDB "0352248";
+ex:url "https://www.imdb.com/title/tt0352248";
+a ex:Film;
+ex:id "921" .
+<http://127.0.0.1:3333/638> a ex:IMDBResource;
+ex:idIMDB "0356910";
+ex:url "https://www.imdb.com/title/tt0356910";
+a ex:Film;
+ex:id "787" .
+<http://127.0.0.1:3333/639> ex:url "https://www.imdb.com/title/tt0372784";
+ex:idIMDB "0372784";
+a ex:IMDBResource,ex:Film;
+ex:id "272" .
+<http://127.0.0.1:3333/640> a ex:IMDBResource;
+ex:idIMDB "0408777";
+ex:url "https://www.imdb.com/title/tt0408777";
+a ex:Film;
+ex:id "276" .
+<http://127.0.0.1:3333/641> ex:url "https://www.imdb.com/title/tt0407304";
+a ex:IMDBResource;
+ex:idIMDB "0407304";
+ex:id "74";
+a ex:Film .
+<http://127.0.0.1:3333/642> a ex:IMDBResource;
+ex:idIMDB "0412019";
+ex:url "https://www.imdb.com/title/tt0412019";
+a ex:Film;
+ex:id "308" .
+<http://127.0.0.1:3333/643> a ex:IMDBResource;
+ex:idIMDB "0427312";
+ex:url "https://www.imdb.com/title/tt0427312";
+a ex:Film;
+ex:id "501" .
+<http://127.0.0.1:3333/644> a ex:IMDBResource;
+ex:idIMDB "0387898";
+ex:url "https://www.imdb.com/title/tt0387898";
+a ex:Film;
+ex:id "445" .
+<http://127.0.0.1:3333/645> a ex:IMDBResource;
+ex:idIMDB "0404030";
+ex:url "https://www.imdb.com/title/tt0404030";
+a ex:Film;
+ex:id "340" .
+<http://127.0.0.1:3333/646> a ex:IMDBResource;
+ex:idIMDB "0399146";
+ex:url "https://www.imdb.com/title/tt0399146";
+a ex:Film;
+ex:id "59" .
+<http://127.0.0.1:3333/647> a ex:IMDBResource;
+ex:idIMDB "0380599";
+ex:url "https://www.imdb.com/title/tt0380599";
+a ex:Film;
+ex:id "257" .
+<http://127.0.0.1:3333/648> a ex:IMDBResource;
+ex:idIMDB "0379725";
+ex:url "https://www.imdb.com/title/tt0379725";
+a ex:Film;
+ex:id "398" .
+<http://127.0.0.1:3333/649> a ex:IMDBResource;
+ex:idIMDB "0385700";
+ex:url "https://www.imdb.com/title/tt0385700";
+a ex:Film;
+ex:id "647" .
+<http://127.0.0.1:3333/650> a ex:IMDBResource;
+ex:idIMDB "0312004";
+ex:url "https://www.imdb.com/title/tt0312004";
+a ex:Film;
+ex:id "533" .
+<http://127.0.0.1:3333/651> a ex:IMDBResource;
+ex:idIMDB "0388795";
+ex:url "https://www.imdb.com/title/tt0388795";
+a ex:Film;
+ex:id "142" .
+<http://127.0.0.1:3333/652> a ex:IMDBResource;
+ex:idIMDB "0432348";
+ex:url "https://www.imdb.com/title/tt0432348";
+a ex:Film;
+ex:id "215" .
+<http://127.0.0.1:3333/653> a ex:IMDBResource;
+ex:idIMDB "0078771";
+ex:url "https://www.imdb.com/title/tt0078771";
+a ex:Film;
+ex:id "259" .
+<http://127.0.0.1:3333/654> a ex:IMDBResource;
+ex:idIMDB "0418763";
+ex:url "https://www.imdb.com/title/tt0418763";
+a ex:Film;
+ex:id "25" .
+<http://127.0.0.1:3333/655> ex:url "https://www.imdb.com/title/tt0365737";
+a ex:IMDBResource;
+ex:idIMDB "0365737";
+a ex:Film;
+ex:id "231" .
+<http://127.0.0.1:3333/656> ex:url "https://www.imdb.com/title/tt0330373";
+ex:idIMDB "0330373";
+a ex:IMDBResource,ex:Film;
+ex:id "674" .
+<http://127.0.0.1:3333/657> a ex:IMDBResource;
+ex:idIMDB "0358273";
+ex:url "https://www.imdb.com/title/tt0358273";
+a ex:Film;
+ex:id "69" .
+<http://127.0.0.1:3333/658> a ex:IMDBResource;
+ex:idIMDB "0416320";
+ex:url "https://www.imdb.com/title/tt0416320";
+a ex:Film;
+ex:id "116" .
+<http://127.0.0.1:3333/659> a ex:IMDBResource;
+ex:idIMDB "0445620";
+ex:url "https://www.imdb.com/title/tt0445620";
+a ex:Film;
+ex:id "67" .
+<http://127.0.0.1:3333/660> a ex:IMDBResource;
+ex:idIMDB "0363771";
+ex:url "https://www.imdb.com/title/tt0363771";
+a ex:Film;
+ex:id "411" .
+<http://127.0.0.1:3333/661> a ex:IMDBResource;
+ex:idIMDB "0360717";
+ex:url "https://www.imdb.com/title/tt0360717";
+a ex:Film;
+ex:id "254" .
+<http://127.0.0.1:3333/662> a ex:IMDBResource;
+ex:idIMDB "0408306";
+ex:url "https://www.imdb.com/title/tt0408306";
+a ex:Film;
+ex:id "612" .
+<http://127.0.0.1:3333/663> a ex:IMDBResource;
+ex:idIMDB "0407265";
+ex:url "https://www.imdb.com/title/tt0407265";
+a ex:Film;
+ex:id "546" .
+<http://127.0.0.1:3333/664> ex:url "https://www.imdb.com/title/tt0401855";
+a ex:IMDBResource;
+ex:idIMDB "0401855";
+a ex:Film;
+ex:id "834" .
+<http://127.0.0.1:3333/665> a ex:IMDBResource;
+ex:idIMDB "0425598";
+ex:url "https://www.imdb.com/title/tt0425598";
+a ex:Film;
+ex:id "292" .
+<http://127.0.0.1:3333/666> a ex:IMDBResource;
+ex:idIMDB "0438097";
+ex:url "https://www.imdb.com/title/tt0438097";
+a ex:Film;
+ex:id "950" .
+<http://127.0.0.1:3333/667> a ex:IMDBResource;
+ex:idIMDB "0434409";
+ex:url "https://www.imdb.com/title/tt0434409";
+a ex:Film;
+ex:id "752" .
+<http://127.0.0.1:3333/668> a ex:IMDBResource;
+ex:idIMDB "0454848";
+ex:url "https://www.imdb.com/title/tt0454848";
+a ex:Film;
+ex:id "388" .
+<http://127.0.0.1:3333/669> a ex:IMDBResource;
+ex:idIMDB "0468565";
+ex:url "https://www.imdb.com/title/tt0468565";
+a ex:Film;
+ex:id "868" .
+<http://127.0.0.1:3333/670> a ex:IMDBResource;
+ex:idIMDB "0405094";
+ex:url "https://www.imdb.com/title/tt0405094";
+a ex:Film;
+ex:id "582" .
+<http://127.0.0.1:3333/671> a ex:IMDBResource;
+ex:idIMDB "0013427";
+ex:url "https://www.imdb.com/title/tt0013427";
+ex:id "669";
+a ex:Film .
+<http://127.0.0.1:3333/672> a ex:IMDBResource;
+ex:idIMDB "0425210";
+ex:url "https://www.imdb.com/title/tt0425210";
+a ex:Film;
+ex:id "186" .
+<http://127.0.0.1:3333/673> a ex:IMDBResource;
+ex:idIMDB "0441909";
+ex:url "https://www.imdb.com/title/tt0441909";
+a ex:Film;
+ex:id "219" .
+<http://127.0.0.1:3333/674> a ex:IMDBResource;
+ex:idIMDB "0384537";
+ex:url "https://www.imdb.com/title/tt0384537";
+a ex:Film;
+ex:id "588" .
+<http://127.0.0.1:3333/675> a ex:IMDBResource;
+ex:idIMDB "0317919";
+ex:url "https://www.imdb.com/title/tt0317919";
+a ex:Film;
+ex:id "956" .
+<http://127.0.0.1:3333/676> a ex:IMDBResource;
+ex:idIMDB "0409182";
+ex:url "https://www.imdb.com/title/tt0409182";
+a ex:Film;
+ex:id "503" .
+<http://127.0.0.1:3333/677> a ex:IMDBResource;
+ex:idIMDB "0382625";
+ex:url "https://www.imdb.com/title/tt0382625";
+a ex:Film;
+ex:id "591" .
+<http://127.0.0.1:3333/678> a ex:IMDBResource;
+ex:idIMDB "0317219";
+ex:url "https://www.imdb.com/title/tt0317219";
+a ex:Film;
+ex:id "920" .
+<http://127.0.0.1:3333/679> a ex:IMDBResource;
+ex:idIMDB "0466909";
+ex:url "https://www.imdb.com/title/tt0466909";
+a ex:Film;
+ex:id "806" .
+<http://127.0.0.1:3333/680> a ex:IMDBResource;
+ex:idIMDB "0458352";
+ex:url "https://www.imdb.com/title/tt0458352";
+a ex:Film;
+ex:id "350" .
+<http://127.0.0.1:3333/681> a ex:IMDBResource;
+ex:idIMDB "0383574";
+ex:url "https://www.imdb.com/title/tt0383574";
+a ex:Film;
+ex:id "58" .
+<http://127.0.0.1:3333/682> a ex:IMDBResource;
+ex:idIMDB "0449059";
+ex:url "https://www.imdb.com/title/tt0449059";
+ex:id "773";
+a ex:Film .
+<http://127.0.0.1:3333/683> a ex:IMDBResource;
+ex:idIMDB "0417148";
+ex:url "https://www.imdb.com/title/tt0417148";
+a ex:Film;
+ex:id "326" .
+<http://127.0.0.1:3333/684> a ex:IMDBResource;
+ex:idIMDB "0457513";
+ex:url "https://www.imdb.com/title/tt0457513";
+a ex:Film;
+ex:id "512" .
+<http://127.0.0.1:3333/685> a ex:IMDBResource;
+ex:idIMDB "0430357";
+ex:url "https://www.imdb.com/title/tt0430357";
+a ex:Film;
+ex:id "82" .
+<http://127.0.0.1:3333/686> a ex:IMDBResource;
+ex:idIMDB "0430576";
+ex:url "https://www.imdb.com/title/tt0430576";
+a ex:Film;
+ex:id "148" .
+<http://127.0.0.1:3333/687> a ex:IMDBResource;
+ex:idIMDB "0354899";
+ex:url "https://www.imdb.com/title/tt0354899";
+a ex:Film;
+ex:id "300" .
+<http://127.0.0.1:3333/688> a ex:IMDBResource;
+ex:idIMDB "0443453";
+ex:url "https://www.imdb.com/title/tt0443453";
+a ex:Film;
+ex:id "496" .
+<http://127.0.0.1:3333/689> a ex:IMDBResource;
+ex:idIMDB "0430051";
+ex:url "https://www.imdb.com/title/tt0430051";
+a ex:Film;
+ex:id "86" .
+<http://127.0.0.1:3333/690> a ex:IMDBResource;
+ex:idIMDB "0489270";
+ex:url "https://www.imdb.com/title/tt0489270";
+a ex:Film;
+ex:id "214" .
+<http://127.0.0.1:3333/691> a ex:IMDBResource;
+ex:idIMDB "0452624";
+ex:url "https://www.imdb.com/title/tt0452624";
+a ex:Film;
+ex:id "182" .
+<http://127.0.0.1:3333/692> a ex:IMDBResource;
+ex:idIMDB "0413300";
+ex:url "https://www.imdb.com/title/tt0413300";
+a ex:Film;
+ex:id "559" .
+<http://127.0.0.1:3333/693> a ex:IMDBResource;
+ex:idIMDB "0413267";
+ex:url "https://www.imdb.com/title/tt0413267";
+a ex:Film;
+ex:id "810" .
+<http://127.0.0.1:3333/694> a ex:IMDBResource;
+ex:idIMDB "0449088";
+ex:url "https://www.imdb.com/title/tt0449088";
+a ex:Film;
+ex:id "285" .
+<http://127.0.0.1:3333/695> a ex:IMDBResource;
+ex:idIMDB "0496806";
+ex:url "https://www.imdb.com/title/tt0496806";
+a ex:Film;
+ex:id "298" .
+<http://127.0.0.1:3333/696> a ex:IMDBResource;
+ex:idIMDB "0373889";
+ex:url "https://www.imdb.com/title/tt0373889";
+a ex:Film;
+ex:id "675" .
+<http://127.0.0.1:3333/697> a ex:IMDBResource;
+ex:idIMDB "0462538";
+ex:url "https://www.imdb.com/title/tt0462538";
+a ex:Film;
+ex:id "35" .
+<http://127.0.0.1:3333/698> a ex:IMDBResource;
+ex:idIMDB "0890870";
+ex:url "https://www.imdb.com/title/tt0890870";
+a ex:Film;
+ex:id "663" .
+<http://127.0.0.1:3333/699> a ex:IMDBResource;
+ex:idIMDB "0758730";
+ex:url "https://www.imdb.com/title/tt0758730";
+a ex:Film;
+ex:id "440" .
+<http://127.0.0.1:3333/700> a ex:IMDBResource;
+ex:idIMDB "0089537";
+ex:url "https://www.imdb.com/title/tt0089537";
+a ex:Film;
+ex:id "383" .
+<http://127.0.0.1:3333/701> a ex:IMDBResource;
+ex:idIMDB "0468569";
+ex:url "https://www.imdb.com/title/tt0468569";
+ex:id "155";
+a ex:Film .
+<http://127.0.0.1:3333/702> a ex:IMDBResource;
+ex:idIMDB "0367882";
+ex:url "https://www.imdb.com/title/tt0367882";
+a ex:Film;
+ex:id "217" .
+<http://127.0.0.1:3333/703> a ex:IMDBResource;
+ex:idIMDB "0438488";
+ex:url "https://www.imdb.com/title/tt0438488";
+ex:id "534";
+a ex:Film .
+<http://127.0.0.1:3333/704> a ex:IMDBResource;
+ex:idIMDB "0417741";
+ex:url "https://www.imdb.com/title/tt0417741";
+a ex:Film;
+ex:id "767" .
+<http://127.0.0.1:3333/705> a ex:IMDBResource;
+ex:idIMDB "0458481";
+ex:url "https://www.imdb.com/title/tt0458481";
+a ex:Film;
+ex:id "189" .
