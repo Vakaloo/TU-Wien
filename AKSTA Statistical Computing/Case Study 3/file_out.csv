@@ -1,0 +1,228 @@
+country;ISO 3166 2;ISO 3166 3;Region.Name;Sub.region.Name;Developed...Developing.Countries;median_age;youth_unempl_rate;above_average_median_age;above_average_yu
+Afghanistan;AF;AFG;Asia;Southern Asia;Developing;19,5;17,6;no;yes
+Albania;AL;ALB;Europe;Southern Europe;Developed;34,3;31,9;no;yes
+Algeria;DZ;DZA;Africa;Northern Africa;Developing;28,9;39,3;yes;yes
+American Samoa;AS;ASM;Oceania;Polynesia;Developing;27,2;.;no;.
+Andorra;AD;AND;Europe;Southern Europe;Developed;46,2;.;yes;.
+Angola;AO;AGO;Africa;Sub-Saharan Africa;Developing;15,9;39,4;no;yes
+Anguilla;AI;AIA;Americas;Latin America and the Caribbean;Developing;35,7;.;yes;.
+Antigua and Barbuda;AG;ATG;Americas;Latin America and the Caribbean;Developing;32,7;.;no;.
+Argentina;AR;ARG;Americas;Latin America and the Caribbean;Developing;32,4;23,7;no;yes
+Armenia;AM;ARM;Asia;Western Asia;Developing;36,6;36,3;yes;yes
+Aruba;AW;ABW;Americas;Latin America and the Caribbean;Developing;39,9;.;yes;.
+Australia;AU;AUS;Oceania;Australia and New Zealand;Developed;37,5;11,8;yes;no
+Austria;AT;AUT;Europe;Western Europe;Developed;44,5;9,4;yes;no
+Azerbaijan;AZ;AZE;Asia;Western Asia;Developing;32,6;13,4;yes;no
+Bahamas, The;BS;BHS;Americas;Latin America and the Caribbean;Developing;32,8;25,8;no;yes
+Bahrain;BH;BHR;Asia;Western Asia;Developing;32,9;5,3;yes;no
+Bangladesh;BD;BGD;Asia;Southern Asia;Developing;27,9;12,8;no;no
+Barbados;BB;BRB;Americas;Latin America and the Caribbean;Developing;39,5;29,6;yes;yes
+Belarus;BY;BLR;Europe;Eastern Europe;Developed;40,9;10,6;yes;no
+Belgium;BE;BEL;Europe;Western Europe;Developed;41,6;15,8;yes;no
+Belize;BZ;BLZ;Americas;Latin America and the Caribbean;Developing;23,9;15,3;no;no
+Benin;BJ;BEN;Africa;Sub-Saharan Africa;Developing;17,0;5,6;no;no
+Bermuda;BM;BMU;Americas;Northern America;Developed;43,6;29,3;yes;yes
+Bhutan;BT;BTN;Asia;Southern Asia;Developing;29,1;10,7;no;no
+Bolivia;BO;BOL;Americas;Latin America and the Caribbean;Developing;25,3;6,9;no;no
+Bosnia and Herzegovina;BA;BIH;Europe;Southern Europe;Developed;43,3;33,8;yes;yes
+Botswana;BW;BWA;Africa;Sub-Saharan Africa;Developing;25,7;36,0;yes;yes
+Brazil;BR;BRA;Americas;Latin America and the Caribbean;Developing;33,2;28,5;no;yes
+British Virgin Islands;VG;VGB;Americas;Latin America and the Caribbean;Developing;37,2;.;yes;.
+Brunei;BN;BRN;Asia;South-eastern Asia;Developing;31,1;28,9;yes;yes
+Bulgaria;BG;BGR;Europe;Eastern Europe;Developed;43,7;12,7;yes;no
+Burkina Faso;BF;BFA;Africa;Sub-Saharan Africa;Developing;17,9;8,7;no;no
+Burma;MM;MMR;Asia;South-eastern Asia;Developing;29,2;2,0;no;no
+Burundi;BI;BDI;Africa;Sub-Saharan Africa;Developing;17,7;2,9;no;no
+Cabo Verde;.;.;Europe;Northern Europe;Developed;26,8;27,8;no;yes
+Cambodia;KH;KHM;Asia;South-eastern Asia;Developing;26,4;1,1;no;no
+Cameroon;CM;CMR;Africa;Sub-Saharan Africa;Developing;18,5;6,3;no;no
+Canada;CA;CAN;Americas;Northern America;Developed;41,8;11,1;yes;no
+Cayman Islands;KY;CYM;Americas;Latin America and the Caribbean;Developing;40,5;13,8;yes;no
+Central African Republic;CF;CAF;Africa;Sub-Saharan Africa;Developing;20,0;.;no;.
+Chad;TD;TCD;Africa;Sub-Saharan Africa;Developing;16,1;.;no;.
+Chile;CL;CHL;Americas;Latin America and the Caribbean;Developing;35,5;18,1;yes;yes
+China;CN;CHN;Asia;Eastern Asia;Developing;38,4;.;yes;.
+Colombia;CO;COL;Americas;Latin America and the Caribbean;Developing;31,2;18,5;no;yes
+Comoros;KM;COM;Africa;Sub-Saharan Africa;Developing;20,9;19,5;no;yes
+Congo, Democratic Republic of the;CD;COD;Africa;Sub-Saharan Africa;Developing;16,7;8,7;no;no
+Congo, Republic of the;CG;COG;Africa;Sub-Saharan Africa;Developing;19,5;.;no;.
+Cook Islands;CK;COK;Oceania;Polynesia;Developing;38,3;.;yes;.
+Costa Rica;CR;CRI;Americas;Latin America and the Caribbean;Developing;32,6;20,6;no;yes
+Cote d'Ivoire;CI;CIV;Africa;Sub-Saharan Africa;Developing;20,3;5,5;no;no
+Croatia;HR;HRV;Europe;Southern Europe;Developed;43,9;23,7;yes;yes
+Cuba;CU;CUB;Americas;Latin America and the Caribbean;Developing;42,1;6,1;yes;no
+Curacao;.;.;Europe;Northern Europe;Developed;36,7;29,3;no;yes
+Cyprus;CY;CYP;Asia;Western Asia;Developed;37,9;20,2;yes;yes
+Czechia;.;.;Europe;Northern Europe;Developed;43,3;6,7;yes;no
+Denmark;DK;DNK;Europe;Northern Europe;Developed;42,0;9,4;yes;no
+Djibouti;DJ;DJI;Africa;Sub-Saharan Africa;Developing;24,9;.;yes;.
+Dominica;DM;DMA;Americas;Latin America and the Caribbean;Developing;34,9;.;yes;.
+Dominican Republic;DO;DOM;Americas;Latin America and the Caribbean;Developing;27,9;13,5;no;no
+Ecuador;EC;ECU;Americas;Latin America and the Caribbean;Developing;28,8;7,9;no;no
+Egypt;EG;EGY;Africa;Northern Africa;Developing;24,1;29,6;yes;yes
+El Salvador;SV;SLV;Americas;Latin America and the Caribbean;Developing;27,7;9,6;no;no
+Equatorial Guinea;GQ;GNQ;Africa;Sub-Saharan Africa;Developing;20,3;.;no;.
+Eritrea;ER;ERI;Africa;Sub-Saharan Africa;Developing;20,3;.;no;.
+Estonia;EE;EST;Europe;Northern Europe;Developed;43,7;11,8;yes;no
+Eswatini;.;.;Europe;Northern Europe;Developed;23,7;47,1;no;yes
+Ethiopia;ET;ETH;Africa;Sub-Saharan Africa;Developing;19,8;25,2;no;yes
+Faroe Islands;FO;FRO;Europe;Northern Europe;Developed;37,2;.;no;.
+Fiji;FJ;FJI;Oceania;Melanesia;Developing;29,9;15,4;yes;no
+Finland;FI;FIN;Europe;Northern Europe;Developed;42,8;17,0;yes;no
+France;FR;FRA;Europe;Western Europe;Developed;41,7;20,8;yes;yes
+French Polynesia;PF;PYF;Oceania;Polynesia;Developing;33,3;56,7;yes;yes
+Gabon;GA;GAB;Africa;Sub-Saharan Africa;Developing;21,0;35,7;yes;yes
+Gambia, The;GM;GMB;Africa;Sub-Saharan Africa;Developing;21,8;13,1;yes;no
+Gaza Strip;PS;PSE;Asia;Western Asia;Developing;18,0;42,2;no;yes
+Georgia;GE;GEO;Asia;Western Asia;Developing;38,6;29,9;yes;yes
+Germany;DE;DEU;Europe;Western Europe;Developed;47,8;6,2;yes;no
+Ghana;GH;GHA;Africa;Sub-Saharan Africa;Developing;21,4;9,1;yes;no
+Gibraltar;GI;GIB;Europe;Southern Europe;Developed;35,5;.;no;.
+Greece;GR;GRC;Europe;Southern Europe;Developed;45,3;39,9;yes;yes
+Greenland;GL;GRL;Americas;Northern America;Developed;34,3;.;yes;.
+Grenada;GD;GRD;Americas;Latin America and the Caribbean;Developing;33,3;.;no;.
+Guam;GU;GUM;Oceania;Micronesia;Developing;29,4;29,4;yes;yes
+Guatemala;GT;GTM;Americas;Latin America and the Caribbean;Developing;23,2;5,0;no;no
+Guernsey;-;-;.;.;.;44,3;.;yes;.
+Guinea;GN;GIN;Africa;Sub-Saharan Africa;Developing;19,1;1,0;no;no
+Guinea-Bissau;GW;GNB;Africa;Sub-Saharan Africa;Developing;18,0;.;no;.
+Guyana;GY;GUY;Americas;Latin America and the Caribbean;Developing;27,5;21,5;no;yes
+Haiti;HT;HTI;Americas;Latin America and the Caribbean;Developing;24,1;.;no;.
+Honduras;HN;HND;Americas;Latin America and the Caribbean;Developing;24,4;10,7;no;no
+Hong Kong;HK;HKG;Asia;Eastern Asia;Developing;45,6;8,7;yes;no
+Hungary;HU;HUN;Europe;Eastern Europe;Developed;43,6;10,2;yes;no
+Iceland;IS;ISL;Europe;Northern Europe;Developed;37,1;6,1;no;no
+India;IN;IND;Asia;Southern Asia;Developing;28,7;22,5;no;yes
+Indonesia;ID;IDN;Asia;South-eastern Asia;Developing;31,1;16,5;yes;no
+Iran;IR;IRN;Asia;Southern Asia;Developing;31,7;27,6;yes;yes
+Iraq;IQ;IRQ;Asia;Western Asia;Developing;21,2;25,6;no;yes
+Ireland;IE;IRL;Europe;Northern Europe;Developed;37,8;13,8;no;no
+Isle of Man;.;.;Europe;Northern Europe;Developed;44,6;10,1;yes;no
+Israel;IL;ISR;Asia;Western Asia;Developed;30,4;7,2;no;no
+Italy;IT;ITA;Europe;Southern Europe;Developed;46,5;32,2;yes;yes
+Jamaica;JM;JAM;Americas;Latin America and the Caribbean;Developing;29,4;24,2;no;yes
+Japan;JP;JPN;Asia;Eastern Asia;Developed;48,6;3,6;yes;no
+Jersey;-;-;.;.;.;37,5;.;no;.
+Jordan;JO;JOR;Asia;Western Asia;Developing;23,5;35,6;no;yes
+Kazakhstan;KZ;KAZ;Asia;Central Asia;Developing;31,6;3,8;yes;no
+Kenya;KE;KEN;Africa;Sub-Saharan Africa;Developing;20,0;7,4;no;no
+Kiribati;KI;KIR;Oceania;Micronesia;Developing;25,7;17,1;no;no
+Korea, North;KP;PRK;Asia;Eastern Asia;Developing;34,6;.;yes;.
+Korea, South;KR;KOR;Asia;Eastern Asia;Developing;43,2;10,2;yes;no
+Kosovo;.;.;Europe;Northern Europe;Developed;30,5;55,4;no;yes
+Kuwait;KW;KWT;Asia;Western Asia;Developing;29,7;15,4;no;no
+Kyrgyzstan;KG;KGZ;Asia;Central Asia;Developing;27,3;14,2;no;no
+Laos;LA;LAO;Asia;South-eastern Asia;Developing;24,0;18,2;no;yes
+Latvia;LV;LVA;Europe;Northern Europe;Developed;44,4;12,2;yes;no
+Lebanon;LB;LBN;Asia;Western Asia;Developing;33,7;.;yes;.
+Lesotho;LS;LSO;Africa;Sub-Saharan Africa;Developing;24,7;34,4;yes;yes
+Liberia;LR;LBR;Africa;Sub-Saharan Africa;Developing;18,0;2,3;no;no
+Libya;LY;LBY;Africa;Northern Africa;Developing;25,8;48,7;yes;yes
+Liechtenstein;LI;LIE;Europe;Western Europe;Developed;43,7;.;yes;.
+Lithuania;LT;LTU;Europe;Northern Europe;Developed;44,5;11,1;yes;no
+Luxembourg;LU;LUX;Europe;Western Europe;Developed;39,5;14,2;no;no
+Macau;MO;MAC;Asia;Eastern Asia;Developing;40,8;5,3;yes;no
+Macedonia;MK;MKD;Europe;Southern Europe;Developed;39,0;45,4;no;yes
+Madagascar;MG;MDG;Africa;Sub-Saharan Africa;Developing;20,3;1,0;no;no
+Malawi;MW;MWI;Africa;Sub-Saharan Africa;Developing;16,8;40,5;no;yes
+Malaysia;MY;MYS;Asia;South-eastern Asia;Developing;29,2;10,5;no;no
+Maldives;MV;MDV;Asia;Southern Asia;Developing;29,5;15,9;no;no
+Mali;ML;MLI;Africa;Sub-Saharan Africa;Developing;16,0;16,9;no;no
+Malta;MT;MLT;Europe;Southern Europe;Developed;42,3;9,1;yes;no
+Marshall Islands;MH;MHL;Oceania;Micronesia;Developing;23,8;11,0;no;no
+Mauritania;MR;MRT;Africa;Sub-Saharan Africa;Developing;21,0;15,2;yes;no
+Mauritius;MU;MUS;Africa;Sub-Saharan Africa;Developing;36,3;23,9;yes;yes
+Mexico;MX;MEX;Americas;Latin America and the Caribbean;Developing;29,3;6,9;no;no
+Micronesia, Federated States of;FM;FSM;Oceania;Micronesia;Developing;26,3;18,9;no;no
+Moldova;MD;MDA;Europe;Eastern Europe;Developed;37,7;7,4;no;no
+Monaco;MC;MCO;Europe;Western Europe;Developed;55,4;26,6;yes;yes
+Mongolia;MN;MNG;Asia;Eastern Asia;Developing;29,8;16,8;no;yes
+Montenegro;.;.;Europe;Northern Europe;Developed;39,6;29,4;no;yes
+Montserrat;MS;MSR;Americas;Latin America and the Caribbean;Developing;34,8;.;yes;.
+Morocco;MA;MAR;Africa;Northern Africa;Developing;29,1;22,2;yes;yes
+Mozambique;MZ;MOZ;Africa;Sub-Saharan Africa;Developing;17,0;7,4;no;no
+Namibia;NA;NAM;Africa;Sub-Saharan Africa;Developing;21,8;38,0;yes;yes
+Nauru;NR;NRU;Oceania;Micronesia;Developing;27,0;26,6;no;yes
+Nepal;NP;NPL;Asia;Southern Asia;Developing;25,3;21,4;no;yes
+Netherlands;NL;NLD;Europe;Western Europe;Developed;42,8;7,2;yes;no
+New Caledonia;NC;NCL;Oceania;Melanesia;Developing;32,9;38,4;yes;yes
+New Zealand;NZ;NZL;Oceania;Australia and New Zealand;Developed;37,2;11,5;yes;no
+Nicaragua;NI;NIC;Americas;Latin America and the Caribbean;Developing;27,3;8,5;no;no
+Niger;NE;NER;Africa;Sub-Saharan Africa;Developing;14,8;0,7;no;no
+Nigeria;NG;NGA;Africa;Sub-Saharan Africa;Developing;18,6;13,8;no;no
+Northern Mariana Islands;MP;MNP;Oceania;Micronesia;Developing;32,8;.;yes;.
+Norway;NO;NOR;Europe;Northern Europe;Developed;39,5;9,7;no;no
+Oman;OM;OMN;Asia;Western Asia;Developing;26,2;13,7;no;no
+Pakistan;PK;PAK;Asia;Southern Asia;Developing;22,0;7,8;no;no
+Palau;PW;PLW;Oceania;Micronesia;Developing;33,9;5,6;yes;no
+Panama;PA;PAN;Americas;Latin America and the Caribbean;Developing;30,1;10,2;no;no
+Papua New Guinea;PG;PNG;Oceania;Melanesia;Developing;24,0;3,6;no;no
+Paraguay;PY;PRY;Americas;Latin America and the Caribbean;Developing;29,7;14,5;no;no
+Peru;PE;PER;Americas;Latin America and the Caribbean;Developing;29,1;14,7;no;no
+Philippines;PH;PHL;Asia;South-eastern Asia;Developing;24,1;6,7;no;no
+Poland;PL;POL;Europe;Eastern Europe;Developed;41,9;11,7;yes;no
+Portugal;PT;PRT;Europe;Southern Europe;Developed;44,6;20,3;yes;yes
+Puerto Rico;PR;PRI;Americas;Latin America and the Caribbean;Developing;43,6;26,6;yes;yes
+Qatar;QA;QAT;Asia;Western Asia;Developing;33,7;0,4;yes;no
+Romania;RO;ROU;Europe;Eastern Europe;Developed;42,5;16,2;yes;no
+Russia;RU;RUS;Europe;Eastern Europe;Developed;40,3;17,0;no;no
+Rwanda;RW;RWA;Africa;Sub-Saharan Africa;Developing;19,7;20,6;no;yes
+Saint Barthelemy;.;.;Europe;Northern Europe;Developed;45,6;.;yes;.
+Saint Helena, Ascension, and Tristan da Cunha;.;.;Europe;Northern Europe;Developed;43,2;.;yes;.
+Saint Kitts and Nevis;KN;KNA;Americas;Latin America and the Caribbean;Developing;36,5;.;yes;.
+Saint Lucia;LC;LCA;Americas;Latin America and the Caribbean;Developing;36,9;46,2;yes;yes
+Saint Martin;.;.;Europe;Northern Europe;Developed;33,3;.;no;.
+Saint Pierre and Miquelon;PM;SPM;Americas;Northern America;Developed;48,5;.;yes;.
+Saint Vincent and the Grenadines;VC;VCT;Americas;Latin America and the Caribbean;Developing;35,3;.;yes;.
+Samoa;WS;WSM;Oceania;Polynesia;Developing;25,6;31,9;no;yes
+San Marino;SM;SMR;Europe;Southern Europe;Developed;45,2;27,4;yes;yes
+Sao Tome and Principe;ST;STP;Africa;Sub-Saharan Africa;Developing;19,3;20,8;no;yes
+Saudi Arabia;SA;SAU;Asia;Western Asia;Developing;30,8;28,8;yes;yes
+Senegal;SN;SEN;Africa;Sub-Saharan Africa;Developing;19,4;8,1;no;no
+Serbia;.;.;Europe;Northern Europe;Developed;43,4;29,7;yes;yes
+Seychelles;SC;SYC;Africa;Sub-Saharan Africa;Developing;36,8;11,6;yes;no
+Sierra Leone;SL;SLE;Africa;Sub-Saharan Africa;Developing;19,1;9,4;no;no
+Singapore;SG;SGP;Asia;South-eastern Asia;Developing;35,6;9,1;yes;no
+Sint Maarten;.;.;Europe;Northern Europe;Developed;41,1;.;yes;.
+Slovakia;SK;SVK;Europe;Eastern Europe;Developed;41,8;14,9;yes;no
+Slovenia;SI;SVN;Europe;Southern Europe;Developed;44,9;8,8;yes;no
+Solomon Islands;SB;SLB;Oceania;Melanesia;Developing;23,5;1,3;no;no
+Somalia;SO;SOM;Africa;Sub-Saharan Africa;Developing;18,5;.;no;.
+South Africa;ZA;ZAF;Africa;Sub-Saharan Africa;Developing;28,0;53,4;yes;yes
+South Sudan;.;.;Europe;Northern Europe;Developed;18,6;38,6;no;yes
+Spain;ES;ESP;Europe;Southern Europe;Developed;43,9;34,3;yes;yes
+Sri Lanka;LK;LKA;Asia;Southern Asia;Developing;33,7;21,0;yes;yes
+Sudan;SD;SDN;Africa;Northern Africa;Developing;18,3;.;no;.
+Suriname;SR;SUR;Americas;Latin America and the Caribbean;Developing;31,0;13,4;no;no
+Sweden;SE;SWE;Europe;Northern Europe;Developed;41,1;16,8;yes;no
+Switzerland;CH;CHE;Europe;Western Europe;Developed;42,7;7,9;yes;no
+Syria;SY;SYR;Asia;Western Asia;Developing;23,5;35,8;no;yes
+Taiwan;TW;TWN;.;.;.;42,3;.;yes;.
+Tajikistan;TJ;TJK;Asia;Central Asia;Developing;25,3;.;no;.
+Tanzania;TZ;TZA;Africa;Sub-Saharan Africa;Developing;18,2;3,9;no;no
+Thailand;TH;THA;Asia;South-eastern Asia;Developing;39,0;3,7;yes;no
+Timor-Leste;.;.;Europe;Northern Europe;Developed;19,6;13,2;no;no
+Togo;TG;TGO;Africa;Sub-Saharan Africa;Developing;20,0;3,9;no;no
+Tonga;TO;TON;Oceania;Polynesia;Developing;24,1;.;no;.
+Trinidad and Tobago;TT;TTO;Americas;Latin America and the Caribbean;Developing;37,8;8,7;yes;no
+Tunisia;TN;TUN;Africa;Northern Africa;Developing;32,7;35,0;yes;yes
+Turkey;TR;TUR;Asia;Western Asia;Developing;32,2;20,2;yes;yes
+Turkmenistan;TM;TKM;Asia;Central Asia;Developing;29,2;.;no;.
+Turks and Caicos Islands;TC;TCA;Americas;Latin America and the Caribbean;Developing;34,6;.;yes;.
+Tuvalu;TV;TUV;Oceania;Polynesia;Developing;26,6;20,6;no;yes
+Uganda;UG;UGA;Africa;Sub-Saharan Africa;Developing;15,7;14,8;no;no
+Ukraine;UA;UKR;Europe;Eastern Europe;Developed;41,2;17,9;yes;no
+United Arab Emirates;AE;ARE;Asia;Western Asia;Developing;38,4;6,9;yes;no
+United Kingdom;GB;GBR;Europe;Northern Europe;Developed;40,6;11,3;yes;no
+United States;US;USA;Americas;Northern America;Developed;38,5;8,6;yes;no
+Uruguay;UY;URY;Americas;Latin America and the Caribbean;Developing;35,5;25,9;yes;yes
+Uzbekistan;UZ;UZB;Asia;Central Asia;Developing;30,1;.;no;.
+Vanuatu;VU;VUT;Oceania;Melanesia;Developing;23,0;.;no;.
+Venezuela;VE;VEN;Americas;Latin America and the Caribbean;Developing;30,0;14,6;no;no
+Vietnam;VN;VNM;Asia;South-eastern Asia;Developing;31,9;6,9;yes;no
+Virgin Islands;VI;VIR;Americas;Latin America and the Caribbean;Developing;41,8;.;yes;.
+Wallis and Futuna;WF;WLF;Oceania;Polynesia;Developing;34,0;.;yes;.
+West Bank;PS;PSE;Asia;Western Asia;Developing;21,9;42,2;no;yes
+Yemen;YE;YEM;Asia;Western Asia;Developing;19,8;24,5;no;yes
+Zambia;ZM;ZMB;Africa;Sub-Saharan Africa;Developing;16,9;24,0;no;yes
+Zimbabwe;ZW;ZWE;Africa;Sub-Saharan Africa;Developing;20,5;16,5;no;no

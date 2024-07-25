@@ -1,0 +1,328 @@
+---
+title: "Case Study 3"
+subtitle: "AKSTA Statistical Computing"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2023-06-01"
+output: html_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introduction
+
+Load the data set you exported in the final Task of Case Study 2. Eliminate all observations with missing values in the development status variable. 
+As a reminder, this data contains 2020 information on
+
+ - median age
+ - youth unemployment rate
+ 
+for most world entities. Additional information related to the region, sub-region and development status is also provided for the entities.
+
+First we set the directory where our files are and then we introduce the libraries dplyr and ggplot2.
+
+```{r, message=FALSE, warning = FALSE}
+setwd("C:/Users/vaka1/Desktop/Case Study 3")
+library(ggplot2)
+library(dplyr)
+```
+
+Afterwards, we read the csv file with the 2020 information on median age youth unemployment rate using the separator ";", replace the dots in the data with NAs and remove all observations with missing values in the development status variable using the filter command from dplyr package. Finally, we get an idea on the final data. 
+
+```{r}
+data <- read.csv("file_out.csv", sep = ";")
+data[data == "."] <- NA
+data <- data %>%
+  filter(!is.na(Developed...Developing.Countries))
+str(data)
+```
+According to the data, it is observed that the columns median_age and youth_unempl_rate are characters. Also, the numbers contain the "," instead of ".". Thus, the command chartr() is used in order to replace the "," with ".". Finally, the columns are transformed into numeric. 
+
+```{r}
+data$median_age <- chartr(",", ".", data$median_age)
+data$youth_unempl_rate <- chartr(",", ".", data$youth_unempl_rate)
+str(data)
+```
+
+```{r}
+data$median_age <- as.numeric(data$median_age)
+data$youth_unempl_rate <- as.numeric(data$youth_unempl_rate)
+str(data)
+```
+
+## Task 1
+
+Using ggplot2, create a density plot of the median age in the developing countries and another superimposed density plot of the median age in the developed countries.
+
+ - The color of the density lines is black.
+ - The area under the density curve should be colored differently among developed vs. developing countries.
+ - For the colors, choose a transparency level of 0.5 for better visibility.
+ - Position the legend at the top center of the plot and give it no title (hint: use element_blank()).
+ - Rename the x axis as “Median age of population”
+
+Comment briefly on the plot.
+
+To create the density plot of the median age, the ggplot2 is used. First, for the density lines, the geom_density() is used with color parameter equals to black and alpha parameter equals to 0.5 for the color line and transparency level, respectively. Regarding the area under the density curve, in the aesthetics the fill equals to Developed...Developing.Countries is used. For the position the legend at the top center of the plot and give it no title, the legend.position = "top" and legend.title = element_blank() is used, respectively. Finally, fir renaming the axis as “Median age of population", the xlab("Median age of population") is used.
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H"}
+ggplot(data, aes(x=median_age, fill = Developed...Developing.Countries)) + 
+  geom_density(color = "black", alpha = 0.5)+
+  theme(legend.position = "top", 
+        legend.title = element_blank())+
+  xlab("Median age of population")
+```
+Based on the distribution of the 2 plots, can be seen that the plots are skewed. More specifically, the distribution of the developed countries is right skewed. On the other hand, the distribution of the developing countries is left skewed. Therefore, it is proven that the median age of the developed countries is higher than the developing countries. 
+
+## Task 2
+
+Using ggplot2, create a plot as in task 1 for the youth unemployment variable. Comment briefly on the plot.
+
+The same thing applies for the youth unemployment rate. The things that change are the x variable in the aesthetics and the xlab(). Also, the youth_unempl_rate variable contains 43 NAs values which are excluded from the plot. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H",warning=FALSE}
+ggplot(data, aes(x= youth_unempl_rate, fill = Developed...Developing.Countries)) + 
+  geom_density(color = "black", alpha = 0.5)+
+  theme(legend.position = "top", 
+        legend.title = element_blank())+
+  xlab("Youth unemployment rate")
+```
+
+Compared to the previous plot, the youth unemployment rate of developed and developing countries to large extent is similar. This is proven by the plot, where both distribution are left skewed. Therefore, the development status of a countries is unrelated with the unemployment rate. 
+
+## Task 3
+
+Using ggplot2, create a stacked barplot of absolute frequencies showing how the entities are split into regions and development status. Create another stacked barplot of relative frequencies (height of the bars should be one). Comment briefly on the plots.
+
+
+Concerning the first plot, in the ggplot() and more specific in the aesthetics the x variable (x axis) is equal to Region name and fill = Developed...Developing.Countries. The geom_bar() command is used in order to create a barplot.
+
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H"}
+ggplot(data, aes(x = Region.Name, fill = Developed...Developing.Countries))+
+  geom_bar()+
+  theme(legend.position = "top", 
+        legend.title = element_blank())+
+  labs(x = "Region Name", y = "Absolute frequency")
+```
+
+As is obvious from the plot, there are not developing countries in Europe and simultaneously there are not developed countries in Africa. Also, in the rest of the regions (America, Asia and Oceania) most of the countries' status is developing. Finally, it is clear that the number of developing countries is higher than the developed countries. 
+
+However, a major disadvantage of stacked barplot is that it is difficult to accurately compare the individual values within each category. For this reason, another stacked barplot of relative frequencies (height of the
+bars should be one) is created. 
+
+In terms of creating the new stacked barplot,  the command group=interaction(Developed...Developing.Countries, Region.Name) is used. This command allows us to plot the relative frequency including the development status of a country and also the region name. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H"}
+ggplot(data, aes(x = Region.Name, group=interaction(Developed...Developing.Countries, 
+                                                    Region.Name)
+                 ,fill = Developed...Developing.Countries))+
+  geom_bar(position = "fill")+
+  theme(legend.position = "top", 
+        legend.title = element_blank())+
+  labs(x = "Region Name", y = "Relative frequency")
+```
+
+According to the plot, the values of each category are now easily comparable, in contrast to the previous plot. Additionally, what applies to the previous diagram also applies to this one, with the only difference being that it is more easily distinguishable. 
+
+
+## Task 4
+
+Using ggplot2, create a plot showing the relationship between median age and youth unemployment rate.
+
+ - Color the geoms based on the development status.
+ - Add a regression line for each development status.
+ 
+First, in the aesthetics of ggplot the x variable (x axis) is the median age, the y variable (y axis) is the youth unemployment rate and the color is equal to development status. In order to show the the relationship between median age and youth unemployment rate, a scatterplot is used (geom_point()). To add a regression line for each development status, the command geom_smooth() is used, including the method = "lm", which indicates the least squares regression line, and se = FALSE, which means that the confidence interval around the regression line is not enabled. 
+ 
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H", warning = FALSE, message=FALSE}
+ggplot(data,aes(x = median_age, y = youth_unempl_rate, 
+                color = Developed...Developing.Countries))+
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)+
+  theme(legend.position = "top", 
+        legend.title = element_blank()) + 
+  labs(x = "Median Age", y = "Youth Unemployment Rate")
+```
+
+A major advantage of a scatterplot is that the relation of two variables can be observed. According to the plot, it appears that there is no correlation between median age and youth unemployment rate because all the points are unstructured. More specifically, regarding the developing countries, the regression line is closely parallel to the x axis which indicates that there is no correlation between the two variables. On the other hand, based on the regression line for the developed countries, there is a small negative correlation. This indicates that, while the median age increases, the youth unemployment rate decreases. 
+
+
+## Task 5
+
+Using base R or ggplot2 create parallel boxplots of the youth unemployment variables for each region. Do you see any striking differences?
+
+For the creation of the boxplot, firstly in the aesthetics, the x variable is equal to region name and the y variable is equal to youth unemployment rate and secondly the geom_boxplot() is used. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H", warning = FALSE, message=FALSE}
+ggplot(data, aes(x = Region.Name, y = youth_unempl_rate))+
+  geom_boxplot()+
+  labs(x = "Region Name", y = "Youth Unemployment Rate")
+```
+
+According to the plot, there are not any striking differences for each region. There are only a few differences between the confidence intervals and additionally in America, Europe and Oceania there is one outlier for each one.  
+
+
+## Task 6
+
+Create a plot as in Task 5 but for the median population age. Comment briefly.
+
+The same thing is done in Task 6, but this the median age population is used. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H", warning = FALSE, message=FALSE}
+ggplot(data, aes(x = Region.Name, y = median_age))+
+  geom_boxplot()+
+  labs(x = "Region Name", y = "Median Age")
+```
+
+According to the box plot, it is observed that Europe has the highest median age and Africa the lowest. However, in those two regions there some decisive outliers. The rest of the regions, the median age fluctuates within similar ranges.  
+
+It is worth mentioning that according to the plots from the previous tasks, the median age of population in the developed countries is high (density plot from task 1 and scatterplot from task 4). At the same time, most of the developed countries are in Europe (task 3). Therefore, it is reasonable the median age to be high in Europe and this is, also, proven by the box plot above. 
+
+## Task 7
+
+For each sub-region, calculate the median unemployment rate. Then create a plot which contains the sub-regions on the y-axis and the median unemployment rate on the x-axis.
+
+ - As geoms use points.
+ - Color the points by continent (i.e., Region) - use a colorblind friendly palette (see http://www. cookbook-r.com/Graphs/Colors_(ggplot2)/).
+ - Rename the axes.
+ - Using fct_reorder from the forcats package, arrange the levels of subregion such that in the plot the lowest (bottom) region contains the lowest youth unemployment rate and the upper most region contains the highest youth unemployment rate.
+
+The library forcats is introduced.
+
+```{r, message = FALSE, warning=FALSE}
+#Introduce the library forcats
+library(forcats)
+```
+
+Subsequently, a new data frame is created, called median_unempl_rate_region, which contains the median youth unemployment rate, the region name and the subregion name. The data frame is created in the following manner:
+
+1. The NAs observations, according to the youth unemployment variable, are removed using the filter command from the dplyr package. 
+2. The observations are grouped by the subregion and region name.
+3. The median is calculated using the summarize command.
+4. The mutate command is used and inside the mutate, the fct_reorder() is used. The reason why we use mutate is to change the values of the Sub.region.Name variable. Also, the fct_reorder() is used to reorder the levels of the sub region variable based on the values of median youth unemployment rate. This is done in order to achieve the lowest (bottom) region to contain the lowest youth unemployment rate and the upper most region to contain the highest youth unemployment rate.
+
+```{r}
+#From data we create the median_unempl_rate_region dataset
+#Note that the NAs observations were removed
+#We group by Sub.region.Name and Region.Name
+#Finally we reorder the Sub.region.Name based on the median
+median_unempl_rate_region <- data %>% 
+  filter(!is.na(youth_unempl_rate)) %>%
+  group_by(Sub.region.Name, Region.Name) %>%
+  summarise(median = median(youth_unempl_rate), .groups = "drop") %>%
+  mutate(Sub.region.Name = fct_reorder(Sub.region.Name, median))
+```
+
+Based on http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/, the palette for the colorblind friendly is initialized. The choice of colors is random and five colors are selected due to five regions (Africa, America, Asia, Europe and Oceania). 
+
+```{r}
+#Create the palette for the colorblind based on the exercise
+my_palette <- c("#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+```
+
+Finally, we plot the median youth unemployment rate (x axis) for each sub region (y axis) using the palette colors for each region. For the palette, the command scale_colour_manual() is used. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H", warning = FALSE, message=FALSE}
+ggplot(median_unempl_rate_region, aes(median, Sub.region.Name, color = Region.Name))+
+  geom_point(size = 5)+
+  scale_colour_manual(values=my_palette)+
+  labs(x = "Youth Unemployment Rate", y = "Sub region name")+
+  theme(legend.position = "top", 
+        legend.title = element_blank())
+```
+
+According to the plot, northern Africa has the highest median youth unemployment rate and surprisingly the lowest youth unemployment rate can be found in Central, Eastern and South eastern Asia.
+
+## Task 8
+
+Go online and find a data set which contains the 2020 population for the countries of the world together with ISO codes. Download this data and merge it to the dataset you are working on in this case study using a left join (A possible source: https://data.worldbank.org/indicator/SP.POP.TOTL?end=2020&start=2020)
+
+
+From the source provided by the exercise, we download a zip file called API_SP.POP.TOTL_DS2_en_csv_v2_5436324. Inside the zip, the API_SP.POP.TOTL_DS2_en_csv_v2_5436324.csv is included. Using the command read.csv, we read the csv file but we skip the first 4 rows. Finally, we use the command str() to get an idea about the data. 
+
+```{r}
+#We ignore the first 4 rows of the population csv from the internet
+pop_online <- read.csv("API_SP.POP.TOTL_DS2_en_csv_v2_5436324.csv", skip = 4)
+
+#Get an idea of the data
+str(pop_online)
+```
+
+
+Based on the instructions of the exercise, we need the 2020 population. Thus, from all the variables, the country code (i.e. the ISO code) the X2020 variables are selected using the command select. Also, we rename the column X2020 to Population.2020. Finally, we merge our current data set with the new one using left join and as key the ISO codes. 
+
+```{r}
+#Keep the country code (aka ISO code) column and the X2020 column for the population of 2020
+#Change the name of the column X2020 to Year.2020 using the Rename command
+pop_online_2020 <- pop_online %>% 
+  select(Country.Code, X2020) %>% 
+  rename("Population.2020" = "X2020")
+
+#Merge the 2 data sets (data and pop_online_2020) with left join based on the ISO code
+merged_dataset <- data %>% left_join(pop_online_2020, by=c('ISO.3166.3'='Country.Code'))
+str(merged_dataset)
+```
+
+
+## Task 9
+
+On the merged data set from Task 8, using function ggplotly from package plotly re-create the scatterplot in Task 4 (without the regression lines), but this time make the size of the points proportional to the population. When hovering over the points the name of the country, the values for the age and the youth unemployment and population should be shown. (Hint: use the aesthetic text = Country. In ggplotly use the argument tooltip = c("text", "x", "y", "size")).
+
+First we installed the plotly package and then we introduce it. Also, the packages install.packages("webshot") and webshot::install_phantomjs() were installed in order to print the interactive plot to the pdf. 
+
+```{r, warning = FALSE, message = FALSE}
+#Install plotly package
+#install.packages("plotly")
+
+#Introduce the library plotly
+library(plotly)
+
+#install.packages("webshot")
+#webshot::install_phantomjs()
+```
+
+The plot from task is assigned to the variable task.4.plot without the without the regression lines, but this time the size of the points are proportional to the population (size = Population.2020). Furthermore, we add the text equals to country in order each point to be assigned with the country name.
+
+```{r, warning = FALSE}
+task.4.plot <- ggplot(merged_dataset,aes(x = median_age, y = youth_unempl_rate, 
+                                         color = Developed...Developing.Countries))+
+  geom_point(aes(text = country, size = Population.2020)) +
+  theme(legend.position = "top", 
+        legend.title = element_blank()) + 
+  labs(x = "Median Age", y = "Youth Unemployment Rate")
+```
+
+The interactive plot using ggploty and tooltip = c("text", "x", "y", "size") is created. The specific tooltip is used in order when hovering over the points the name of the country, the values for the age and the youth unemployment and population should be shown
+
+```{r}
+#create the interactive plot using ggploty
+interactive.plot <- ggplotly(task.4.plot, tooltip = c("text", "x", "y", "size"))
+```
+
+Subsequently, we do some modifications on the layout of the plot regarding the legend and the title using the layout() command. We, basically, move the legend to the center and also remove the title of the legend. 
+
+```{r}
+#Move the legend to the top of the plot and also remove the title
+interactive.plot <- layout(interactive.plot, legend = list(orientation = "h", 
+                                                           x = 0.5, 
+                                                           y = 1.1, 
+                                                           xanchor = "center",
+                                                           yanchor = "bottom",
+                                                           title = ""))
+```
+
+Finally, we plot the interactive plot. The main problem here is that the output of the Rmarkdown is a pdf and not a html document. Therefore, we lose the interactivity of the map. 
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.pos="H", warning = FALSE, message=FALSE}
+interactive.plot
+```
+
+
+
+
+

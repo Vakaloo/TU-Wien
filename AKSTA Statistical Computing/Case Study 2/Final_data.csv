@@ -1,0 +1,250 @@
+"official_name_en";"ISO3166.1.Alpha.2";"ISO3166.1.Alpha.3";"Developed...Developing.Countries";"Region.Name";"Sub.region.Name";"Median_Age";"youth_unempl_rate";"above_average_median_age";"above_average_yu"
+"Algeria";"DZ";"DZA";"Developing";"Africa";"Northern Africa";28.9;39.3;"yes";"yes"
+"Angola";"AO";"AGO";"Developing";"Africa";"Sub-Saharan Africa";15.9;39.4;"no";"yes"
+"Benin";"BJ";"BEN";"Developing";"Africa";"Sub-Saharan Africa";17;5.6;"no";"no"
+"Botswana";"BW";"BWA";"Developing";"Africa";"Sub-Saharan Africa";25.7;36;"yes";"yes"
+"British Indian Ocean Territory";"IO";"IOT";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Burkina Faso";"BF";"BFA";"Developing";"Africa";"Sub-Saharan Africa";17.9;8.7;"no";"no"
+"Burundi";"BI";"BDI";"Developing";"Africa";"Sub-Saharan Africa";17.7;2.9;"no";"no"
+"Cabo Verde";"CV";"CPV";"Developing";"Africa";"Sub-Saharan Africa";26.8;27.8;"yes";"yes"
+"Cameroon";"CM";"CMR";"Developing";"Africa";"Sub-Saharan Africa";18.5;6.3;"no";"no"
+"Central African Republic";"CF";"CAF";"Developing";"Africa";"Sub-Saharan Africa";20;.;"no";.
+"Chad";"TD";"TCD";"Developing";"Africa";"Sub-Saharan Africa";16.1;.;"no";.
+"Comoros";"KM";"COM";"Developing";"Africa";"Sub-Saharan Africa";20.9;19.5;"no";"no"
+"Congo";"CG";"COG";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Côte d'Ivoire";"CI";"CIV";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Democratic Republic of the Congo";"CD";"COD";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Djibouti";"DJ";"DJI";"Developing";"Africa";"Sub-Saharan Africa";24.9;.;"yes";.
+"Egypt";"EG";"EGY";"Developing";"Africa";"Northern Africa";24.1;29.6;"yes";"yes"
+"Equatorial Guinea";"GQ";"GNQ";"Developing";"Africa";"Sub-Saharan Africa";20.3;.;"no";.
+"Eritrea";"ER";"ERI";"Developing";"Africa";"Sub-Saharan Africa";20.3;.;"no";.
+"Eswatini";"SZ";"SWZ";"Developing";"Africa";"Sub-Saharan Africa";23.7;47.1;"yes";"yes"
+"Ethiopia";"ET";"ETH";"Developing";"Africa";"Sub-Saharan Africa";19.8;25.2;"no";"yes"
+"French Southern Territories";"TF";"ATF";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Gabon";"GA";"GAB";"Developing";"Africa";"Sub-Saharan Africa";21;35.7;"no";"yes"
+"Gambia";"GM";"GMB";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Ghana";"GH";"GHA";"Developing";"Africa";"Sub-Saharan Africa";21.4;9.1;"no";"no"
+"Guinea";"GN";"GIN";"Developing";"Africa";"Sub-Saharan Africa";19.1;1;"no";"no"
+"Guinea-Bissau";"GW";"GNB";"Developing";"Africa";"Sub-Saharan Africa";18;.;"no";.
+"Kenya";"KE";"KEN";"Developing";"Africa";"Sub-Saharan Africa";20;7.4;"no";"no"
+"Lesotho";"LS";"LSO";"Developing";"Africa";"Sub-Saharan Africa";24.7;34.4;"yes";"yes"
+"Liberia";"LR";"LBR";"Developing";"Africa";"Sub-Saharan Africa";18;2.3;"no";"no"
+"Libya";"LY";"LBY";"Developing";"Africa";"Northern Africa";25.8;48.7;"yes";"yes"
+"Madagascar";"MG";"MDG";"Developing";"Africa";"Sub-Saharan Africa";20.3;1;"no";"no"
+"Malawi";"MW";"MWI";"Developing";"Africa";"Sub-Saharan Africa";16.8;40.5;"no";"yes"
+"Mali";"ML";"MLI";"Developing";"Africa";"Sub-Saharan Africa";16;16.9;"no";"no"
+"Mauritania";"MR";"MRT";"Developing";"Africa";"Sub-Saharan Africa";21;15.2;"no";"no"
+"Mauritius";"MU";"MUS";"Developing";"Africa";"Sub-Saharan Africa";36.3;23.9;"yes";"yes"
+"Mayotte";"YT";"MYT";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Morocco";"MA";"MAR";"Developing";"Africa";"Northern Africa";29.1;22.2;"yes";"yes"
+"Mozambique";"MZ";"MOZ";"Developing";"Africa";"Sub-Saharan Africa";17;7.4;"no";"no"
+"Namibia";.;"NAM";"Developing";"Africa";"Sub-Saharan Africa";21.8;38;"yes";"yes"
+"Niger";"NE";"NER";"Developing";"Africa";"Sub-Saharan Africa";14.8;0.7;"no";"no"
+"Nigeria";"NG";"NGA";"Developing";"Africa";"Sub-Saharan Africa";18.6;13.8;"no";"no"
+"Rwanda";"RW";"RWA";"Developing";"Africa";"Sub-Saharan Africa";19.7;20.6;"no";"no"
+"Réunion";"RE";"REU";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Saint Helena";"SH";"SHN";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Sao Tome and Principe";"ST";"STP";"Developing";"Africa";"Sub-Saharan Africa";19.3;20.8;"no";"no"
+"Senegal";"SN";"SEN";"Developing";"Africa";"Sub-Saharan Africa";19.4;8.1;"no";"no"
+"Seychelles";"SC";"SYC";"Developing";"Africa";"Sub-Saharan Africa";36.8;11.6;"yes";"no"
+"Sierra Leone";"SL";"SLE";"Developing";"Africa";"Sub-Saharan Africa";19.1;9.4;"no";"no"
+"Somalia";"SO";"SOM";"Developing";"Africa";"Sub-Saharan Africa";18.5;.;"no";.
+"South Africa";"ZA";"ZAF";"Developing";"Africa";"Sub-Saharan Africa";28;53.4;"yes";"yes"
+"South Sudan";"SS";"SSD";"Developing";"Africa";"Sub-Saharan Africa";18.6;38.6;"no";"yes"
+"Sudan";"SD";"SDN";"Developing";"Africa";"Northern Africa";18.3;.;"no";.
+"Togo";"TG";"TGO";"Developing";"Africa";"Sub-Saharan Africa";20;3.9;"no";"no"
+"Tunisia";"TN";"TUN";"Developing";"Africa";"Northern Africa";32.7;35;"yes";"yes"
+"Uganda";"UG";"UGA";"Developing";"Africa";"Sub-Saharan Africa";15.7;14.8;"no";"no"
+"United Republic of Tanzania";"TZ";"TZA";"Developing";"Africa";"Sub-Saharan Africa";.;.;.;.
+"Western Sahara";"EH";"ESH";"Developing";"Africa";"Northern Africa";.;.;.;.
+"Zambia";"ZM";"ZMB";"Developing";"Africa";"Sub-Saharan Africa";16.9;24;"no";"yes"
+"Zimbabwe";"ZW";"ZWE";"Developing";"Africa";"Sub-Saharan Africa";20.5;16.5;"no";"no"
+"Anguilla";"AI";"AIA";"Developing";"Americas";"Latin America and the Caribbean";35.7;.;"yes";.
+"Antigua and Barbuda";"AG";"ATG";"Developing";"Americas";"Latin America and the Caribbean";32.7;.;"yes";.
+"Argentina";"AR";"ARG";"Developing";"Americas";"Latin America and the Caribbean";32.4;23.7;"no";"yes"
+"Aruba";"AW";"ABW";"Developing";"Americas";"Latin America and the Caribbean";39.9;.;"yes";.
+"Bahamas";"BS";"BHS";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Barbados";"BB";"BRB";"Developing";"Americas";"Latin America and the Caribbean";39.5;29.6;"yes";"yes"
+"Belize";"BZ";"BLZ";"Developing";"Americas";"Latin America and the Caribbean";23.9;15.3;"no";"no"
+"Bermuda";"BM";"BMU";"Developed";"Americas";"Northern America";43.6;29.3;"yes";"yes"
+"Bolivia (Plurinational State of)";"BO";"BOL";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Bonaire, Sint Eustatius and Saba";"BQ";"BES";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Bouvet Island";"BV";"BVT";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Brazil";"BR";"BRA";"Developing";"Americas";"Latin America and the Caribbean";33.2;28.5;"yes";"yes"
+"British Virgin Islands";"VG";"VGB";"Developing";"Americas";"Latin America and the Caribbean";37.2;.;"yes";.
+"Canada";"CA";"CAN";"Developed";"Americas";"Northern America";41.8;11.1;"yes";"no"
+"Cayman Islands";"KY";"CYM";"Developing";"Americas";"Latin America and the Caribbean";40.5;13.8;"yes";"no"
+"Chile";"CL";"CHL";"Developing";"Americas";"Latin America and the Caribbean";35.5;18.1;"yes";"yes"
+"Colombia";"CO";"COL";"Developing";"Americas";"Latin America and the Caribbean";31.2;18.5;"no";"yes"
+"Costa Rica";"CR";"CRI";"Developing";"Americas";"Latin America and the Caribbean";32.6;20.6;"no";"yes"
+"Cuba";"CU";"CUB";"Developing";"Americas";"Latin America and the Caribbean";42.1;6.1;"yes";"no"
+"Curaçao";"CW";"CUW";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Dominica";"DM";"DMA";"Developing";"Americas";"Latin America and the Caribbean";34.9;.;"yes";.
+"Dominican Republic";"DO";"DOM";"Developing";"Americas";"Latin America and the Caribbean";27.9;13.5;"no";"no"
+"Ecuador";"EC";"ECU";"Developing";"Americas";"Latin America and the Caribbean";28.8;7.9;"no";"no"
+"El Salvador";"SV";"SLV";"Developing";"Americas";"Latin America and the Caribbean";27.7;9.6;"no";"no"
+"Falkland Islands (Malvinas)";"FK";"FLK";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"French Guiana";"GF";"GUF";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Greenland";"GL";"GRL";"Developed";"Americas";"Northern America";34.3;.;"yes";.
+"Grenada";"GD";"GRD";"Developing";"Americas";"Latin America and the Caribbean";33.3;.;"yes";.
+"Guadeloupe";"GP";"GLP";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Guatemala";"GT";"GTM";"Developing";"Americas";"Latin America and the Caribbean";23.2;5;"no";"no"
+"Guyana";"GY";"GUY";"Developing";"Americas";"Latin America and the Caribbean";27.5;21.5;"no";"yes"
+"Haiti";"HT";"HTI";"Developing";"Americas";"Latin America and the Caribbean";24.1;.;"no";.
+"Honduras";"HN";"HND";"Developing";"Americas";"Latin America and the Caribbean";24.4;10.7;"no";"no"
+"Jamaica";"JM";"JAM";"Developing";"Americas";"Latin America and the Caribbean";29.4;24.2;"no";"yes"
+"Martinique";"MQ";"MTQ";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Mexico";"MX";"MEX";"Developing";"Americas";"Latin America and the Caribbean";29.3;6.9;"no";"no"
+"Montserrat";"MS";"MSR";"Developing";"Americas";"Latin America and the Caribbean";34.8;.;"yes";.
+"Nicaragua";"NI";"NIC";"Developing";"Americas";"Latin America and the Caribbean";27.3;8.5;"no";"no"
+"Panama";"PA";"PAN";"Developing";"Americas";"Latin America and the Caribbean";30.1;10.2;"no";"no"
+"Paraguay";"PY";"PRY";"Developing";"Americas";"Latin America and the Caribbean";29.7;14.5;"no";"no"
+"Peru";"PE";"PER";"Developing";"Americas";"Latin America and the Caribbean";29.1;14.7;"no";"no"
+"Puerto Rico";"PR";"PRI";"Developing";"Americas";"Latin America and the Caribbean";43.6;26.6;"yes";"yes"
+"Saint Barthélemy";"BL";"BLM";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Saint Kitts and Nevis";"KN";"KNA";"Developing";"Americas";"Latin America and the Caribbean";36.5;.;"yes";.
+"Saint Lucia";"LC";"LCA";"Developing";"Americas";"Latin America and the Caribbean";36.9;46.2;"yes";"yes"
+"Saint Martin (French Part)";"MF";"MAF";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Saint Pierre and Miquelon";"PM";"SPM";"Developed";"Americas";"Northern America";48.5;.;"yes";.
+"Saint Vincent and the Grenadines";"VC";"VCT";"Developing";"Americas";"Latin America and the Caribbean";35.3;.;"yes";.
+"Sint Maarten (Dutch part)";"SX";"SXM";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"South Georgia and the South Sandwich Islands";"GS";"SGS";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Suriname";"SR";"SUR";"Developing";"Americas";"Latin America and the Caribbean";31;13.4;"no";"no"
+"Trinidad and Tobago";"TT";"TTO";"Developing";"Americas";"Latin America and the Caribbean";37.8;8.7;"yes";"no"
+"Turks and Caicos Islands";"TC";"TCA";"Developing";"Americas";"Latin America and the Caribbean";34.6;.;"yes";.
+"United States Virgin Islands";"VI";"VIR";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"United States of America";"US";"USA";"Developed";"Americas";"Northern America";.;.;.;.
+"Uruguay";"UY";"URY";"Developing";"Americas";"Latin America and the Caribbean";35.5;25.9;"yes";"yes"
+"Venezuela (Bolivarian Republic of)";"VE";"VEN";"Developing";"Americas";"Latin America and the Caribbean";.;.;.;.
+"Afghanistan";"AF";"AFG";"Developing";"Asia";"Southern Asia";19.5;17.6;"no";"yes"
+"Armenia";"AM";"ARM";"Developing";"Asia";"Western Asia";36.6;36.3;"yes";"yes"
+"Azerbaijan";"AZ";"AZE";"Developing";"Asia";"Western Asia";32.6;13.4;"yes";"no"
+"Bahrain";"BH";"BHR";"Developing";"Asia";"Western Asia";32.9;5.3;"yes";"no"
+"Bangladesh";"BD";"BGD";"Developing";"Asia";"Southern Asia";27.9;12.8;"no";"no"
+"Bhutan";"BT";"BTN";"Developing";"Asia";"Southern Asia";29.1;10.7;"no";"no"
+"Brunei Darussalam";"BN";"BRN";"Developing";"Asia";"South-eastern Asia";.;.;.;.
+"Cambodia";"KH";"KHM";"Developing";"Asia";"South-eastern Asia";26.4;1.1;"no";"no"
+"China";"CN";"CHN";"Developing";"Asia";"Eastern Asia";38.4;.;"yes";.
+"China, Hong Kong Special Administrative Region";"HK";"HKG";"Developing";"Asia";"Eastern Asia";.;.;.;.
+"China, Macao Special Administrative Region";"MO";"MAC";"Developing";"Asia";"Eastern Asia";.;.;.;.
+"Cyprus";"CY";"CYP";"Developed";"Asia";"Western Asia";37.9;20.2;"yes";"yes"
+"Democratic People's Republic of Korea";"KP";"PRK";"Developing";"Asia";"Eastern Asia";.;.;.;.
+"Georgia";"GE";"GEO";"Developing";"Asia";"Western Asia";38.6;29.9;"yes";"yes"
+"India";"IN";"IND";"Developing";"Asia";"Southern Asia";28.7;22.5;"no";"yes"
+"Indonesia";"ID";"IDN";"Developing";"Asia";"South-eastern Asia";31.1;16.5;"yes";"yes"
+"Iran (Islamic Republic of)";"IR";"IRN";"Developing";"Asia";"Southern Asia";.;.;.;.
+"Iraq";"IQ";"IRQ";"Developing";"Asia";"Western Asia";21.2;25.6;"no";"yes"
+"Israel";"IL";"ISR";"Developed";"Asia";"Western Asia";30.4;7.2;"yes";"no"
+"Japan";"JP";"JPN";"Developed";"Asia";"Eastern Asia";48.6;3.6;"yes";"no"
+"Jordan";"JO";"JOR";"Developing";"Asia";"Western Asia";23.5;35.6;"no";"yes"
+"Kazakhstan";"KZ";"KAZ";"Developing";"Asia";"Central Asia";31.6;3.8;"yes";"no"
+"Kuwait";"KW";"KWT";"Developing";"Asia";"Western Asia";29.7;15.4;"no";"yes"
+"Kyrgyzstan";"KG";"KGZ";"Developing";"Asia";"Central Asia";27.3;14.2;"no";"no"
+"Lao People's Democratic Republic";"LA";"LAO";"Developing";"Asia";"South-eastern Asia";.;.;.;.
+"Lebanon";"LB";"LBN";"Developing";"Asia";"Western Asia";33.7;.;"yes";.
+"Malaysia";"MY";"MYS";"Developing";"Asia";"South-eastern Asia";29.2;10.5;"no";"no"
+"Maldives";"MV";"MDV";"Developing";"Asia";"Southern Asia";29.5;15.9;"no";"yes"
+"Mongolia";"MN";"MNG";"Developing";"Asia";"Eastern Asia";29.8;16.8;"no";"yes"
+"Myanmar";"MM";"MMR";"Developing";"Asia";"South-eastern Asia";.;.;.;.
+"Nepal";"NP";"NPL";"Developing";"Asia";"Southern Asia";25.3;21.4;"no";"yes"
+"Oman";"OM";"OMN";"Developing";"Asia";"Western Asia";26.2;13.7;"no";"no"
+"Pakistan";"PK";"PAK";"Developing";"Asia";"Southern Asia";22;7.8;"no";"no"
+"Philippines";"PH";"PHL";"Developing";"Asia";"South-eastern Asia";24.1;6.7;"no";"no"
+"Qatar";"QA";"QAT";"Developing";"Asia";"Western Asia";33.7;0.4;"yes";"no"
+"Republic of Korea";"KR";"KOR";"Developing";"Asia";"Eastern Asia";.;.;.;.
+"Saudi Arabia";"SA";"SAU";"Developing";"Asia";"Western Asia";30.8;28.8;"yes";"yes"
+"Singapore";"SG";"SGP";"Developing";"Asia";"South-eastern Asia";35.6;9.1;"yes";"no"
+"Sri Lanka";"LK";"LKA";"Developing";"Asia";"Southern Asia";33.7;21;"yes";"yes"
+"State of Palestine";"PS";"PSE";"Developing";"Asia";"Western Asia";.;.;.;.
+"State of Palestine";"PS";"PSE";"Developing";"Asia";"Western Asia";.;.;.;.
+"Syrian Arab Republic";"SY";"SYR";"Developing";"Asia";"Western Asia";.;.;.;.
+"Tajikistan";"TJ";"TJK";"Developing";"Asia";"Central Asia";25.3;.;"no";.
+"Thailand";"TH";"THA";"Developing";"Asia";"South-eastern Asia";39;3.7;"yes";"no"
+"Timor-Leste";"TL";"TLS";"Developing";"Asia";"South-eastern Asia";19.6;13.2;"no";"no"
+"Turkey";"TR";"TUR";"Developing";"Asia";"Western Asia";32.2;20.2;"yes";"yes"
+"Turkmenistan";"TM";"TKM";"Developing";"Asia";"Central Asia";29.2;.;"no";.
+"United Arab Emirates";"AE";"ARE";"Developing";"Asia";"Western Asia";38.4;6.9;"yes";"no"
+"Uzbekistan";"UZ";"UZB";"Developing";"Asia";"Central Asia";30.1;.;"yes";.
+"Viet Nam";"VN";"VNM";"Developing";"Asia";"South-eastern Asia";.;.;.;.
+"Yemen";"YE";"YEM";"Developing";"Asia";"Western Asia";19.8;24.5;"no";"yes"
+"Albania";"AL";"ALB";"Developed";"Europe";"Southern Europe";34.3;31.9;"no";"yes"
+"Andorra";"AD";"AND";"Developed";"Europe";"Southern Europe";46.2;.;"yes";.
+"Austria";"AT";"AUT";"Developed";"Europe";"Western Europe";44.5;9.4;"yes";"no"
+"Belarus";"BY";"BLR";"Developed";"Europe";"Eastern Europe";40.9;10.6;"no";"no"
+"Belgium";"BE";"BEL";"Developed";"Europe";"Western Europe";41.6;15.8;"no";"no"
+"Bosnia and Herzegovina";"BA";"BIH";"Developed";"Europe";"Southern Europe";43.3;33.8;"yes";"yes"
+"Bulgaria";"BG";"BGR";"Developed";"Europe";"Eastern Europe";43.7;12.7;"yes";"no"
+"Croatia";"HR";"HRV";"Developed";"Europe";"Southern Europe";43.9;23.7;"yes";"yes"
+"Czechia";"CZ";"CZE";"Developed";"Europe";"Eastern Europe";43.3;6.7;"yes";"no"
+"Denmark";"DK";"DNK";"Developed";"Europe";"Northern Europe";42;9.4;"no";"no"
+"Estonia";"EE";"EST";"Developed";"Europe";"Northern Europe";43.7;11.8;"yes";"no"
+"Faroe Islands";"FO";"FRO";"Developed";"Europe";"Northern Europe";37.2;.;"no";.
+"Finland";"FI";"FIN";"Developed";"Europe";"Northern Europe";42.8;17;"no";"no"
+"France";"FR";"FRA";"Developed";"Europe";"Western Europe";41.7;20.8;"no";"yes"
+"Germany";"DE";"DEU";"Developed";"Europe";"Western Europe";47.8;6.2;"yes";"no"
+"Gibraltar";"GI";"GIB";"Developed";"Europe";"Southern Europe";35.5;.;"no";.
+"Greece";"GR";"GRC";"Developed";"Europe";"Southern Europe";45.3;39.9;"yes";"yes"
+"Guernsey";"GG";"GGY";"Developed";"Europe";"Northern Europe";44.3;.;"yes";.
+"Holy See";"VA";"VAT";"Developed";"Europe";"Southern Europe";.;.;.;.
+"Hungary";"HU";"HUN";"Developed";"Europe";"Eastern Europe";43.6;10.2;"yes";"no"
+"Iceland";"IS";"ISL";"Developed";"Europe";"Northern Europe";37.1;6.1;"no";"no"
+"Ireland";"IE";"IRL";"Developed";"Europe";"Northern Europe";37.8;13.8;"no";"no"
+"Isle of Man";"IM";"IMN";"Developed";"Europe";"Northern Europe";44.6;10.1;"yes";"no"
+"Italy";"IT";"ITA";"Developed";"Europe";"Southern Europe";46.5;32.2;"yes";"yes"
+"Jersey";"JE";"JEY";"Developed";"Europe";"Northern Europe";37.5;.;"no";.
+"Latvia";"LV";"LVA";"Developed";"Europe";"Northern Europe";44.4;12.2;"yes";"no"
+"Liechtenstein";"LI";"LIE";"Developed";"Europe";"Western Europe";43.7;.;"yes";.
+"Lithuania";"LT";"LTU";"Developed";"Europe";"Northern Europe";44.5;11.1;"yes";"no"
+"Luxembourg";"LU";"LUX";"Developed";"Europe";"Western Europe";39.5;14.2;"no";"no"
+"Malta";"MT";"MLT";"Developed";"Europe";"Southern Europe";42.3;9.1;"no";"no"
+"Monaco";"MC";"MCO";"Developed";"Europe";"Western Europe";55.4;26.6;"yes";"yes"
+"Montenegro";"ME";"MNE";"Developed";"Europe";"Southern Europe";39.6;29.4;"no";"yes"
+"Netherlands";"NL";"NLD";"Developed";"Europe";"Western Europe";42.8;7.2;"no";"no"
+"Norway";"NO";"NOR";"Developed";"Europe";"Northern Europe";39.5;9.7;"no";"no"
+"Poland";"PL";"POL";"Developed";"Europe";"Eastern Europe";41.9;11.7;"no";"no"
+"Portugal";"PT";"PRT";"Developed";"Europe";"Southern Europe";44.6;20.3;"yes";"yes"
+"Republic of Moldova";"MD";"MDA";"Developed";"Europe";"Eastern Europe";.;.;.;.
+"Romania";"RO";"ROU";"Developed";"Europe";"Eastern Europe";42.5;16.2;"no";"no"
+"Russian Federation";"RU";"RUS";"Developed";"Europe";"Eastern Europe";.;.;.;.
+"San Marino";"SM";"SMR";"Developed";"Europe";"Southern Europe";45.2;27.4;"yes";"yes"
+"Sark";"";"";"Developed";"Europe";"Northern Europe";.;.;.;.
+"Serbia";"RS";"SRB";"Developed";"Europe";"Southern Europe";43.4;29.7;"yes";"yes"
+"Slovakia";"SK";"SVK";"Developed";"Europe";"Eastern Europe";41.8;14.9;"no";"no"
+"Slovenia";"SI";"SVN";"Developed";"Europe";"Southern Europe";44.9;8.8;"yes";"no"
+"Spain";"ES";"ESP";"Developed";"Europe";"Southern Europe";43.9;34.3;"yes";"yes"
+"Svalbard and Jan Mayen Islands";"SJ";"SJM";"Developed";"Europe";"Northern Europe";.;.;.;.
+"Sweden";"SE";"SWE";"Developed";"Europe";"Northern Europe";41.1;16.8;"no";"no"
+"Switzerland";"CH";"CHE";"Developed";"Europe";"Western Europe";42.7;7.9;"no";"no"
+"The former Yugoslav Republic of Macedonia";"MK";"MKD";"Developed";"Europe";"Southern Europe";.;.;.;.
+"Ukraine";"UA";"UKR";"Developed";"Europe";"Eastern Europe";41.2;17.9;"no";"yes"
+"United Kingdom of Great Britain and Northern Ireland";"GB";"GBR";"Developed";"Europe";"Northern Europe";.;.;.;.
+"Åland Islands";"AX";"ALA";"Developed";"Europe";"Northern Europe";.;.;.;.
+"American Samoa";"AS";"ASM";"Developing";"Oceania";"Polynesia";27.2;.;"no";.
+"Australia";"AU";"AUS";"Developed";"Oceania";"Australia and New Zealand";37.5;11.8;"yes";"no"
+"Christmas Island";"CX";"CXR";"Developed";"Oceania";"Australia and New Zealand";.;.;.;.
+"Cocos (Keeling) Islands";"CC";"CCK";"Developed";"Oceania";"Australia and New Zealand";.;.;.;.
+"Cook Islands";"CK";"COK";"Developing";"Oceania";"Polynesia";38.3;.;"yes";.
+"Fiji";"FJ";"FJI";"Developing";"Oceania";"Melanesia";29.9;15.4;"yes";"no"
+"French Polynesia";"PF";"PYF";"Developing";"Oceania";"Polynesia";33.3;56.7;"yes";"yes"
+"Guam";"GU";"GUM";"Developing";"Oceania";"Micronesia";29.4;29.4;"yes";"yes"
+"Heard Island and McDonald Islands";"HM";"HMD";"Developed";"Oceania";"Australia and New Zealand";.;.;.;.
+"Kiribati";"KI";"KIR";"Developing";"Oceania";"Micronesia";25.7;17.1;"no";"no"
+"Marshall Islands";"MH";"MHL";"Developing";"Oceania";"Micronesia";23.8;11;"no";"no"
+"Micronesia (Federated States of)";"FM";"FSM";"Developing";"Oceania";"Micronesia";.;.;.;.
+"Nauru";"NR";"NRU";"Developing";"Oceania";"Micronesia";27;26.6;"no";"yes"
+"New Caledonia";"NC";"NCL";"Developing";"Oceania";"Melanesia";32.9;38.4;"yes";"yes"
+"New Zealand";"NZ";"NZL";"Developed";"Oceania";"Australia and New Zealand";37.2;11.5;"yes";"no"
+"Niue";"NU";"NIU";"Developing";"Oceania";"Polynesia";.;.;.;.
+"Norfolk Island";"NF";"NFK";"Developed";"Oceania";"Australia and New Zealand";.;.;.;.
+"Northern Mariana Islands";"MP";"MNP";"Developing";"Oceania";"Micronesia";32.8;.;"yes";.
+"Palau";"PW";"PLW";"Developing";"Oceania";"Micronesia";33.9;5.6;"yes";"no"
+"Papua New Guinea";"PG";"PNG";"Developing";"Oceania";"Melanesia";24;3.6;"no";"no"
+"Pitcairn";"PN";"PCN";"Developing";"Oceania";"Polynesia";.;.;.;.
+"Samoa";"WS";"WSM";"Developing";"Oceania";"Polynesia";25.6;31.9;"no";"yes"
+"Solomon Islands";"SB";"SLB";"Developing";"Oceania";"Melanesia";23.5;1.3;"no";"no"
+"Tokelau";"TK";"TKL";"Developing";"Oceania";"Polynesia";.;.;.;.
+"Tonga";"TO";"TON";"Developing";"Oceania";"Polynesia";24.1;.;"no";.
+"Tuvalu";"TV";"TUV";"Developing";"Oceania";"Polynesia";26.6;20.6;"no";"yes"
+"United States Minor Outlying Islands";"UM";"UMI";"Developing";"Oceania";"Micronesia";.;.;.;.
+"Vanuatu";"VU";"VUT";"Developing";"Oceania";"Melanesia";23;.;"no";.
+"Wallis and Futuna Islands";"WF";"WLF";"Developing";"Oceania";"Polynesia";.;.;.;.
