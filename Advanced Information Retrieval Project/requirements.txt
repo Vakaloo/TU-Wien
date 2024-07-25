@@ -1,0 +1,8 @@
+allennlp==1.2.2
+blingfire==0.1.7
+PyYAML==5.4
+transformers==3.5.1
+
+# Special instruction for Torch
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.6.0
