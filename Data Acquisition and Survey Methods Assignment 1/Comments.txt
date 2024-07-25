@@ -1,0 +1,30 @@
+
+Initially, I would like to point out that the comments and analysis 
+of the following diagrams concern the day the rmarkdown file was executed. 
+The date is indicated at the beginning of the PDF report. The values may vary, 
+as well as the diagrams, because according to the exercise instructions, 
+the temperature, wind, and humidity values for the next 24 hours are needed.
+
+Regarding the temperature, it is evident that throughout the day, 
+the temperature rises, reaching its peak at midday (between 1 pm to 4 pm). 
+From there onwards, the temperature decreases, reaching its minimum value 
+during the late midnight hours. However, it is worth noting that the temperatures 
+are quite high, and in combination with the humidity values during the day, it 
+indicates that we are talking about an area close to the equator and therefore 
+its climate is tropical.More specifically, from the humidity diagram, 
+it is observed that it is inversely proportional (negative correlation) 
+to the temperature. 
+That is to say, during midday, the humidity is relatively low, 
+while during the evening hours, when the sun sets or has set, 
+it is particularly high.
+
+Finally, the values of the wind during the day and night vary from 
+day to day and from hour to hour. Generally, areas with a tropical 
+climate are characterized by continuous and strong winds, which is 
+evident from Figure 4. Also, there is a significant fluctuation in 
+the values during the day and night. This means that the wind is not 
+correlated with temperature and humidity.
+
+Overall, as mentioned earlier, it is evident from the diagrams that 
+Kingston, in Jamaica, has a tropical climate with very high 
+temperatures and humidity, as well as significant fluctuations in strong winds.
