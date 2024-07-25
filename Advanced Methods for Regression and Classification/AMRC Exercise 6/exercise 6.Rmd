@@ -1,0 +1,276 @@
+---
+title: "Exercise 6"
+author: "Konstantinos Vakalopoulos"
+date: "2022-12-15"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the Auto from the ISLR package were loaded,
+
+```{r, eval = TRUE}
+library(ISLR)
+
+data("Auto")
+data <- Auto
+```
+
+the missing values were omitted, the variable "name" was deleted and the variables "cylinders" and "origin" were transformed to factors.
+
+```{r, eval = TRUE}
+data <- na.omit(data)
+data <- data[,-9]
+data$cylinders <- as.factor(data$cylinders)
+data$origin <- as.factor(data$origin)
+```
+
+More information about the data are presented to the plots using the library Hmisc.
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(Hmisc)
+```
+
+```{r, eval = TRUE, fig.width=7,fig.height=6, fig.align="center", fig.cap="Histograms of the variables", fig.pos="H",warning=FALSE}
+hist.data.frame(data)
+```
+
+Furthermore, the numeric variables "mpg", "weight" and "horsepower" were transformed using the log function. Below are presented the plots of the transformed data.
+
+```{r, eval = TRUE}
+data$mpg <- log(data$mpg)
+data$weight <- log(data$weight)
+data$horsepower <- log(data$horsepower)
+```
+
+```{r, eval = TRUE, fig.width=7,fig.height=6, fig.align="center", fig.cap="Histograms of the variables", fig.pos="H",warning=FALSE}
+hist.data.frame(data)
+```
+
+
+## Question 1(a)
+
+For this part of the exercise, the variable "mpg" was considered the response and "acceleration" the explanatory variable. Also, three different data sets were created based on the variable "origin". 
+
+```{r, eval = TRUE}
+newdata <- subset(data, select=c("mpg", "acceleration"))
+American <- newdata[which(data$origin==1),]
+European <- newdata[which(data$origin==2),]
+Japanese <- newdata[which(data$origin==3),]
+```
+
+For the desired number of degrees of freedom, smoothing splines were used in each of the data set using cross validation. In R, the library splines was used.
+
+```{r, eval = TRUE, warning = FALSE}
+library(splines)
+
+American.df <-  smooth.spline(American$acceleration, American$mpg, cv=TRUE)$df
+European.df <-  smooth.spline(European$acceleration, European$mpg, cv=TRUE)$df
+Japanese.df <-  smooth.spline(Japanese$acceleration, Japanese$mpg, cv=TRUE)$df
+```
+
+First the data were sorted according to the variable "acceleration" and based on the degrees of freedom, the B-splines were calculated using the bs() function for each data set and the lm() to fit the model. 
+
+```{r, eval = TRUE, warning=FALSE}
+American <- American[order(American$acceleration),]
+European <- European[order(European$acceleration),]
+Japanese <- Japanese[order(Japanese$acceleration),]
+
+lm.American <- lm(mpg ~ bs(acceleration, df=American.df), data = American)
+lm.European <- lm(mpg ~ bs(acceleration, df=European.df), data = European)
+lm.Japanese <- lm(mpg ~ bs(acceleration, df=Japanese.df), data = Japanese)
+```
+
+The plots "mpg" vs "acceleration" and the fitted lines are presented below.
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.cap="mpg versus accelerations", fig.pos="H"}
+par(mfrow = c(2, 2))
+plot(American$acceleration, American$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "American")
+lines(American$acceleration, fitted(lm.American), col="blue")
+
+plot(European$acceleration, European$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "European")
+lines(European$acceleration, fitted(lm.European), col="blue")
+
+plot(Japanese$acceleration, Japanese$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "Japanese")
+lines(Japanese$acceleration, fitted(lm.Japanese), col="blue")
+```
+
+## Question 1(b)
+
+The same procedure was done for the natural cubic splines, but this time the function ns() was used. Furthermore, the degrees of freedom were rounded due to an error provided by the function ns()
+
+```{r, eval = TRUE, warning=FALSE}
+American.df <- round(American.df, digits = 0)
+European.df <- round(European.df, digits = 0)
+Japanese.df <- round(Japanese.df, digits = 0)
+
+lm.American <- lm(mpg ~ ns(acceleration, df=American.df), data = American)
+lm.European <- lm(mpg ~ ns(acceleration, df=European.df), data = European)
+lm.Japanese <- lm(mpg ~ ns(acceleration, df=Japanese.df), data = Japanese)
+```
+
+The plots "mpg" vs "acceleration" and the fitted lines are presented below.
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.cap="mpg versus accelerations", fig.pos="H"}
+par(mfrow = c(2, 2))
+plot(American$acceleration, American$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "American")
+lines(American$acceleration, fitted(lm.American), col="blue")
+
+plot(European$acceleration, European$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "European")
+lines(European$acceleration, fitted(lm.European), col="blue")
+
+plot(Japanese$acceleration, Japanese$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "Japanese")
+lines(Japanese$acceleration, fitted(lm.Japanese), col="blue")
+```
+
+## Question 1(c)
+
+For the smoothing splines, the sorting is not required. However, the data were kept sorted. As in the question 1(a) the function smooth.spline() was used with cross validation for the optimal degrees of freedom. 
+
+```{r, eval = TRUE, warning=FALSE}
+American.smooth <-  smooth.spline(American$acceleration, American$mpg, cv=TRUE)
+European.smooth <-  smooth.spline(European$acceleration, European$mpg, cv=TRUE)
+Japanese.smooth <-  smooth.spline(Japanese$acceleration, Japanese$mpg, cv=TRUE)
+```
+
+The plots "mpg" vs "acceleration" and the fitted lines are presented below.
+
+```{r, eval = TRUE, fig.width=9,fig.height=6.5, fig.align="center", fig.cap="mpg versus accelerations", fig.pos="H"}
+par(mfrow = c(2, 2))
+plot(American$acceleration, American$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "American")
+lines(American.smooth, col="blue")
+
+plot(European$acceleration, European$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "European")
+lines(European.smooth, col="blue")
+
+plot(Japanese$acceleration, Japanese$mpg, xlab="Acceleration", ylab="MPG", 
+     main = "Japanese")
+lines(Japanese.smooth, col="blue")
+```
+
+
+## Question 2(a)
+
+The data were split randomly into train and test set (2/3 train and 1/3 test).  
+```{r, eval = TRUE}
+set.seed(12223236)
+n <- nrow(data)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+For the linear model with natural cubic splines the function ns() from the library splines and the lm() function was used. Also, in the model the variables cylinders and origin were entered in the usual way without splines because they are categorical variables.  
+
+```{r, eval = TRUE}
+library(splines)
+model <- lm(mpg~cylinders+ns(displacement,4)+ns(horsepower,4)
+            +ns(weight,4)+ns(acceleration,4)+ns(year,4)+origin, data=data,subset=train)
+```
+
+The summary of the model is presented below.
+
+```{r, eval = TRUE}
+summary(model)
+```
+
+Regarding the categorical variables, only the "cylinders" variable is significant based on the p value. 
+Regarding the rest of the variables, can be seen that we have a block of 4 variables (artificial variables) for each input variable. Thus, based on the summary table and the p values we can determine if the block is significant or not. For the variable "displacement" 3 of the 4 basis functions are significant and thus we have to keep all the block. We cannot remove the fourth basis function and the keep the rest. Either we keep or remove all the block. Same thing applies for the variable "year", "weight" and "horsepower". Finally, for the "acceleration" variable non of the 4 basis functions are significant and this variable could be removed from the model.
+
+The RMSE for the test set is:
+
+```{r, eval = TRUE}
+pred <- predict(model,newdata=data[test,])
+sqrt(mean((data$mpg[test]-pred)^2))
+```
+
+
+## Question 2(b)
+
+In this part of the exercise, the stepwise variable selection was applied using the function step().
+
+```{r, eval = TRUE, results="hide"}
+model.step <-  step(model,direction="both")
+```
+
+The summary of the model is presented below.
+
+```{r, eval = TRUE}
+summary(model.step)
+```
+
+Based on the summary table it is observed that the variable "origin" has been removed from the model. However, the rest of the variables, regarding the significance, are similar to the full model from the question 2(a). 
+
+The RMSE for the test set is:
+
+```{r, eval = TRUE}
+pred <- predict(model.step,newdata=data[test,])
+sqrt(mean((data$mpg[test]-pred)^2))
+```
+
+
+## Question 2(c)
+
+The variables from the reduced model, despite the factor variable cylinders, are: "displacement", "horsepower", "weight", "acceleration" and "year".
+
+```{r, eval = TRUE}
+X <- model.matrix(model.step)
+```
+
+In figure 6, the variable "displacement" against their estimated values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Variable Displacement", fig.pos="H"}
+plot(data[train,]$displacement,X[,6:9]%*%model.step$coefficients[6:9],
+     xlab="Displacement", ylab="Estimated Displacement")
+```
+Based on the plot, it is observed that from 80 to 300 both the displacement and the estimated values increase. Also, between 100 and 200 a small non linearity  can be seen. The biggest difference in the plot is observed when the variable displacement exceeds the value 300. From that point onwards the increase in displacement is equivalent to an increase in estimated values
+
+
+In figure 7, the variable "horsepower" against their estimated values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Variable Horsepower", fig.pos="H"}
+plot(data[train,]$horsepower,X[,10:13]%*%model.step$coefficients[10:13],
+     xlab="Horsepower", ylab="Estimated Horsepower")
+```
+
+In the figure above, similar to "displacement" variable, while the horsepower increases, the estimates values decrease. Also, non linearity is observed from 4.2 to 5.0.
+
+In figure 8, the variable "weight" against their estimated values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Variable Weight", fig.pos="H"}
+plot(data[train,]$weight,X[,14:17]%*%model.step$coefficients[14:17],
+     xlab="Weight", ylab="Estimated Weight")
+```
+In figure 8, from 7.4 to 7.7 the weight increases but the estimated values are towards zero. Consequently, negative linear relationship is observed between the two variables in the whole range of weight values. However, there are still some points in the plot where non linearity takes place.
+
+In figure 9, the variable "acceleration" against their estimated values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Variable Acceleration", fig.pos="H"}
+plot(data[train,]$acceleration,X[,18:21]%*%model.step$coefficients[18:21],
+     xlab="Acceleration", ylab="Estimated Acceleration")
+```
+
+In figure 9, the estimated values for the variable "acceleration" fluctuate over the whole range. More specifically, firstly there is an increase in values. Then, the estimated values start to decrease and for acceleration from 12.5 to 16 this decrease is linear. After that, the estimated are stable towards -0.75 but while the acceleration increases, the estimated values tend to increase. 
+
+In figure 10, the variable "year" against their estimated values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Variable Year", fig.pos="H"}
+plot(data[train,]$year,X[,22:25]%*%model.step$coefficients[22:25],
+     xlab="Year", ylab="Estimated Year")
+```
+
+Based on the figure 10, for the years 70-73 the estimated values are decreasing. Although, from the year 74 to 82 the estimated values are increasing linearly.

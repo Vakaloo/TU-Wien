@@ -1,0 +1,261 @@
+---
+title: "Exercise 3"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-11-17"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the ISLR package was installed
+
+```{r, eval = FALSE}
+install.packages("ISLR")
+```
+
+and then the data was loaded with.
+
+```{r, eval = TRUE}
+library("ISLR")
+data(College,package="ISLR")
+```
+
+For addition information about the data, the following commands were used.
+
+```{r, eval = FALSE}
+?College
+str(College)
+```
+
+The observations which contain missing values and the variables Accept and Enroll were removed from the original data.
+
+```{r, eval = TRUE}
+College <- na.omit(College) #Check for NA observations
+College <- College[,-c(3,4)] #Remove the Accept and Enroll variables
+```
+
+The values of the Apps variable has been changed to log transformed.
+
+```{r, eval = TRUE}
+College$Apps <- log(College$Apps) #log transformation
+```
+
+Finally, the data was split randomly into training and test data (about 2/3 and 1/3).
+
+```{r, eval = TRUE}
+#Split the data into train and test
+set.seed(12223236)
+n <- nrow(College)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+
+## Question 1(a)
+
+From the library MASS, the function lm.ridge() was used on the train data in order to apply ridge regression. 
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(MASS)
+```
+
+```{r, eval = TRUE}
+res.ridge <- lm.ridge(Apps~., data=College, lambda=seq(0,50, by=0.05), subset=train)
+```
+
+For the ridge parameter lambda, a range from 0 to 50 with step equals to 0.05 was considered, in order to find the optimal value. In figure 1 is presented the resulting GCV against the examined lambda. 
+
+```{r, eval = TRUE, fig.width=6,fig.height=4.3, fig.align="center", fig.cap="Lambda parameter", fig.pos="H"}
+plot(res.ridge$lambda,res.ridge$GCV,type="l", ylab = "GCV", xlab="Lambda")
+```
+
+The optimal lambda is:
+
+```{r, eval = TRUE}
+lambda.opt <- res.ridge$lambda[which.min(res.ridge$GCV)]
+lambda.opt
+```
+
+and the minimum GCV error is:
+
+```{r, eval = TRUE}
+min(res.ridge$GCV)
+```
+
+
+## Question 1(b)
+
+The ridge regression model was created using the optimal lambda from the question 1(a).
+
+```{r, eval = TRUE}
+res.ridge.opt <- lm.ridge(Apps~., data=College, lambda = lambda.opt, 
+                          subset=train) #scales variables
+```
+
+The regression coefficients are:
+
+```{r, eval = TRUE}
+res.ridge.opt$coef #coefficients for scaled data
+```
+
+However these coefficients are scaled and the intercept is not included. Thus the unscaled coefficients with the intercept are:
+
+```{r, eval = TRUE}
+ridge.coef <- coef(res.ridge.opt) #unscaled with the intercepet
+ridge.coef
+```
+
+## Question 1(c)
+
+In order to predict the response for the test data, first the response variable was removed and then a column with 1s was added to the test data which indicates the intercept. Second, the explanatory variable "Private" was converted to binary variable. Finally, the predictions for the response variable were calculated by multiplying the test data matrix with the unscaled coefficients from the previous question.
+
+```{r, eval = TRUE}
+test.data <- cbind(rep(1,length(test)),College[test,-2])
+test.data$Private <- ifelse(test.data$Private=="Yes",1,0)
+pred.ridge <- data.matrix(test.data)%*%ridge.coef
+```
+
+In figure 2 are presented the predicted and the actual values for the response variable Apps. According to the plot, the performance of the model is quite high because of the linearity of the actual and predicted values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=6, fig.align="center", fig.cap="Predicted vs Measured", fig.pos="H"}
+plot(College[test,"Apps"],pred.ridge, xlab="Measured", 
+     ylab = "Predicted", main = "Apps",
+     xlim = c(5,12), ylim=c(5,12))
+abline(c(0,1))
+```
+
+The Root Mean Square Error is:
+
+```{r, eval = TRUE}
+mean((College[test,"Apps"]-pred.ridge)^2) 
+```
+
+It turns out that the performance of the model is quite competitive. 
+
+Now the RMSE was calculated for the linear model, and the models using PCR and PLS. 
+For the linear model, the RMSE on the test data is:
+
+```{r, eval = TRUE}
+linear.m <- lm(Apps~., data = College, subset = train)
+pred.linear <- predict(linear.m,newdata = College[test,])
+sqrt(mean((College$Apps[test]-pred.linear)^2))
+```
+
+For the reduced linear model using PCR, the RMSE on the test data is:
+
+```{r,  warning=FALSE,message=FALSE}
+library(pls)
+```
+```{r, eval = TRUE, echo=FALSE}
+pcr_model <- pcr(Apps~., data=College, scale=TRUE, subset=train,
+                  ncomp=9)
+pred_pcr <- predict(pcr_model,newdata=College[train,],ncomp=9)
+sqrt(mean((College$Apps[train]-pred_pcr)^2))
+```
+
+For the reduced linear model using PLS, the RMSE on the test data is:
+
+```{r, eval = TRUE}
+pls_model <- plsr(College$Apps~., data=College, scale=TRUE, subset=train,
+                  ncomp=3)
+pred_pls <- predict(pls_model,newdata=College[train,],ncomp=3)
+sqrt(mean((College$Apps[train]-pred_pls)^2))
+```
+
+In conclusion, the best result of the RMSE was given by the ridge regression model.
+
+
+## Question 2(a)
+
+For the creation of the lasso regression model, the function glmnet() for the library glmnet was used on the train data.
+
+```{r,  warning=FALSE,message=FALSE}
+library(glmnet)
+```
+
+```{r, eval = TRUE}
+data <- College
+data$Private <- ifelse(data$Private=="Yes",1,0)
+res.lasso <- glmnet(data.matrix(data[train,-2]),data[train,2], alpha=1)
+```
+
+In the plot below, the results from the glmnet function are shown.
+
+```{r, eval = TRUE, fig.width=6,fig.height=6, fig.align="center", fig.cap="L1 Norm for the explanatory variables", fig.pos="H"}
+plot(res.lasso, ylim=c(-0.1,0.1))
+```
+
+In the y axis of the plot are the coefficients, in the bottom x axis is the L1 norm is the penalty parameter for the lasso regression. While the L1 norm is increased, the coefficients are, also, increasing away from zero. Finally, at the top x axis are the number of variables in the model. Thus, for different L1 norms or the lasso's penalty, the number of variables that are zero and non zero can be seen. 
+
+The default parameter for lambda is the nlambda. Although glmnet fits the model for 100 values of lambda by default, it stops early if %dev does not change sufficiently from one lambda to the next. In our case, we stopped for lambda equal to 72. 
+
+```{r, eval = TRUE}
+print(res.lasso)
+```
+
+Regarding the alpha parameter, The alpha parameter is mixing parameter, which gets values between [0,1]. Alpha parameter is calculated using the formula (see ?glmnet). For alpha=1 we get the lasso penalty, and alpha=0 we get ridge penalty. For alpha values different from 0 and 1, we have regression called elastic net and it, actually, combines the lasso and the ridge penalty. 
+
+
+## Question 2(b)
+
+The function cv.glmnet() was used on the train data in order to parameters to be tuned and then to obtain the optimal ones through 10-fold cross validation.
+
+```{r, eval = TRUE}
+res.cv <- cv.glmnet(data.matrix(data[train,-2]),data[train,2])
+```
+
+The results are plotted in the figure below.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Cross Validation", fig.pos="H"}
+plot(res.cv)
+```
+
+The plot shows the cross validation mean squared error along with upper and lower standard deviation mean squared error along the lambda sequence. Also, two vertical dotted lines are created. the first line on the left, indicates the value of lambda with the minimum mean cross-validated error. However, the second dotted line indicates the optimal lambda value the minimum cross validation standard error. Finally, the smaller the log(lambda) the bigger the model until we reach to the linear full model.
+
+The optimal tuning parameter is:
+
+```{r, eval = TRUE}
+res.cv$lambda.1se
+```
+
+and the regression coefficients are:
+
+```{r, eval = TRUE}
+coef(res.cv,s="lambda.1se")
+```
+
+## Question 2(c)
+
+The optimal model, based on the previous question, was used to predict the response for the test data.
+
+```{r, eval = TRUE}
+pred.lasso <- predict(res.cv,newx=data.matrix(data[test,-2]),s="lambda.1se")
+```
+
+In figure 2 are presented the predicted and the actual values for the response variable Apps. According to the plot, the performance of the model is quite high because of the linearity of the actual and predicted values.
+
+```{r, eval = TRUE, fig.width=6,fig.height=6, fig.align="center", fig.cap="Predicted vs Measured", fig.pos="H"}
+plot(data[test,"Apps"],pred.lasso, xlab="Measured", 
+     ylab = "Predicted", main = "Apps",
+     xlim = c(5,12), ylim=c(5,12))
+abline(c(0,1))
+```
+
+The Root Mean Squared Error for the Lasso regression is:
+
+```{r, eval = TRUE}
+mean((data[test,"Apps"]-pred.lasso)^2)
+```
+and the Ridge regression RMSE is:
+```{r, eval = TRUE}
+mean((College[test,"Apps"]-pred.ridge)^2) 
+```
+Therefore, the Ridge Regression RMSE is slightly lower than the Lasso regression RMSE.
+

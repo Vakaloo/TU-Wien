@@ -1,0 +1,242 @@
+---
+title: "Exercise 4"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-11-24"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the data (hcvdat1.csv) were loaded
+
+```{r, eval = TRUE}
+d <- read.csv("C:/Users/vaka1/Desktop/hcvdat1.csv") #must be modified
+```
+
+and missing values were omitted.
+
+```{r, eval = TRUE}
+d <- na.omit(d)
+```
+
+For addition information about the data, the following commands were used
+
+```{r, eval = TRUE}
+summary(d)
+str(d)
+```
+
+## Question 1
+
+Regarding the question 1, Principal Components Analysis was applied using the function princomp() in order to compute the PCA scores and then to visualize the first 2 components with color information by Category. Category is our response variable that contains information about the diagnosis: BloodDonor (healthy), Cirrhosis, and Hepatitis. 
+First the variable Sex was transformed to binary variable with 0s and 1s for the gender female and male, respectively. Then the response variable Category was excluded from the data and afterwards the data were scaled with mean 0 and standard deviation 1.
+
+```{r, eval = TRUE}
+d$Sex <- ifelse(d$Sex=="m",1,0) #replace the males with 1 and females with 0
+X <- d[,-1]
+X <- data.frame(scale(X))
+```
+
+The princomp() function was implemented and from the results we took the first 2 components.
+
+```{r, eval = TRUE}
+pca.data <- princomp(X, scores = TRUE)
+scores.pca <- pca.data$scores[,1:2]
+```
+
+In the below figure, the 2 components are visualized with color information by the response variable category.
+
+```{r, eval = TRUE, fig.width=6,fig.height=6, fig.align="center", fig.cap="The first 2 Principal Components", fig.pos="H"}
+plot(scores.pca, pch=18, col=as.factor(d$Category), xlab="Component 1", ylab="Component 2")
+legend("topleft",pch = 18, col = 1:3,
+       legend = levels(factor(d$Category)))
+```
+
+According to the plot, almost all the observations are classified as BloodDonor. Despite that, most of the observations that belong to the class Hepatitis are in the cluster of the class BloodDonor. The observations in the class Cirrhosis can be easily observed because they are not involved in the other two classes. 
+ 
+In this classification task, we have a multiple class response variable. The values that this variable (named Category) gets are: BloodDonor, Cirrhosis and Hepatitis. Based on the plot it is observed that the group sizes are heavily imbalanced. More specifically, 24 observations are classified as Cirrhosis, 20 observations are classified as Hepatitis and the rest, which are 526 observations, are classified as BloodDonor. The main problem in the classification using imbalanced data is that the classification model will have poor predictive performance, specifically for the minority class. This is a problem because, in general, the minority class is more significant and, as a result, the issue is more susceptible to errors in classification for the minority class than the majority class. Thus, in order to deal with this imbalance problem, different sampling techniques and evaluation metrics will be needed.
+
+
+## Question 2(a)
+
+The data were split into train and test set.
+
+```{r, eval = TRUE}
+#split the data into train and test
+set.seed(12223236)
+n <- nrow(d)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+Linear Discriminant Analysis were implemented using the function lda from the library MASS. First the test set error and then the cross validation error was calculated using 5-fold cross validation. 
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(MASS)
+```
+
+The test set error is:
+
+```{r, eval = TRUE}
+#Test set error
+model.lda <- lda(Category~., data=d[train,])
+pred <- predict(model.lda,d[test,])
+TAB <- table(d[test,]$Category,pred$class)
+TAB
+error.test.lda <- 1-sum(diag(TAB))/sum(TAB)
+error.test.lda
+```
+
+and the cross validation error is:
+
+```{r, eval = TRUE}
+#Cross validation Error
+data <- d
+mypredict.lda <- function(object, newdata) {predict(object, newdata = newdata)$class}
+library(ipred)
+control <- control.errorest(k = 5,random = FALSE)
+data$Category <- factor(data$Category)
+model.ldacv <- errorest(Category~., data=data[train,],predict= mypredict.lda,
+                     model=lda,est.para=control)
+model.ldacv$error
+```
+
+Both errors are quite low mainly because most of the observations are belong to the class BloodDonor and thus the model classify most of the observations correctly.
+
+
+## Question 2(b)
+
+Quadratic Discriminant Analysis were implemented using the function qda from the library MASS. First the test set error and then the cross validation error was calculated using Leave One Out cross validation. The Leave One Out cross validation was used because of the imbalanced observations. Basically, using k fold cross validation, where k = 5 or k = 10, there are more variables than observations regarding the observations that belong to the minority classes and thus the different covariance matrices can not be calculated. 
+
+The test set error is:
+
+```{r, eval = TRUE}
+#Test set error
+model.qda <- qda(Category~., data=d[train,])
+pred <- predict(model.qda,d[test,])
+TAB <- table(d[test,]$Category,pred$class)
+error.test.qda <- 1-sum(diag(TAB))/sum(TAB)
+error.test.qda
+```
+
+and the cross validation error is:
+
+```{r, eval = TRUE}
+#Cross validation Error
+mypredict.qda <- function(object, newdata) {predict(object, newdata = newdata)$class}
+
+control <- control.errorest(k = nrow(data[train,]))
+data$Category <- factor(data$Category)
+model.qdacv <- errorest(Category~., data=data[train,],predict= mypredict.qda,
+                        model=qda,est.para=control)
+model.qdacv$error
+```
+
+
+Both errors are quite low mainly because most of the observations are belong to the class BloodDonor and thus the model classify most of the observations correctly.
+
+
+## Question 3(a)
+
+As mentioned above, the groups sizes are very different. For that reason, different strategy, regarding the selection of the training and test data, must be applied. Thus, one effective strategy is to split the data using the stratification technique. With this technique the data set split into train and test set maintaining the same proportions of samples in each class as shown in the original data set. In R, in order to stratify the data, the function createDataPartition() from the caret package was used. The data were split into 2/3 training data and 1/3 test data.
+
+
+```{r, eval = TRUE}
+set.seed(12223236)
+train_str <- caret::createDataPartition(d$Category,
+                                        times = 1,p=2/3, list=F) #stratified separation
+test_str <- (1:n)[-train_str]
+```
+
+Then the test error was calculated for the Linear Discrimant Analysis model. 
+
+```{r, eval = TRUE}
+model.lda.str <- lda(Category~., data=d[train_str,])
+pred.str <- predict(model.lda.str,d[test_str,])
+TAB <- table(d[test_str,]$Category,pred.str$class)
+error.test.lda.str <- 1-sum(diag(TAB))/sum(TAB)
+error.test.lda.str
+```
+
+Now, let's compare the error from the question 2(a). The error from the question 2(a) was:
+
+```{r, eval = TRUE}
+pred <- predict(model.lda,d[test,])
+error.test.lda
+```
+it is observed that the error is slightly higher using the stratification technique. However, if the confusion matrices will be compared, other metrics, including the confusion matrix, are different.
+
+The results from the stratification technique are presented below, using the function confusionMatrix() from the caret package.
+```{r, eval = TRUE}
+caret::confusionMatrix(pred.str$class,factor(d[test_str,]$Category),mode = "everything")
+```
+
+The results from the random sampling technique are presented below.
+
+```{r, eval = TRUE}
+caret::confusionMatrix(factor(pred$class),factor(d[test,]$Category),mode = "everything")
+```
+
+Based on the two results, we can focus our interest on the metric Balanced Accuracy. Balanced Accuracy is the arithmetic mean of sensitivity and specificity (Sensitivity= TP / (TP + FN), Specificity =TN / (TN + FP)) and can be used when dealing with imbalanced data. 
+For each class, the balanced accuracy was calculated. It is observed that the balanced accuracy for the classes BloodDonor and Cirrhosis is approximately the same on both strategies. However, the balanced accuracy for the Hepatitis class was increased using the stratification technique and thus it would be more optimal to use the stratified data.
+
+
+## Question 3(b)
+
+Quadratic Discrimant Analysis is unstable for very small sample sizes (compared to the number of variables) and this was observed when the CV-error was calculated. Thus, Principal Component Analysis was implemented in order to reduce the number of variables. The first 2 components from question 1 were used and then the test error and the CV-error were calculated from the  Quadratic Discrimant Analysis. Also, regarding the split of the data, the stratification technique was used. 
+
+The test error is:
+
+```{r, eval = TRUE}
+
+scores <- data.frame(pca.data$scores[,1:2])
+pca.qda <- cbind(scores, Category=d$Category)
+
+model.qda <- qda(Category~., data=pca.qda[train_str,])
+pred <- predict(model.qda,pca.qda[test_str,])
+TAB <- table(pca.qda[test_str,]$Category,pred$class)
+error.test.qda <- 1-sum(diag(TAB))/sum(TAB)
+error.test.qda
+```
+
+and the Leave One Out CV-error is:
+
+```{r, eval = TRUE}
+#Cross validation Error
+mypredict.qda <- function(object, newdata) {predict(object, newdata = newdata)$class}
+
+control <- control.errorest(k = nrow(pca.qda[train,]))
+pca.qda$Category <- factor(pca.qda$Category)
+model.qdacv <- errorest(Category~., data=pca.qda[train,],predict= mypredict.qda,
+                        model=qda,est.para=control)
+model.qdacv$error
+```
+
+
+## Question 3(c)
+
+In a classification task, there are different methods for feature importance. The methods applied for feature selection/importance are three: Filtering, Wrapper and Embedded methods. The filtering methods are applied before the model is created. More specifically, from the initial data set the relation of each attribute with the target class is compared, evaluated and depending on the final result, more efficient ones are selected (examples: Correlation, ANOVA, Information Gain). Regarding the Wrapper methods, The specific methods select the best attributes based on the performance of the model. It is obvious that more computing power is required compared to filtering methods, because in order for feature selection to take place, the model must first be created (examples: Forward Selection). Finally, in Embedded methods the feature selection takes place while the model is being trained. An example of such a method is decision trees and random forest for classification tasks and Lasso and Ridge regression for regression tasks. Embedded methods are a combination of the above methods in terms of computing power and efficiency.
+
+Below, it is presented the feature importance based on the information gain. 
+
+```{r}
+#Information gain
+
+#Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_351')
+library(rJava)
+library(FSelector)
+data.ig <- information.gain(Category~., d, unit ="log2") 
+data.ig
+```
+According to the table, the features AST, ALT and CHE are important, based on, of course, the information gain.
+
+
+
+

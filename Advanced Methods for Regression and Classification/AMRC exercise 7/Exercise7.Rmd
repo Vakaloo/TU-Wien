@@ -1,0 +1,184 @@
+---
+title: "Exercise 7"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-12-21"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the data Orange Juice (OJ) from the package ISLR were loaded
+
+```{r, eval = TRUE}
+library(ISLR)
+data(OJ,package="ISLR")
+data <- OJ
+```
+and missing values were omitted.
+
+```{r, eval = TRUE}
+data <- na.omit(data)
+```
+
+Below are presented extra information about the data.
+
+```{r, eval = TRUE}
+str(data)
+```
+
+The numeric variables: "STORE", "StoreID", "SpecialCH", "SpecialMM" were transformed into factors. 
+```{r, eval = TRUE}
+catVars = c("STORE","StoreID","SpecialCH","SpecialMM")
+data[catVars] <- lapply(data[catVars], as.factor)
+```
+
+The plots below present the factor and the numeric variables of the OJ data set.
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Factor variables", fig.pos="H",warning=FALSE}
+data %>%
+  keep(is.factor) %>% 
+  gather() %>% 
+  ggplot(aes(value, fill=value)) +
+  facet_wrap(~ key, scales = "free") +
+  geom_bar() +
+  theme(legend.position="none")
+```
+
+```{r, eval = TRUE, fig.width=7,fig.height=5, fig.align="center", fig.cap="Numeric variables", fig.pos="H",warning=FALSE}
+data %>%
+  keep(is.numeric) %>% 
+  gather() %>% 
+  ggplot(aes(value,fill=key)) +
+  facet_wrap(~ key, scales = "free") +
+  geom_histogram(bins=sqrt(nrow(data))) +
+  theme(legend.position="none")
+```
+
+
+## Question 1(a)
+
+The data were randomly split into train (2/3 of the observations) and test (1/3 of the observations) set. 
+
+```{r, eval = TRUE}
+set.seed(12223236)
+n <- nrow(data)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+
+From the library mgcv, the function gam() was used in order to implement Generalized Additive Models. The smooth functions in GAMs can be defined for every variable by s(variable). With the parameter k you could also set an upper bound for the degrees of freedom. In our case k=3 was used on the explanatory variable "PriceMM". The rest of the variables were simply used as s(variable). Also, for the variables "STORE", "StoreID", "SpecialCH" and "SpecialMM", smooth functions were not used because they are factors. Thus, the final GAM model with the chosen formula is:
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(mgcv)
+```
+
+```{r, eval = TRUE}
+mod.gam <-gam(Purchase ~ s(PriceMM, k=3)+s(WeekofPurchase)+s(PriceCH)+s(DiscCH)
+              +s(DiscMM)+s(LoyalCH)+s(SalePriceMM)+s(SalePriceCH)+s(PriceDiff)
+              +s(PctDiscMM)+s(PctDiscCH)+s(ListPriceDiff)+StoreID+SpecialCH
+              +SpecialMM+Store7+STORE
+              ,data=data, family="binomial", subset=train)
+```
+
+## Question 1(b)
+
+For interpretation of the gam model, the function summary was used.
+
+```{r, eval = TRUE}
+summary(mod.gam)
+```
+Based on the summary, regarding the factor variables (parametric coefficients), can be seen that some the coefficients of the variables "StoreID" and "STORE" are zero. Thus, these two variables are excluded from the model and the new GAM model is:
+
+```{r, eval = TRUE}
+mod.gam <-gam(Purchase ~ s(PriceMM, k=3)+s(WeekofPurchase)+s(PriceCH)+s(DiscCH)
+              +s(DiscMM)+s(LoyalCH)+s(SalePriceMM)+s(SalePriceCH)+s(PriceDiff)
+              +s(PctDiscMM)+s(PctDiscCH)+s(ListPriceDiff)+SpecialCH
+              +SpecialMM+Store7
+              ,data=data, family="binomial", subset=train)
+summary(mod.gam)
+```
+According to the inference table, it is observed that the significant variables are: "Store7", "LoyalCH" and "ListPriceDiff".
+
+The complexity of the smooth functions can be defined from the effective degrees of freedom (i.e. the first column of the second inference table). For the variables "WeekofPurchase", "DiscCH", "DiscMM". "LoyalCH", "PctDiscCH", "PriceCH" and "ListPriceDiff" the effective degrees of freedom are 1 or close to 1 which indicates that the smooth functions are linear. Regarding the parameter "PctDiscMM" has effective degrees of freedom 4.783. Therefore, the smooth function is more complex and wiggly (non linear). Furthermore, the effective degree of freedom for the variable "PriceMM" is 0.4718 and thus we cannot know the form of this variable's smooth function. Finally, for the variables "SalePriceMM", "SalePriceCH" and "PriceDiff" the effective degrees of freedom are close to zero. Thus, if the EDF is effectively equal to 0 then the term has been effectively.
+
+
+## Question 1(c)
+
+In this part of the exercise, the explanatory variables against their smoothed values as they are used in the model were plotted.
+
+```{r, eval = TRUE, fig.width=7,fig.height=4, fig.align="center", fig.cap="Explanatoty variables and Smoothed values", fig.pos="H",warning=FALSE}
+plot(mod.gam,page=6,shade=TRUE,shade.col="yellow")
+```
+
+The linearity and non linearity, as mentioned in the question 1(b), of the smooth functions are, also, proven based on the plots. For the variables "WeekofPurchase", "DiscCH", "DiscMM". "LoyalCH", "PctDiscCH", "PriceCH", "ListPriceDiff" and also for the "PriceMM", which has edf equals to 0.4718, the smooth functions are linear. Regarding the variable "PctDiscMM", the non linearity is observed. Finally, the smooth functions for the variables "SalePriceMM", "SalePriceCH" and "PriceDiff" are zero.
+
+## Question 1(d)
+
+The classification rate was calculated based on the above GAM model.
+
+```{r, eval = TRUE}
+gam.res <- predict(mod.gam, data[test,])>0
+gam.TAB <- table(data$Purchase[test],as.numeric(gam.res))
+gam.TAB
+mkrgam<-1-sum(diag(gam.TAB))/sum(gam.TAB)
+cat("The classification rate is: ", mkrgam)
+```
+
+
+## Question 1(e)
+
+For the variable selection, due to the fact that there is no step.gam function provided by the library mgcv, a shrinkage smoother and more specifically, the thin plate regression spline smoother was used. The shrinkage smoother was used in the s() function by adding the term bs="ts" in each s(variable). Thus the new model is:
+
+```{r, eval = TRUE}
+new.mod.gam <-gam(Purchase ~ s(PriceMM, k=3, bs="ts")+s(WeekofPurchase, bs="ts")
+                  +s(PriceCH, bs="ts")+s(DiscCH, bs="ts")
+              +s(DiscMM, bs="ts")+s(LoyalCH, bs="ts")
+              +s(SalePriceMM, bs="ts")+s(SalePriceCH, bs="ts")
+              +s(PriceDiff, bs="ts")
+              +s(PctDiscMM, bs="ts")+s(PctDiscCH, bs="ts")
+              +s(ListPriceDiff, bs="ts")+SpecialCH
+              +SpecialMM+Store7
+              ,data=data, family="binomial", subset=train)
+summary(new.mod.gam)
+```
+Based on the inference table, the significant variables are: "PriceMM", "LoyalCH", "SalePriceCH", "PriceDiff" and "PctDiscMM". Thus, those variables, plus all the factor variables from the previous model, are going to be used to our new reduced model. The final reduced model is:
+
+```{r, eval = TRUE}
+reduced.mod.gam <-gam(Purchase ~ s(PriceMM, k=3, bs="ts")+s(LoyalCH, bs="ts")+
+                        s(SalePriceCH, bs="ts")+s(PriceDiff, bs="ts")
+              +s(PctDiscMM, bs="ts")++SpecialCH
+              +SpecialMM+Store7
+              ,data=data, family="binomial", subset=train)
+summary(reduced.mod.gam)
+```
+
+The classification rate was calculated based on the reduced GAM model.
+
+```{r, eval = TRUE}
+gam.res <- predict(reduced.mod.gam, data[test,])>0
+gam.TAB <- table(data$Purchase[test],as.numeric(gam.res))
+gam.TAB
+mkrgam<-1-sum(diag(gam.TAB))/sum(gam.TAB)
+cat("The classification rate is: ", mkrgam)
+```
+
+The new classification rate is slightly higher from the classification rate of the full model. Despite removing plenty of variable from the full model, the difference is not great. Thus, the final reduced model is quite convenient.
+
+
+
+
+
+

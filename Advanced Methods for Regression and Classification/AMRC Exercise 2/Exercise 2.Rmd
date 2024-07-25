@@ -1,0 +1,369 @@
+---
+title: "Exercise 2"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-11-10"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the ISLR package was installed
+
+```{r, eval = FALSE}
+install.packages("ISLR")
+```
+
+and then the data was loaded with.
+
+```{r, eval = TRUE}
+library("ISLR")
+data(College,package="ISLR")
+```
+
+For addition information about the data, the following commands were used.
+
+```{r, eval = FALSE}
+?College
+str(College)
+```
+
+The observations which contain missing values and the variables Accept and Enroll were removed from the original data.
+
+```{r, eval = TRUE}
+College <- na.omit(College) #Check for NA observations
+College <- College[,-c(3,4)] #Remove the Accept and Enroll variables
+```
+
+The values of the Apps variable has been changed to log transformed.
+
+```{r, eval = TRUE}
+College$Apps <- log(College$Apps) #log transformation
+```
+
+Finally, the data was split randomly into training and test data (about 2/3 and 1/3).
+
+```{r, eval = TRUE}
+#Split the data into train and test
+set.seed(12223236)
+n <- nrow(College)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+## Question 1
+
+First, the cvTools package was installed.
+
+```{r, eval = FALSE}
+install.packages("cvTools")
+```
+
+The full model from the previous exercise was created with the training set.
+
+```{r, eval = TRUE}
+fit <- lm(Apps~., data = College, subset = train)
+```
+
+Afterwards, for the model evaluation, the library cvTools was introduced  and the function cvFit() was used in order to be implemented the cross validation. The parameters was set as follow: cost=rmspe, K=5, R=100, seed=12223236. K equals to 5 indicates the 5-fold cross validation and R equals to 100 the number of replications.
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(cvTools)
+```
+
+
+```{r, eval = TRUE}
+cross.validation.fit <- cvFit(fit, data=College[train,], 
+                        y=College[train,]$Apps, cost=rmspe, 
+                        K=5,R=100,seed=12223236)
+cross.validation.fit
+```
+
+In figures 1 and 2 is shown the boxplot and the distribution of the resulting error measures, respectively.
+
+```{r, eval = TRUE, fig.width=6,fig.height=4.3, fig.align="center", fig.cap="Cross Validation results", fig.pos="H"}
+plot(cross.validation.fit, method = "bw")
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4.5, fig.align="center", fig.cap="Cross Validation distribution", fig.pos="H"}
+plot(cross.validation.fit, method = "density")
+```
+
+According to the boxplot, the error measures from the cross validation range between 0.556 and 0.585 and the mean value of all 0.569. All the results are approximately the same and that could be seen in the density plot. The results are normally distributed.
+
+
+## Question 2(a)
+
+In this part of the exercise the best subset regression was implemented. In R the library(leaps) and the function regsubsets() was used. To find the best 3 models of each size the parameter nbest was set to 3 and for the model size of 10 regressors, the parameter nvmax was set to 10.
+
+
+```{r, results='hide', eval = TRUE}
+library(leaps)
+sub.reg <- regsubsets(College$Apps~., data=College,  subset=train,
+                         nbest=3,nvmax=10)
+```
+
+
+## Question 2(b)
+
+In figure 3, the results from the best subset regression are presented.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="BIC values", fig.pos="H"}
+plot(sub.reg)
+```
+The plot describes the reduced models and their BIC values. The BIC values are not linear presented in the plot. The optimal model is chosen from the black part of the plot with the lower BIC, in our case approximately -610, and Simultaneously  has the smallest number of variables. Thus the optimal model, according to the plot, has 7 variables and these variables are: "Private", "F.Undergrad", "Room.Board", "PhD", "S.F.ratio", "Expend" and "Grad.Rate". 
+
+## Question 2(c)
+
+First the resulting summary was saved as another object and then using the function str(), the structure of this object was displayed.
+
+```{r, eval = TRUE}
+sub.summary <- summary(sub.reg)
+BIC <- sub.summary$bic
+str(sub.summary)
+```
+
+In figure 4 is shown the size of the models against the BIC values.
+
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="BIC values with different number of variables", fig.pos="H"}
+#create the number of variables of each model
+X<-c(1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9,10,10,10)
+#plot the BIC values
+plot(X,BIC)
+axis(1, at=c(1:10))
+```
+
+Thus, according to the plot with the BIC values and the number of variables, the optimal model is with 7 variables as mentioned in the question 2b. Using the lm() function, a new linear regression reduced model was created with the 7 variables: Private", "F.Undergrad", "Room.Board", "PhD", "S.F.ratio", "Expend" and "Grad.Rate".
+
+```{r, eval = TRUE}
+reduced.model <- lm(Apps~Private+F.Undergrad+Room.Board+
+                      PhD+S.F.Ratio+Expend+Grad.Rate,
+               data = College, subset = train)
+summary(reduced.model)
+```
+
+According to the summary table, all the variables have very small p value (lower than a=0.05) which indicates that all input variables are significant in the model. Furthermore, the R-squared is quite good which means that the reduced model is fitting the data particularly well.
+Finally, the function cvFit() was used to the reduced model in order to be compared the results from the original foul model.
+```{r, eval = TRUE}
+cross.validation.fit.reduced <- cvFit(reduced.model, data=College[train,], 
+                        y=College[train,]$Apps, cost=rmspe, 
+                        K=5,R=100,seed=12223236)
+cross.validation.fit.reduced
+```
+
+As a result, the mean cross validation error from the reduced model is slightly higher than the result from the full model. 
+
+
+## Question 3(a)
+
+The Principal component regression (PCR) was applied using for the library(pls) the function pcr(). In the function the parameter scale was set to TRUE on order the data to be scaled. Furthermore, the validation parameter was set to "CV" and the segments equal to 10 for the 10-Fold cross validation to be implemented. 
+
+```{r,  warning=FALSE,message=FALSE}
+library(pls)
+```
+
+```{r, eval = TRUE}
+pcr_model <- pcr(Apps~., data=College, scale=TRUE, subset=train,
+                  validation="CV", segments=10, segment.type="random")
+```
+
+## Question 3(b)
+
+In figure 5 are presented the obtained prediction errors from cross-validation.
+
+```{r, eval = TRUE, fig.width=6.5,fig.height=5, fig.align="center", fig.cap="RMSE on different number of components", fig.pos="H"}
+plot(pcr_model, plottype = "validation", val.type = "RMSEP", legend = "topright")
+axis(1, at=c(1:15))
+```
+
+According to figure 5, 9 components seem to be optimal. The resulting RMSE is:
+
+```{r, eval = TRUE}
+pred_pcr <- predict(pcr_model,newdata=College[train,],ncomp=9)
+sqrt(mean((College$Apps[train]-pred_pcr)^2))
+```
+
+## Question 3(c)
+
+The function predplot() was used to plot the measured y values against the cross-validated y values considering the model with 10 components.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Measured vs Predicted values", fig.pos="H"}
+predplot(pcr_model,ncomp=9,asp=1, line=TRUE)
+```
+
+
+## Question 3(d)
+
+In this question in order to plot the measured y values against the cross validated y values, the predict() function was used for the test data using the previous model. 
+
+```{r, eval = TRUE}
+pred_pcr <- predict(pcr_model,newdata = College[test,],ncomp=9)
+```
+
+The following figure shows the measured and the predicted values for the test data.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Measured vs Predicted values", fig.pos="H"}
+plot(College[test,]$Apps, pred_pcr, xlab="measured", ylab="predicted", main = "Apps")
+abline(0,1)
+```
+
+Finally, the RMSE for the test data is:
+
+```{r, eval = TRUE}
+sqrt(mean((College$Apps[test]-pred_pcr)^2))
+```
+
+
+## Question 4(a)
+
+The Partial least squares regression (PLS) was applied using for the library(pls). This time, the plsr() function was used and the parameters was set as in Question 3a/
+
+```{r, eval = TRUE}
+pls_model <- plsr(College$Apps~., data=College, scale=TRUE, subset=train,
+                  validation="CV", segments=10, segment.type="random")
+```
+
+## Question 4(b)
+
+In figure 7 are presented the obtained prediction errors from cross-validation.
+
+```{r, eval = TRUE, fig.width=6.5,fig.height=5, fig.align="center", fig.cap="RMSE on different number of components", fig.pos="H"}
+plot(pls_model, plottype = "validation", val.type = "RMSEP", legend = "topright")
+axis(1, at=c(1:15))
+```
+
+According to figure 7, 3 and 4 components seem to be optimal because the RMSE is approximately the same. Despite the small difference, 3 components was chosen in order the smaller model to be as more representative to the the full model. 
+
+The resulting RMSE is:
+
+```{r, eval = TRUE}
+pred_pls <- predict(pls_model,newdata=College[train,],ncomp=3)
+sqrt(mean((College$Apps[train]-pred_pls)^2))
+```
+
+
+## Question 4(c)
+
+The function predplot() was used to plot the measured y values against the cross-validated y values considering the model with 4 components.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Measured vs Predicted values", fig.pos="H"}
+predplot(pls_model,ncomp=3,asp=1, line=TRUE)
+```
+
+
+## Question 4(d)
+
+In this question in order to plot the measured y values against the cross validated y values, the predict() function was used for the test data using the previous model. 
+
+```{r, eval = TRUE}
+pred_pls <- predict(pls_model,newdata=College[test,],ncomp=3)
+```
+
+The following figure shows the measured and the predicted values for the test data.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Measured vs Predicted values", fig.pos="H"}
+plot(College[test,]$Apps, pred_pls, xlab="measured", ylab="predicted",main = "Apps")
+abline(0,1)
+```
+
+Finally, the RMSE for the test data is:
+
+```{r, eval = TRUE}
+sqrt(mean((College$Apps[test]-pred_pls)^2))
+```
+
+
+
+The major difference between the PCR and the PLS is the number of components that they were chosen. In PCR the components are 9 and in PLS the components are 3. Regarding the RMSE for the train and test data, both algorithms have roughly the same results.
+
+
+
+```{r, eval = TRUE, echo=FALSE}
+#Train data
+pred_pcr <- predict(pcr_model,newdata=College[train,],ncomp=9)
+pred_pls <- predict(pls_model,newdata=College[train,],ncomp=3)
+```
+
+
+```{r, eval = TRUE}
+#Train data
+sqrt(mean((College$Apps[train]-pred_pcr)^2))
+sqrt(mean((College$Apps[train]-pred_pls)^2))
+```
+
+```{r, eval = TRUE, echo=FALSE}
+#Train data
+pred_pcr <- predict(pcr_model,newdata=College[test,],ncomp=9)
+pred_pls <- predict(pls_model,newdata=College[test,],ncomp=3)
+```
+
+```{r, eval = TRUE}
+#Test data
+sqrt(mean((College$Apps[test]-pred_pcr)^2))
+sqrt(mean((College$Apps[test]-pred_pls)^2))
+```
+
+
+
+## Question 5
+
+In this question, the principal component regression was implemented by hand. First the response variable Apps was excluded from the data set and the Private variable was replaced to a binary variable with zeros and ones. The zero value replaced the "Yes" value and the one the "No" value. This replacement was done because to implement principal component analysis, all the variables need to be numerical.
+
+```{r, eval = TRUE}
+X <- College[,-c(2)]
+X$Private <- as.numeric(as.factor(X$Private))-1
+```
+
+Afterwards, the data was scaled and the principal component analysis (PCA) was performed using the function princomp().
+
+```{r, eval = TRUE}
+X <- data.frame(scale(X))
+pca <- princomp(~.,data=X,subset=train,scores=TRUE)
+```
+
+According to question 3(b), the number of components was 9. Thus, from the table of PCA scores ($scores), the first 9 columns were chosen. 
+
+```{r, eval = TRUE}
+scores <- data.frame(pca$scores)[1:9]
+```
+
+The same thing was applied to the table of loadings, which indicates the **V** matrix, in order to create the **Z** matrix for the test data. However, first the unclass function was used and the 9 first columns was loaded to the variable loadings.
+
+```{r, eval = TRUE}
+loadings <- data.frame(unclass(pca$loadings))[1:9]
+```
+
+Consequently, the linear regression model was created and the **Z** matrix was calculated according to the formula **Z=XV**
+
+```{r, eval = TRUE}
+model <- lm(College$Apps[train]~., data = scores)
+Z <- data.frame(as.matrix(X[test,]) %*% as.matrix(loadings))
+```
+
+Finally the predict() function was used on the test and the RMSE for the test data is:
+
+```{r, eval = TRUE}
+pred <- predict(model,Z)
+sqrt(mean((College$Apps[test]-pred)^2))
+```
+
+Comparing the result with the RMSE on the test data from the question 3(d)
+
+```{r, eval = TRUE}
+sqrt(mean((College$Apps[test]-pred_pcr)^2))
+```
+
+they are approximately the same.
+
+
+
+
+
+

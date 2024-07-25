@@ -1,0 +1,336 @@
+---
+title: "Exercise 5"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-12-1"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the data (hcvdat1.csv) were loaded
+
+```{r, eval = TRUE}
+bank <- read.csv2("C:/Users/vaka1/Desktop/bank.csv") #must be modified
+```
+
+and missing values were omitted.
+
+```{r, eval = TRUE}
+bank <- na.omit(bank)
+```
+
+We transform all the character variables to factors and all int variables to numeric. Furthermore, the value "yes" was replaced by 1 and the value "no" to zero.
+
+```{r, eval = TRUE}
+bank$job <- as.factor(bank$job)
+bank$marital <- as.factor(bank$marital)
+bank$education <- as.factor(bank$education)
+bank$default <- as.factor(bank$default)
+bank$housing <- as.factor(bank$housing)
+bank$loan <- as.factor(bank$loan)
+bank$contact <- as.factor(bank$contact)
+bank$month <- as.factor(bank$month)
+bank$poutcome <- as.factor(bank$poutcome)
+
+
+bank$y <- ifelse(bank$y=="yes",1,0)
+bank$y <- as.factor(bank$y)
+```
+
+```{r, eval = TRUE}
+bank$age <- as.numeric(bank$age)
+bank$balance <- as.numeric(bank$balance)
+bank$day <- as.numeric(bank$day)
+bank$duration <- as.numeric(bank$duration)
+bank$campaign <- as.numeric(bank$campaign)
+bank$pdays <- as.numeric(bank$pdays)
+bank$previous <- as.numeric(bank$previous)
+```
+
+Thus, for addition information about the data, the following commands were used
+
+```{r, eval = TRUE}
+summary(bank)
+str(bank)
+```
+
+Below, it is presented the number of no and yes for the response variable y using the library ggplot2. Based on the histogram, it can be seen that the data are heavily imbalanced
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ggplot2)
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Frequency of the response variable", fig.pos="H",warning=FALSE}
+ggplot(bank, aes(x=y)) +
+  geom_histogram(stat="count")
+```
+
+More information about the data are presented to the plots using the library Hmisc.
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(Hmisc)
+```
+
+```{r, eval = TRUE, fig.width=7,fig.height=6, fig.align="center", fig.cap="Histograms of the numeric variables", fig.pos="H",warning=FALSE}
+hist.data.frame(bank[,which(sapply(bank, is.numeric)==TRUE)])
+```
+
+```{r, eval = TRUE, fig.width=7,fig.height=6, fig.align="center", fig.cap="Frequencies of the categorical variables", fig.pos="H",warning=FALSE}
+hist.data.frame(bank[,which(sapply(bank, is.numeric)==FALSE)])
+```
+
+## Question 1(a)
+
+For the training set, 3000 observations were selected randomly.
+
+```{r, eval = TRUE}
+set.seed(12223236)
+train <- sample(1:nrow(bank), 3000)
+test <- (1:nrow(bank))[-train]
+```
+
+and then the logistic regression was applied using the function glm() with family = "binomial". 
+
+```{r, eval = TRUE}
+model.lr <- glm(y~., data=bank, subset=train, family="binomial")
+```
+
+The inference table from the logistic regression is presented below.
+
+```{r, eval = TRUE}
+summary(model.lr)
+```
+
+Based on the summary table, it is observed that the syntax of the coefficients is identical to linear models (function lm() in R). However, these results are based on the maximum likelihood estimations. On the bottom of the summary table, the number of Fisher scoring iterations are presented, which are 6. This indicates that 6 iterations was needed from the final calculations of the coefficients starting from zero. 
+
+Further investigating the summary table, the model quality indices can be seen, which are the Null and Residual deviance and the AIC score. The deviances are the contribution and more specifically the negative contribution of each observation to the log-likelihood function. The null Deviance is the deviance for a model with the intercept only. Thus, a model where none of the explanatory variables explain the response variable. The Residual Deviance corresponds to the full model. Finally, the AIC metric is used for model comparison. 
+
+The most important thing on the summary table is the coefficients. Similar to linear models, each coefficient has its own p value. This indicates the variable significance and insignificance in case of the p value being smaller or higher than 0.05, respectively. The difference from the linear models is that the t value was replaced be the z value. 
+
+It is worth mentioning that there are plenty of categorical variables. In R for each categorical variable is recorded into a set of separate binary variables and thus each binary variable is treated as an explanatory.  
+
+## Question 1(b)
+
+The rest of the data set was used as the test set. The predict() function was used in order to predict the group label pf the remaining test observations. By default the predict function returns the predictions in the scale of the linear predictor and thus the decision boundary is zero. However, the type = "response" was used in the predict function to obtain the probabilities from the linear predictor. This time the decision boundary is 0.5. Next, the misclassification error was calculated for each group separately. 
+
+```{r, eval = TRUE}
+pred <- predict(model.lr,bank[test,])
+
+prob <- predict(model.lr,bank[test,], type="response")
+predicted.classes <- ifelse(prob > 0.5, 1, 0)
+actual.classes <- bank[test,]$y
+TAB <- table(actual.classes,predicted.classes)
+TAB
+```
+
+```{r, eval = TRUE}
+error.no <- 1 - TAB[1,1]/(TAB[1,2]+TAB[2,1]+TAB[1,1])
+error.no
+```
+
+```{r, eval = TRUE}
+error.yes <- 1 - TAB[2,2]/(TAB[1,2]+TAB[2,1]+TAB[2,2])
+error.yes
+```
+
+It is observed that the misclassification error is very different for each group and that is due to the fact that the data are imbalance.
+
+
+## Question 1(c)
+
+In order to improve the misclassification error in the minority class, a good method is by assigning weights in each observation based on the class that it belongs. Thus, the weights will depend mainly from the class of the observation. Basically, the weight will be small if the observation belongs to majority class and high if the observation belongs to the minority class.The entire idea of the weights is to penalize the minority class for misclassifying itself by increasing class weight while simultaneously decreasing class weight for the majority class. The formula for the weight assignments is: wj=n_samples / (n_classes * n_samplesj), where wj is the weight for each class(j signifies the class), n_samples the total number of samples or rows in the dataset, n_classes the total number of unique classes in the target, n_samplesj is the total number of rows of the respective class. Thus the final weights are for the two classes:
+
+```{r, eval = TRUE}
+w0 <- length(train)/(2*table(bank[train,]$y)[1]) #weight for the 0 or class "no"
+w1 <- length(train)/(2*table(bank[train,]$y)[2]) #weight for the 1 or class "yes"
+```
+
+Then, the weights were assigned in each observation and logistic regression model was created.
+
+```{r, eval = TRUE, warning=FALSE}
+w <- ifelse(bank[train,]$y == 1, w1, w0)
+model.lr.weight <- glm(y~., data=bank[train,], family="binomial",
+                       weight = w)
+```
+
+The resulting missclassification errors are:
+
+
+```{r, eval = TRUE}
+prob <- predict(model.lr.weight,bank[test,], type="response")
+predicted.classes <- ifelse(prob > 0.5, 1, 0)
+actual.classes <- bank[test,]$y
+TAB.weight <- table(actual.classes,predicted.classes)
+TAB.weight
+```
+
+```{r, eval = TRUE}
+error.no.weight <- 1 - TAB.weight[1,1]/(TAB.weight[1,2]+TAB.weight[2,1]+TAB.weight[1,1])
+error.no.weight
+```
+
+```{r, eval = TRUE}
+error.yes.weight <- 1 - TAB.weight[2,2]/(TAB.weight[1,2]+TAB.weight[2,1]+TAB.weight[2,2])
+error.yes.weight
+```
+
+Compared to the previous errors without the weights, it is observed that the error for the minority class was improved. However the error for the majority class was slightly increased. 
+
+## Question 1(d)
+
+In this part of the exercise, the stepwise variable selection was used with the function step() in order to simplify the model from the question 1(c). 
+
+```{r, eval = TRUE,, warning=FALSE}
+model.lr.step <-  step(model.lr.weight,direction="both")
+```
+
+Based on that model, the classification error was calculated.
+
+
+```{r, eval = TRUE}
+prob <- predict(model.lr.step,bank[test,], type="response")
+predicted.classes <- ifelse(prob > 0.5, 1, 0)
+actual.classes <- bank[test,]$y
+TAB.step <- table(actual.classes,predicted.classes)
+TAB.step
+```
+
+```{r, eval = TRUE}
+error.no.step<- 1 - TAB.step[1,1]/(TAB.step[1,2]+TAB.step[2,1]+TAB.step[1,1])
+error.no.step
+```
+
+```{r, eval = TRUE}
+error.yes.step <- 1 - TAB.step[2,2]/(TAB.step[1,2]+TAB.step[2,1]+TAB.step[2,2])
+error.yes.step
+```
+
+This stepwise method did not lead to improvement of the classification error. Actually, both errors for the two classes were slightly increased. 
+
+
+
+## Question 2(a)
+
+The data set data(Khan) was used from the package ISLR. The target class of the data set consists of 4 groups and all the data set contains 2308 genes, which are the features. The data were split into train, with 63 subjects, and test, with 20 subjects. 
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(ISLR)
+```
+
+```{r, eval = TRUE, warning=FALSE}
+data(Khan)
+
+khan_train = data.frame(x = Khan$xtrain, y = as.factor(Khan$ytrain))
+khan_test = data.frame(x = Khan$xtest, y = as.factor(Khan$ytest))
+```
+
+
+Linear and Quadratic Discriminant Analysis (LDA and QDA) will not work in the Khan data set because the number of variables is much higher than the number of observations. Therefore, we are not able to calculate the inverse covariance matrix. However, Regularized Discriminant Analysis (RDA) uses a combination of LDA and QDa regarding the calculation of the covariance matrix. RDA shrinks the separate covariances of QDA toward a common covariance as in LDA using a parameter alpha or lambda. For lambda equals to zero the covariance matrix is the same as the QDA and for lambda equals to one the covariance matrix is the same as the LDA. In R, there is a second parameter called gamma, which pushes the elements of the covariance matrix into a diagonal matrix using the trace of the covariance matrix and the identity. Therefore, the final covariance matrix is a diagonal matrix and as a result the inverse covariance matrix can be easily calculated. However, using this method, we lose information because the trace is used (the sum of the diagonal elements) for the calculation of the matrix.
+
+
+
+## Question 2(b)
+
+From the package glmnet, the function cv.glmnet was used with the argument family="multinomial". 
+
+
+```{r results='hide', message=FALSE, warning=FALSE}
+library(glmnet)
+```
+
+
+```{r, eval = TRUE, warning=FALSE}
+res.cv <-  cv.glmnet(Khan$xtrain,as.factor(Khan$ytrain),family="multinomial")
+```
+
+Below, the outcome of the function cv.glmnet is presented. 
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Cross Validation outcome", fig.pos="H",warning=FALSE}
+plot(res.cv)
+```
+
+According to the plot, by using only 9 features we obtain the minimum multinomial deviance. Thus the loss function that we try to minimize is the multinomial deviance which is the negative multinomial log-likelihood loss function for multi-class classification with n classes mutually exclusive classes.
+
+The parameter on the y axis could change to the misclassification error by including type.measure = "class" into the cv.glmnet function. Thus, the result would be:
+
+```{r, eval = TRUE, warning=FALSE}
+res.cv.error <-  cv.glmnet(Khan$xtrain,as.factor(Khan$ytrain),
+                           family="multinomial",type.measure = "class")
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Cross Validation outcome", fig.pos="H",warning=FALSE}
+plot(res.cv.error)
+```
+
+It is clear that the number of non zero variables has been changed from 9 to 8.
+
+
+## Question 2(c)
+
+The function coef() was used in order to check which variables contribute to the model. 
+For the group 1 the variables that contribute are:
+
+```{r, eval = TRUE, warning=FALSE}
+coef <- coef(res.cv,s="lambda.1se")
+which(coef$`1`!=0)
+```
+
+For the group 2 the variables that contribute are:
+```{r, eval = TRUE, warning=FALSE}
+which(coef$`2`!=0)
+```
+
+For the group 3 the variables that contribute are:
+```{r, eval = TRUE, warning=FALSE}
+which(coef$`3`!=0)
+```
+
+For the group 4 the variables that contribute are:
+```{r, eval = TRUE, warning=FALSE}
+which(coef$`4`!=0)
+```
+
+Note that the first variable, which appears to all the groups, is the intercept. 
+
+
+## Question 2(d)
+
+The variable 124 from the group 1 was chosen. In the below figure the variable 124 is plotted against the response. 
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Relevant variable against the response", fig.pos="H",warning=FALSE}
+plot(khan_train$x.124,khan_train$y, xlab = "Variable 124", ylab = "Response")
+```
+
+
+## Question 2(e)
+
+Finally, the trained model was used in order to predict the group membership of the test data. In the predict function, the type = "class" was used to obtain the classes of the test data. 
+
+```{r, eval = TRUE, warning=FALSE}
+pred <- as.numeric(predict(res.cv,newx=Khan$xtest,s="lambda.1se",type="class"))
+actual.classes <- Khan$ytest
+TAB <- table(actual.classes,pred)
+TAB
+class.error<- 1-sum(diag(TAB))/sum(TAB)
+class.error
+```
+
+According to the confusion table and the misclassification error, all the observations were classified correctly. 
+
+
+
+
+
+
+
+
+
+
+

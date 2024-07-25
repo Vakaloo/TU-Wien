@@ -1,0 +1,270 @@
+---
+title: "Exercise 1"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2022-10-19"
+output: pdf_document
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=bottom}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Premilinary work
+
+First, the ISLR package was installed
+
+```{r, eval = FALSE}
+install.packages("ISLR")
+```
+
+and then the data was loaded with
+
+```{r, eval = TRUE}
+library("ISLR")
+data(College,package="ISLR")
+```
+
+For addition information about the data, the following commands were used
+
+```{r, eval = FALSE}
+?College
+str(College)
+```
+
+The observations which contain missing values and the variables Accept and Enroll were removed from the original data
+
+```{r, eval = TRUE}
+College <- na.omit(College) #Check for NA observations
+College <- College[,-c(3,4)] #Remove the Accept and Enroll variables
+```
+
+Afterwards, the log transformation was applied to the Apps variable, because this variable is the one that needs to be predicted. The reason, why the log transformation was used, is shown to the below 2 histograms. In the histogram with log transformation, the data are normally distributed compared to the data with no transformation.
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="Before log transformation", fig.pos="H"}
+hist(College$Apps, breaks = 20, col="dodgerblue3",
+     main = "Histogram of Apps before transformation",
+     xlab = "Apps")
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=5, fig.align="center", fig.cap="After log transformation", fig.pos="H"}
+hist(log(College$Apps), breaks = 20, col="dodgerblue3",
+     main = "Histogram of Apps after log transformation",
+     xlab = "log(Apps)")
+```
+
+Thus, the values of the Apps variable has been changed to log transformed
+
+```{r, eval = TRUE}
+College$Apps <- log(College$Apps) #log transformation
+```
+
+Finally, the data was splitted randomly into training and test data (about 2/3 and 1/3)
+
+```{r, eval = TRUE}
+#Split the data into train and test
+set.seed(12223236)
+n <- nrow(College)
+train <- sample(1:n,round(n*2/3))
+test <- (1:n)[-train]
+```
+
+## Question 1(a)
+
+The function lm() was applied to compute the estimator. To interpret the outcome, the function summary() was used
+
+```{r, eval = TRUE}
+res <- lm(Apps~., data = College, subset = train) #Apply the lm() function 
+summary(res) #Summary the results
+```
+
+The variables were chosen according to their p values, where they were less or equal than 0.05. In R, to find these variables, the below code was used
+
+```{r, eval = TRUE}
+pvalues <- summary(res)$coefficients[,4]     #Get the p values from summary
+pvalues <- pvalues[-c(1)]                    #Remove the intercept P value
+variables <- names(which(pvalues<=0.05))     #Select the variables with P value<=0.05
+```
+
+The variables contribute to explaining the variable Apps are:
+
+```{r, eval = TRUE}
+variables
+```
+
+Finally, the diagnostics plots were plotted
+
+```{r, eval = TRUE, fig.width=9,fig.height=8, fig.align="center", fig.cap="Model Assumptions", fig.pos="H"}
+par(mfrow = c(2, 2))
+plot(res)
+```
+
+According to the plots, the model assumptions are valid. In residuals vs fitted plot, the line is horizontal, which indicates a good linear relationship. In normal Q-Q plot, the residuals points follow a straight dash line, which means that the residuals are normally distributed. The scale-Location plot shows if residuals are distributed equally across the prediction ranges. In our case, the red line is horizontal which is good and means that the points are spread equally. Finally, the Residuals vs Leverage plot all of the points, with some exceptions of course, are between the range of [-2,2], which is very good for the linear regression model.
+
+## Question 1(b)
+
+In this part of the exercise, the LS coefficients were manually computed. The command lm() was replaced by model.matrix(), the matrix multiplication was done by %\*% and the inverse matrix was computed with solve()
+
+```{r, eval = TRUE}
+X <- model.matrix(Apps~., data = College)
+LS_coefficients <- solve(t(X[train,])%*%X[train,])%*%t(X[train,])%*%College$Apps[train]
+LS_coefficients
+```
+
+In R, dummy variables are created to handle the binary variables. In this specific case, a PrivateYes dummy variable has been created that takes on a value of 1 when Private is Yes and 0 if Private is no. This can be proved by using the function contrasts()
+
+```{r, eval = TRUE}
+contrasts(College$Private)
+```
+
+The corresponding regression coefficient is negative, which means that the value Yes is associated with the reduction of the value Apps.
+
+## Question 1(c)
+
+The function predict() was used to predict the values of Apps for the training and test data
+
+```{r, eval = TRUE}
+pred.train <- predict(res,newdata = College[train,])
+pred.test <- predict(res,newdata = College[test,])
+```
+
+Graphically the observed and predicted values are shown to the figures 4 and 5
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the training data", fig.pos="H"}
+plot(College[train,"Apps"],pred.train,xlab="y measured train",
+      ylab="y predicted train",cex.lab=1.3,
+      xlim=c(4,13),ylim=c(4,13))
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the test data", fig.pos="H"}
+plot(College[test,"Apps"],pred.test,xlab="y measured test"
+     ,ylab="y predicted test",cex.lab=1.3,
+     xlim=c(4,13),ylim=c(4,13))
+```
+
+According to the plots, the performance of the model is quite high because of the linearity of the actual and predicted values. In both plots, the linearity is distinctive while the actual values are roughly lower than 10. As the actual values increase, the model tend to become non-linear.
+
+## Question 1(d)
+
+The RMSE for the training data is
+
+```{r, eval = TRUE}
+sqrt(sum((College$Apps[train]-pred.train)^2)/length(train))
+```
+
+and the RMSE for the test data is
+
+```{r, eval = TRUE}
+sqrt(sum((College$Apps[test]-pred.test)^2)/length(test))
+```
+
+First, the RMSE for the training data is lower than the one for the test data. This due to the fact that the model was created from the train data. Furthermore, both RMSE values are very low which indicates better fit and thus good performance of the model. Finally, the difference between the two values are not that high, as a result the model has the ability to predict not only the training data but unknown data quite effectively.
+
+## Question 2(a)
+
+First, all input variables, from the model which were not significant in 1(a), were excluded. Afterwards, new data named new_College were created and the function lm() was applied
+
+```{r, eval = TRUE}
+variables <- c(variables, "Apps")  #Add the Apps variable to the new data set
+variables[1] <- "Private" #Change the name to Private from PrivateYes
+new_College <- College[, (names(College) %in% variables)] #Create the new data
+reduced_model <- lm(Apps~., data = new_College, subset = train) #Create the model
+summary(reduced_model)
+```
+
+and the LS-estimator was computed
+
+```{r, eval = TRUE}
+X <- model.matrix(Apps~., data = new_College)
+LS_coefficients_reduced = solve(t(X[train,])%*%X[train,]) %*%
+                t(X[train,])%*%new_College$Apps[train]
+LS_coefficients_reduced
+```
+
+According to their p values, the variables remain significant to the new model. However, for the variable perc.alumni, the p value has been increased up to 0.0191, which is a higher from the previous one, which was 0.00822. Thus, there are cases where the variables, after the variable selection, have worse p value than the p value before the variable selection. The reason why this is happening is that the p values are adjusted for the terms of the new model.
+
+## Question 2(b)
+
+In figures 6 and 7 are visualized the fit and the prediction from the new/reduced model. The function predict() was used once again in order to find the predicted values for the training and test data
+
+```{r, eval = TRUE}
+pred.train.reduced <- predict(reduced_model,newdata = new_College[train,])
+pred.test.reduced <- predict(reduced_model,newdata = new_College[test,])
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the training data", fig.pos="H"}
+plot(College[train,"Apps"],pred.train.reduced,xlab="y measured train",
+      ylab="y predicted train",cex.lab=1.3,
+      xlim=c(4,13),ylim=c(4,13))
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the test data", fig.pos="H"}
+plot(College[test,"Apps"],pred.test.reduced,xlab="y measured test"
+     ,ylab="y predicted test",cex.lab=1.3,
+     xlim=c(4,13),ylim=c(4,13))
+```
+
+## Question 2(c)
+
+The RMSE for the train and test data for the new/reduced model is
+
+```{r, eval = TRUE}
+sqrt(sum((new_College$Apps[train]-pred.train.reduced)^2)/length(train))
+```
+
+```{r, eval = TRUE}
+sqrt(sum((new_College$Apps[test]-pred.test.reduced)^2)/length(test))
+```
+
+We would except that both values of RMSEs for the reduced model will be lower the RMSEs values for the full model. However, it is shown that the new RMSEs have slightly higher values and thus the variable selection leads to the formation of slightly worse model than the original.
+
+## Question 2(d)
+
+The two models were compared with the function anova()
+
+```{r, eval = TRUE}
+anova(res,reduced_model)
+```
+
+The two models, after the application of the function anova(), are approximately the same. This is due to the fact that the difference between the RSS value is quite small. In case this difference was very large, the full model will explain the data significantly better than the reduced model.
+
+## Question 3
+
+In this part of the exercise, variable selection was performed based on stepwise regression. The function step() was used for the forward and backward selection
+
+```{r, eval = TRUE}
+# backward selection:
+model.backward <- step(res,direction="backward")
+
+# forward selection
+model.empty <- lm(Apps~1,data=College, subset=train)
+model.forward <- step(model.empty,scope=formula(res),direction="forward")
+```
+
+The RMSE for the test data was calculated for both backward and forward model as described in question 2(c) and 1(d). Also, the plots of response values and the prediction values were created
+
+```{r, eval = TRUE}
+#Predict
+pred.back <- predict(model.backward,College[test,])
+pred.forward <- predict(model.forward,College[test,])
+
+#Resulting models with RMSE
+sqrt(sum((College$Apps[test]-pred.back)^2)/length(test))
+sqrt(sum((College$Apps[test]-pred.forward)^2)/length(test))
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the test data for the backward model", fig.pos="H"}
+plot(College[test,"Apps"],pred.back,xlab="y measured",
+      ylab="y predicted backward",cex.lab=1.3,
+      xlim=c(4,13),ylim=c(4,13))
+```
+
+```{r, eval = TRUE, fig.width=6,fig.height=4, fig.align="center", fig.cap="Prediction of the test data for the forward model", fig.pos="H"}
+plot(College[test,"Apps"],pred.forward,xlab="y measured"
+     ,ylab="y predicted forward",cex.lab=1.3,
+     xlim=c(4,13),ylim=c(4,13))
+```
+
+In conclusion, according to the RMSE values and the plot, both models' performance is equal. Despite the equality of the models, the RMSE values are significantly low which means that both models have the ability to fit unknown data quite well.
