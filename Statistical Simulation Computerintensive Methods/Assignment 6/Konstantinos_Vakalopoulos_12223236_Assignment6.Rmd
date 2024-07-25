@@ -1,0 +1,716 @@
+---
+title: "Exercise 6 - Cross Validation of Models"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2023-11-22"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+toc: TRUE
+toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+## Task 1
+
+We will work with the data set Auto in the ISLR package. Obtain information on the data set, its structure and the real world meaning of its variables from the help page.
+
+In order to get an idea about the data, the command ?Auto must be executed. Therefore, the data consists of 9 variables and 392 observations. The variables are: mpg (miles per gallon), cylinders (Number of cylinders between 4 and 8), displacement (Engine displacement (cu. inches)), horsepower (Engine horsepower), weight (Vehicle weight (lbs.)), acceleration (Time to accelerate from 0 to 60 mph (sec.)), year (Model year (modulo 100)), origin (Origin of car (1. American, 2. European, 3. Japanese)) and name (Vehicle name). The original data contained 408 observations but 16 observations with missing values were removed.
+
+For additional information, to get an intuition about the data, the following commands were executed. 
+
+```{r, echo=TRUE}
+library(ISLR)
+data(Auto)
+head(Auto)
+summary(Auto)
+cat("The size of the data is: ", dim(Auto))
+```
+
+
+### Task 1.1
+
+Fit the following models \
+mpg ~ horsepower \
+mpg ~ poly(horsepower,2) \
+mpg ~ poly(horsepower,3) \
+
+Visualize all 3 models in comparison added to a scatterplot of the input data.
+
+For all the data set, we specifically took the variables horsepower and mpg, which are the independent and dependent variables, respectively. Afterwards, we fitted the models using the lm() function and a scatterplot pf the input data and the three models was created.
+
+```{r, echo=TRUE}
+df <- Auto[c("mpg", "horsepower")] # subset
+
+linear.model <- lm(mpg ~ horsepower, data=df) # linear
+quadratic.model <- lm(mpg ~ poly(horsepower,2), data=df) # quadratic
+cubic.model <- lm(mpg ~ poly(horsepower,3), data=df) # cubic
+```
+
+We import the library ggplot.
+
+```{r, echo=TRUE, warning=FALSE}
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2)
+```
+
+Finally, the scatter plot was created.
+
+```{r,echo=TRUE, fig.width=7,fig.height=5.5, fig.cap="Scatterplot with the 3 models"}
+ggplot(df, aes(x = horsepower, y = mpg)) +
+  geom_point() +
+  labs(title = "Scatterplot",
+       x = "Horsepower",
+       y = "Miles Per Gallon")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  geom_smooth(method='lm', formula= y ~ x, se = F, aes(color='Linear')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,2), se = F, aes(color='Quadratic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,3), se = F, aes(color='Cubic')) +
+  scale_color_manual(name='Models',
+                     breaks=c('Linear', 'Quadratic', 'Cubic'),
+                     values=c('Cubic'='green', 'Quadratic'='blue', 'Linear'='red'))
+```
+
+
+### Task 1.2
+
+Use the validation set approach to compare the models. Use once a train/test split of 50%/50% and once 70%/30%. Choose the best model based on Root Mean Squared Error, Mean Squared Error and Median Absolute Deviation.
+
+For this task, a function performance() was created. The specific function takes as input the model (linear, quadratic or cubic), the data and the percentage of the split (50%/50% or 70%/30%). Based on a seed (12223236), for reproducibility purposes, split the data, iusing the sample() command, into train and test set. With the train data, the corresponding model is created and then according to the test data, the yhat (y_pred) are calculated using the command predict(). Finally, the Root Mean Squared Error, Mean Squared Error and Median Absolute Deviation are calculated and returned from the function. 
+
+
+```{r, echo=TRUE}
+performance <- function(model, data, per){
+  # Split the data
+  set.seed(12223236)
+  n <- nrow(data)
+  train <- sample(1:n,round(n*per))
+  test <- (1:n)[-train]
+  
+  # Check the model
+  if (model == "Linear Model"){
+    model <- lm(mpg ~ horsepower, data=data[train,])
+  }
+  else if (model == "Quadratic Model"){
+    model <- lm(mpg ~ poly(horsepower,2), data=data[train,])
+  }
+  else {
+    model <- lm(mpg ~ poly(horsepower,3), data=data[train,])
+  }
+  
+  # Predict the test data according to the corresponding model
+  y_test <- data$mpg[test]
+  y_pred <- predict(model, newdata = data[test,])
+
+  # Performance Metrics
+  RMSE <- sqrt(mean((y_test-y_pred)^2))
+  MSE <- mean((y_test-y_pred)^2)
+  MAD <- median(abs((y_test-y_pred-median(y_test-y_pred))))
+  
+  result <- data.frame(RMSE = RMSE, MSE = MSE, MAD = MAD)
+  return(result)
+}
+```
+
+The models are:
+
+```{r, echo=TRUE}
+models <- c("Linear Model", "Quadratic Model", "Cubic Model")
+```
+
+For the train/test split of 50%/50%: 
+
+```{r, echo=TRUE}
+# 50% train and test split
+result.50 <- rbind(performance(models[1],df,0.5),
+                   performance(models[2],df,0.5),
+                   performance(models[3],df,0.5))
+rownames(result.50) <- c("Linear_model", "Quadratic_model", "Cubic_model")
+colnames(result.50) <- c("MSE", "RMSE", "MAD")
+```
+
+```{r, echo=TRUE}
+cat("The best model based on Root Mean Squared Error is: ",
+    models[which.min(result.50$RMSE)])
+cat("\nThe best model based on Mean Squared Error is: ",
+    models[which.min(result.50$MSE)])
+cat("\nThe best model based on Median Absolute Deviation is: ",
+    models[which.min(result.50$MAD)])
+```
+Based on the results from the 3 performance metrics, the best model is the quadratic model. 
+
+For the train/test split of 70%/30%: 
+
+```{r, echo=TRUE}
+# 70% train and test split
+result.70 <- rbind(performance(models[1],df,0.7),
+                   performance(models[2],df,0.7),
+                   performance(models[3],df,0.7))
+rownames(result.70) <- c("Linear_model", "Quadratic_model", "Cubic_model")
+colnames(result.70) <- c("MSE", "RMSE", "MAD")
+```
+
+```{r, echo=TRUE}
+cat("The best model based on Root Mean Squared Error is: ",
+    models[which.min(result.70$RMSE)])
+cat("\nThe best model based on Mean Squared Error is: ",
+    models[which.min(result.70$MSE)])
+cat("\nThe best model based on Median Absolute Deviation is: ",
+    models[which.min(result.70$MAD)])
+```
+
+Once again, the best model is the quadratic model.
+
+### Task 1.3
+
+Use the cv.glm function in the boot package for the following steps.
+
+From the package "boot", the cv.glm function is introduced. The three models were created, using this time the function glm() and not the lm(). Finally, three functions, for the Root Mean Squared Error, Mean Squared Error and Median Absolute Deviation, were created. 
+
+```{r, echo=TRUE, warning=FALSE}
+if (!require("boot")) install.packages("boot")
+library(boot)
+```
+
+```{r, echo=TRUE}
+mse <- function(y_test,y_pred){mean((y_test-y_pred)^2)}
+rmse <- function(y_test,y_pred){sqrt(mean((y_test-y_pred)^2))}
+mad <- function(y_test,y_pred){median(abs((y_test-y_pred-median(y_test-y_pred))))}
+```
+
+```{r, echo=TRUE}
+glm.linear.model <- glm(mpg ~ horsepower, data=df)
+glm.quadratic.model <- glm(mpg ~ poly(horsepower,2), data=df)
+glm.cubic.model <- glm(mpg ~ poly(horsepower,3), data=df)
+```
+
+#### Task 1.3.1
+
+Use cv.glm for Leave-one-out Cross Validation to compare the models above. 
+
+First we create two lists for the three models and the three performance metrics.
+
+```{r, echo=TRUE}
+all.models <- list(glm.linear.model, glm.quadratic.model, glm.cubic.model)
+cost.functions <- list(mse,rmse,mad)
+```
+
+For those, the Leave-one-out Cross Validation is performed using the cv.glm function. The function takes as input the data, the model and the cost function. The first element of delta is the  raw cross-validation estimate of prediction error and the second is the adjusted one. We want the $delta[1]. 
+
+```{r, echo=TRUE}
+# LOOCV
+startTime <- Sys.time()
+LOOCV <- matrix(0, nrow = 3, ncol = 3)
+
+for (i in 1:nrow(LOOCV)){
+  for (j in 1:ncol(LOOCV)){
+    set.seed(12223236)
+    LOOCV[i,j] <- cv.glm(df, all.models[[i]], cost = cost.functions[[j]])$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+#### Task 1.3.2
+
+Use cv.glm for 5-fold and 10-fold Cross Validation to compare the models above.
+
+The same procedure is done for the 5-fold and 10-fold Cross Validation. The only difference is that we have to initialize the K (5 or 10) in the cv.glm function, which indicates the number of folds.
+
+For the 5-fold Cross Validation:
+
+```{r, echo=TRUE}
+# 5-fold CV
+startTime <- Sys.time()
+Fold_5_CV <- matrix(0, nrow = 3, ncol = 3)
+
+for (i in 1:nrow(Fold_5_CV)){
+  for (j in 1:ncol(Fold_5_CV)){
+    set.seed(12223236)
+    Fold_5_CV[i,j] <- cv.glm(df, all.models[[i]], cost = cost.functions[[j]], 
+                             K = 5)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+For the 10-fold Cross Validation:
+
+```{r, echo=TRUE}
+# 10-fold CV
+startTime <- Sys.time()
+Fold_10_CV <- matrix(0, nrow = 3, ncol = 3)
+
+for (i in 1:nrow(Fold_10_CV)){
+  for (j in 1:ncol(Fold_10_CV)){
+    set.seed(12223236)
+    Fold_10_CV[i,j] <- cv.glm(df, all.models[[i]], cost = cost.functions[[j]], 
+                              K = 10)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+We, finally, transform the results into data frames.
+
+```{r, echo=TRUE}
+LOOCV <- as.data.frame(LOOCV)
+rownames(LOOCV) <- c("Linear_model", "Quadratic_model", "Cubic_model")
+colnames(LOOCV) <- c("MSE", "RMSE", "MAD")
+
+Fold_5_CV <- as.data.frame(Fold_5_CV)
+rownames(Fold_5_CV) <- c("Linear_model", "Quadratic_model", "Cubic_model")
+colnames(Fold_5_CV) <- c("MSE", "RMSE", "MAD")
+
+Fold_10_CV <- as.data.frame(Fold_10_CV)
+rownames(Fold_10_CV) <- c("Linear_model", "Quadratic_model", "Cubic_model")
+colnames(Fold_10_CV) <- c("MSE", "RMSE", "MAD")
+```
+
+
+It is worth mentioning that τhe differences in calculation time are evident, with Leave-One-Out Cross-Validation (LOOCV) taking more time and 5-Fold Cross-Validation taking less. This occurs because in the case of LOOCV, the number of folds is equal to the number of observations in the data.
+
+### Task 1.4
+
+Compare all results from 2 and 3. in a table and draw your conclusions.
+
+Bellow, all the results are presented in the tables. 
+
+```{r, echo=TRUE}
+knitr::kable(result.50, format = "markdown",caption = "Train/Test split of 50%/50%")
+knitr::kable(result.70, format = "markdown",caption = "Train/Test split of 70%/30%")
+knitr::kable(LOOCV, format = "markdown",caption = "Leave-One-Out Cross Validation")
+knitr::kable(Fold_5_CV, format = "markdown",caption = "5-Fold Cross Validation")
+knitr::kable(Fold_10_CV, format = "markdown",caption = "10-Fold Cross Validation")
+```
+
+According to the results above, the optimal model is the quadratic model because in all cases, the performance metrics are the lowest. The only difference is observed in the Mean Absolute Deviation (MAD) for the 10-Fold and 5-Fold cross-validation, where the best model based on this metric is the cubic model. Furthermore, it's worth noting that in the case of Leave-One-Out Cross Validation, the MAD is zero because there is no median for a single value. In Leave-One-Out Cross Validation, essentially, the performance metric is computed for each individual observation.
+
+## Task 2
+
+Load the data set 'economics' from the package 'ggplot2'.
+
+From the package 'ggplot2', we load the data set 'economics'. Below, an intuition about the data is presented. The data set 'economics' consists of 574 observations and 6 variables. The variables are: date (Month of data collection), pce (personal consumption expenditures, in billions of dollars), pop (total population, in thousands), psavert (personal savings rate), uempmed (median duration of unemployment, in weeks) and unemploy (number of unemployed in thousands). 
+
+```{r, echo = TRUE}
+data(economics)
+head(economics)
+cat("The size of the data is: ", dim(economics))
+summary(economics)
+```
+
+We keep the two variables unemploy and uempmed.
+
+```{r, echo = TRUE}
+df_economics <- data.frame(economics[c("uempmed", "unemploy")])
+```
+
+The two histograms are used for demonstration purposes only in order to get an idea about how the data are distributed.
+
+```{r,echo=TRUE, fig.width=8.5,fig.height=4}
+par(mfrow = c(1, 2))
+ggplot(df_economics, aes(x = uempmed)) +
+  geom_histogram(binwidth = 0.75, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of uempmed", x = "uempmed", y = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(df_economics, aes(x = unemploy)) +
+  geom_histogram(binwidth = 500, fill = "green", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of unemploy", x = "unemploy", y = "Frequency") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+### Task 2.1
+Fit the following models to explain the number of unemployed persons 'unemploy' by the median number of days unemployed 'uempmed' and vice versa:
+
++ linear model
++ an appropriate exponential or logarithmic model (which one is appropriate depends on which is the dependent or independent variable)
++ polynomial model of 2nd, 3rd and 10th degree
+
+The dependent variable is the uempmed and independent is the unemploy. Here, we take the exponential model and at the same time we scale the independent variable unemploy. The explanation is given in the next task.  The models are:
+
+```{r, echo = TRUE}
+linear <- lm(uempmed ~ unemploy, data=df_economics)
+print(linear)
+exponential <- lm(uempmed ~ exp(scale(unemploy)), data=df_economics)
+print(exponential)
+polynomial.2 <- lm(uempmed ~ poly(unemploy,2), data=df_economics)
+print(polynomial.2)
+polynomial.3 <- lm(uempmed ~ poly(unemploy,3), data=df_economics)
+print(polynomial.3)
+polynomial.10 <- lm(uempmed ~ poly(unemploy,10), data=df_economics)
+print(polynomial.10)
+```
+
+
+The dependent variable is the unemploy and independent is the uempmed. This time, we take the logarithmic model. The models are:
+
+```{r, echo = TRUE}
+linear <- lm(unemploy ~ uempmed, data=df_economics)
+print(linear)
+logarithmic <- lm(unemploy ~ log(uempmed), data=df_economics)
+print(logarithmic)
+polynomial.2 <- lm(unemploy ~ poly(uempmed,2), data=df_economics)
+print(polynomial.2)
+polynomial.3 <- lm(unemploy ~ poly(uempmed,3), data=df_economics)
+print(polynomial.3)
+polynomial.10 <- lm(unemploy ~ poly(uempmed,10), data=df_economics)
+print(polynomial.10)
+```
+
+### Task 2.2
+
+Plot the corresponding data and add all the models for comparison.
+
+The dependent variable is the uempmed and independent is the unemploy. Here, a scatter plot is created.
+
+```{r,echo=TRUE, fig.width=6,fig.height=4}
+ggplot(df_economics, aes(x = unemploy, y = uempmed)) +
+  geom_point() +
+  labs(title = "Scatterplot",
+       x = "Number of Unemployed in Thousands",
+       y = "Median Duration of Unemployment in Weeks")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+In order to include the corresponding models, we have to scale the independent variable, which is the number of unemployed in thousands because in case we take the exponential model and calculate the exponential of the variable unemploy, the result will be infinity. Thus, the scatter plot, including the models, will be: 
+
+```{r,echo=TRUE, fig.width=6,fig.height=4}
+ggplot(df_economics, aes(x = scale(unemploy), y = uempmed)) +
+  geom_point() +
+  labs(title = "Scatterplot",
+       x = "Number of Unemployed in Thousands",
+       y = "Median Duration of Unemployment in Weeks")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method='lm', formula= y ~ x, se = F, 
+              aes(color='Linear')) +
+  geom_smooth(method='lm', formula= y ~ exp(x), se = F, 
+              aes(color='Exponential')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,2), se = F, 
+              aes(color='Quadratic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,3), se = F, 
+              aes(color='Cubic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,10), se = F, 
+              aes(color='Polynomial Degree 10')) +
+  scale_color_manual(name='Models',
+                     breaks=c('Linear', 'Exponential', 
+                              'Quadratic', 
+                              'Cubic', 'Polynomial Degree 10'),
+                     values=c('Cubic'='cyan', 'Quadratic'='blue', 
+                              'Linear'='red', 
+                              'Exponential' = "green",
+                              'Polynomial Degree 10' = "yellow"))
+```
+
+Now, the dependent variable is the unemploy and independent is the uempmed. Here, a scatter plot is created.
+
+```{r,echo=TRUE, fig.width=6,fig.height=4}
+ggplot(df_economics, aes(x = uempmed, y = unemploy)) +
+  geom_point() +
+  labs(title = "Scatterplot",
+       x = "Median Duration of Unemployment in Weeks",
+       y = "Number of Unemployed in Thousands")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Including the models, the scatter plot will be:
+
+```{r,echo=TRUE, fig.width=6,fig.height=4}
+ggplot(df_economics, aes(x = uempmed, y = unemploy)) +
+  geom_point() +
+  labs(title = "Scatterplot",
+       x = "Median Duration of Unemployment in Weeks",
+       y = "Number of Unemployed in Thousands")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_smooth(method='lm', formula= y ~ x, se = F, 
+              aes(color='Linear')) +
+  geom_smooth(method='lm', formula= y ~ log(x), se = F, 
+              aes(color='Logarithmic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,2), se = F, 
+              aes(color='Quadratic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,3), se = F, 
+              aes(color='Cubic')) +
+  geom_smooth(method='lm', formula= y ~ poly(x,10), se = F, 
+              aes(color='Polynomial Degree 10')) +
+  scale_color_manual(name='Models',
+                     breaks=c('Linear', 'Logarithmic', 
+                              'Quadratic', 
+                              'Cubic', 'Polynomial Degree 10'),
+                     values=c('Cubic'='cyan', 'Quadratic'='blue', 
+                              'Linear'='red', 
+                              'Logarithmic' = "green",
+                              'Polynomial Degree 10' = "yellow"))
+```
+
+### Task 2.3
+
+Use the cv.glm function in the boot package for the following steps. Compare the Root Mean Squared Error and Mean Squared Error.
+
+1. Use cv.glm for Leave-one-out Cross Validation to compare the models above.
+
+2. Use cv.glm for 5-fold and 10-fold Cross Validation to compare the models above.
+
+For this task, we are going to do the same procedure twice as we did in task 1.3, once for the dependent variable being the uempmed and independent the unemploy and once for the dependent variable being the unemploy and independent the uempmed. The models are created using the glm() function and a list with these models is created. For each model, Leave-One-Out, 5-Fold and 10-Fold cross validation is performed and the Root Mean Squared Error and Mean Squared Error are compared for each case. All the relusts are presented in tables. 
+
+Case 1 where the dependent variable is the uempmed and independent is the unemploy. Again we are going to scale the variable unemploy when the exponential model is created.
+
+```{r, echo=TRUE}
+# Case 1 dependent = uempmed / independent = unemploy
+# scaling
+df_economics$unemploy <- scale(df_economics$unemploy)[1:length(df_economics$unemploy)]
+
+#model creation
+glm.linear.case.1 <- glm(uempmed ~ unemploy, data=df_economics)
+glm.exponential.case.1 <- glm(uempmed ~ exp(unemploy), data=df_economics)
+glm.polynomial.2.case.1 <- glm(uempmed ~ poly(unemploy,2), data=df_economics)
+glm.polynomial.3.case.1<- glm(uempmed ~ poly(unemploy,3), data=df_economics)
+glm.polynomial.10.case.1 <- glm(uempmed ~ poly(unemploy,10), data=df_economics)
+
+all.models.case.1 <- list(glm.linear.case.1, 
+                          glm.exponential.case.1, 
+                          glm.polynomial.2.case.1,
+                          glm.polynomial.3.case.1,
+                          glm.polynomial.10.case.1)
+```
+
+For the Leave-One-Out cross validation:
+
+```{r, echo=TRUE}
+# LOOCV
+startTime <- Sys.time()
+LOOCV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(LOOCV)){
+  for (j in 1:ncol(LOOCV)){
+    set.seed(12223236)
+    LOOCV[i,j] <- cv.glm(df_economics, all.models.case.1[[i]], 
+                         cost = cost.functions[[j]])$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time 
+print(endTime - startTime)
+```
+
+For the 5-Fold cross validation:
+
+```{r, echo=TRUE}
+# 5-fold CV
+startTime <- Sys.time()
+Fold_5_CV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(Fold_5_CV)){
+  for (j in 1:ncol(Fold_5_CV)){
+    set.seed(12223236)
+    Fold_5_CV[i,j] <- cv.glm(df_economics, all.models.case.1[[i]], 
+                             cost = cost.functions[[j]], K = 5)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+
+For the 10-Fold cross validation:
+
+```{r, echo=TRUE}
+# 10-fold CV
+startTime <- Sys.time()
+Fold_10_CV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(Fold_10_CV)){
+  for (j in 1:ncol(Fold_10_CV)){
+    set.seed(12223236)
+    Fold_10_CV[i,j] <- cv.glm(df_economics, all.models.case.1[[i]], 
+                              cost = cost.functions[[j]], K = 10)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+In the next code chunk, we rename the rows and columns of each validation case.
+
+```{r, echo=TRUE}
+LOOCV <- as.data.frame(LOOCV)
+rownames(LOOCV) <- c("Linear_model", "Exponential_model", 
+                     "Quadratic_model", "Cubic_model", 
+                     "Polynomial_Degree_10")
+colnames(LOOCV) <- c("MSE", "RMSE")
+
+Fold_5_CV <- as.data.frame(Fold_5_CV)
+rownames(Fold_5_CV) <- c("Linear_model", "Exponential_model", 
+                         "Quadratic_model", "Cubic_model", 
+                         "Polynomial_Degree_10")
+colnames(Fold_5_CV) <- c("MSE", "RMSE")
+
+Fold_10_CV <- as.data.frame(Fold_10_CV)
+rownames(Fold_10_CV) <- c("Linear_model", "Exponential_model", 
+                          "Quadratic_model", "Cubic_model", 
+                          "Polynomial_Degree_10")
+colnames(Fold_10_CV) <- c("MSE", "RMSE")
+```
+
+The results are shown in the below tables. 
+
+```{r, echo=TRUE}
+knitr::kable(LOOCV, format = "markdown",
+             caption = "Leave-One-Out Cross Validation")
+knitr::kable(Fold_5_CV, format = "markdown",
+             caption = "5-Fold Cross Validation")
+knitr::kable(Fold_10_CV, format = "markdown",
+             caption = "10-Fold Cross Validation")
+```
+
+Case 2 where the dependent variable is the unemploy. and independent is the uempmed. 
+
+```{r, echo=TRUE}
+# Case 2 dependent = unemploy. / independent = uempmed.
+df_economics <- data.frame(economics[c("uempmed", "unemploy")])
+
+#model creation
+glm.linear.case.2 <- glm(unemploy ~ uempmed, data=df_economics)
+glm.logarithmic.case.2 <- glm(unemploy ~ log(uempmed), data=df_economics)
+glm.polynomial.2.case.2 <- glm(unemploy ~ poly(uempmed,2), data=df_economics)
+glm.polynomial.3.case.2 <- glm(unemploy ~ poly(uempmed,3), data=df_economics)
+glm.polynomial.10.case.2 <- glm(unemploy ~ poly(uempmed,10), data=df_economics)
+
+
+all.models.case.2 <- list(glm.linear.case.2, 
+                          glm.logarithmic.case.2, 
+                          glm.polynomial.2.case.2,
+                          glm.polynomial.3.case.2,
+                          glm.polynomial.10.case.2)
+```
+
+
+
+For the Leave-One-Out cross validation:
+
+```{r, echo=TRUE}
+# LOOCV
+startTime <- Sys.time()
+LOOCV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(LOOCV)){
+  for (j in 1:ncol(LOOCV)){
+    set.seed(12223236)
+    LOOCV[i,j] <- cv.glm(df_economics, all.models.case.2[[i]], 
+                         cost = cost.functions[[j]])$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time 
+print(endTime - startTime)
+```
+
+
+For the 5-Fold cross validation:
+
+```{r, echo=TRUE}
+# 5-fold CV
+startTime <- Sys.time()
+Fold_5_CV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(Fold_5_CV)){
+  for (j in 1:ncol(Fold_5_CV)){
+    set.seed(12223236)
+    Fold_5_CV[i,j] <- cv.glm(df_economics, all.models.case.2[[i]], 
+                             cost = cost.functions[[j]], K = 5)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+For the 10-Fold cross validation:
+
+```{r, echo=TRUE}
+# 10-fold CV
+startTime <- Sys.time()
+Fold_10_CV <- matrix(0, nrow = 5, ncol = 2)
+
+for (i in 1:nrow(Fold_10_CV)){
+  for (j in 1:ncol(Fold_10_CV)){
+    set.seed(12223236)
+    Fold_10_CV[i,j] <- cv.glm(df_economics, all.models.case.2[[i]], 
+                              cost = cost.functions[[j]], K = 10)$delta[1]
+  }
+}
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+
+In the next code chunk, we rename the rows and columns of each validation case.
+
+```{r, echo=TRUE}
+LOOCV <- as.data.frame(LOOCV)
+rownames(LOOCV) <- c("Linear_model", "Logarithmic_model", 
+                     "Quadratic_model", "Cubic_model", 
+                     "Polynomial_Degree_10")
+colnames(LOOCV) <- c("MSE", "RMSE")
+
+Fold_5_CV <- as.data.frame(Fold_5_CV)
+rownames(Fold_5_CV) <- c("Linear_model", "Logarithmic_model", 
+                         "Quadratic_model", "Cubic_model", 
+                         "Polynomial_Degree_10")
+colnames(Fold_5_CV) <- c("MSE", "RMSE")
+
+Fold_10_CV <- as.data.frame(Fold_10_CV)
+rownames(Fold_10_CV) <- c("Linear_model", "Logarithmic_model", 
+                          "Quadratic_model", "Cubic_model", 
+                          "Polynomial_Degree_10")
+colnames(Fold_10_CV) <- c("MSE", "RMSE")
+
+```
+
+The results are shown in the below tables. 
+
+```{r, echo=TRUE}
+knitr::kable(LOOCV, format = "markdown",caption = "Leave-One-Out Cross Validation")
+knitr::kable(Fold_5_CV, format = "markdown",caption = "5-Fold Cross Validation")
+knitr::kable(Fold_10_CV, format = "markdown",caption = "10-Fold Cross Validation")
+```
+
+
+According to the table results, in the first case the optimal model is the polynomial degree of 10 and in the second case the optimal model is the logarithmic. It is worth noting that the values of RMSE and MSE, in the second case, are large because there is a difference in the range of values of the two variables.
+
+
+### Task 2.4
+
+Explain based on the CV and graphical model fits the concepts of Underfitting, Overfitting and how to apply cross-validation to determine the appropriate model fit. Also, describe the different variants of cross validation in this context.
+
+Underfitting occurs when a model is too simple to capture the underlying patterns in the data. It results in a model that has high bias and low variance. An underfit model performs poorly on both the training data and new, unseen data because it cannot learn the relationships within the data effectively. On the other hand, overfitting occurs when a model is too complex and fits the training data too closely, capturing noise and random fluctuations in the data. It results in a model with low bias and high variance. An overfit model performs very well on the training data but poorly on new, unseen data because it has essentially memorized the training data rather than learned meaningful patterns.
+
+In the case of each task, the linear model is unable to capture the underlying patterns in the data. This particular model essentially represents a straight line while the data is logarithmic and exponentially distributed. In the case of task 2, it is observed that the model with a polynomial degree of 10 overfits the data as it is more complex than the others. This is also evident from the scatter plot in task 2.2.
+
+Below are presented the steps on how to apply cross-validation to determine the appropriate model fit.
+
+1. Split Data: Divide your data set into a training set and a  test set.
+2. Select Models: Choose the models you want to evaluate.
+3. K-Fold Cross-Validation: Use k-fold cross-validation, where 'k' is typically 5 or 10. This involves dividing the training data into 'k' subsets or folds.
+4. Training and Testing: Perform the following steps 'k' times:
+    + Train each model on 'k-1' of the folds.
+    + Test the model on the remaining fold.
+    + Record the model's performance metric.
+5. Evaluate Models: After 'k' iterations, you will have 'k' performance scores for each model.
+6. Average and Compare: Calculate the average performance score for each model across all 'k' iterations. The model with the best average score is the most appropriate fit.
+7. Final Testing: Once the best model has been  chosen, we can perform a final evaluation on your validation or test set to ensure it generalizes well.
+
+In our case, we had 5-Fold, 10-Fold, and Leave-One-Out cross-validation, which means k = 5, k = 10, and k = the length of the data set, respectively. It is worth noting that, in each validation case, the execution time was calculated, and it is evident that LOOCV is the most computationally expensive procedure.

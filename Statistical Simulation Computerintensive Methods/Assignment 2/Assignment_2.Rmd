@@ -1,0 +1,320 @@
+---
+title: "Exercise 2 - Random Number Generation through CDF and acceptance-rejection
+  sampling"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2023-10-18"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+toc: TRUE
+toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+## Task 1
+
+Summarise the concept of pseudo-random number generation with Linear Congruential Random Number Generation Algorithm using the available code examples from the course to create a working code example and simulate one pseudo-random sample.
+
+Try out and compare different values of m, a to illustrate the behavior of the method as described on slide 18.
+
+According to the available codes examples and instructions from the course about the method Linear Congruential Random Number Generation Algorithm, we have to choose the parameter m to be as large as possible in order to not obtain the first element of the sequence after a number of iterations. Therefore, the whole method is characterized as cyclic and the largest the m parameter the higher the cycle length of the random number generator sequence. Furthermore, there is a second parameter, which is called "multiplier" a and is usually close to square root of m. Finally, the last parameter is the "increment" c, of which the value ranges between [0,m]. It is worth mentioning that first an initial integer value must be chosen in order to start the procedure. The initial value is called "starting value" or "seed". Also, the parameter m must be a prime number, which means that it is a number that can only be divided by itself and 1 without remainders.
+
+Below, the Linear Congruential Random Number Generation Algorithm is presented. The function takes as initial values the sample n, the m and a parameter, the increment c and the starting value x0 and the uniform pseudo random numbers are generated.
+
+```{r, echo=TRUE}
+# function for Linear Congruential Random Number Generator
+mc.gen <- function(n,m,a,c=0,x0){
+  us <- numeric(n)
+  for (i in 1:n){
+    x0 <- (a*x0+c) %% m
+    us[i] <- x0 / m
+    }
+  return(us)
+}
+```
+
+A simulation is performed by taking the values below and calling the function.
+
+```{r, echo=TRUE}
+# Simulation
+n <- 100
+m <- 7919 # 1000th prime number. I could use the student ID
+a <- round(sqrt(m),2)
+c <- 1158
+x0 <- 25
+mc.gen(n,m,a,c,x0)
+```
+Below, three simulation are performed. The values of each parameter are chosen intuitively. According to these simulations, it is proven that the Linear Congruential Random Number Generator is a cyclic method. Also, the method depends extremely on the choice of m, a and c and it is difficult to predict the next value without knowing the m, a, c, and x0. 
+
+```{r, echo=TRUE}
+# Simulation 1
+n <- 100
+m <- 17
+a <- 4
+c <- 1
+x0 <- 3
+mc.gen(n,m,a,c,x0)
+```
+
+```{r, echo=TRUE}
+# Simulation 2
+n <- 100
+m <- 37
+a <- 12
+c <- 9
+x0 <- 7
+mc.gen(n,m,a,c,x0)
+```
+
+```{r, echo=TRUE}
+# Simulation 3
+n <- 100
+m <- 9
+a <- 2
+c <- 0
+x0 <- 1
+mc.gen(n,m,a,c,x0)
+```
+
+
+## Task 2
+The exponential distribution has the following cdf: $F(x) = 1 - e^{-\lambda x}$
+
+Assume you can generate easily uniform random variables. How can you obtain then a random sample from the exponential distribution?
+
++ Write down the mathematical expression for this.
+
++ Write an R function which takes as input the number of samples required and the parameter $\lambda$. Use the function runif to create the uniform random variables.
+
++ For three different values of $\lambda$ create 1000 random samples and evaluate the quality of your random number generator using qq-plots which compare against a real exponential distribution with the specified parameter $\lambda$. 
+
+In order to obtain a random sample from the exponential distribution, we are going to use the inversion method. We have the cdf F(x) and we proceed to the next 3 steps:
+
+1. Compute the quantile function $F_x^{-1}$ 
+2. Generate a u ~ unif[0, 1]
+3. Make the transformation $x = F_x^{-1}$
+
+Therefore, the mathematical expression for the cdf F(x) will be: $x = -\frac{1}{\lambda}\ln(1-F)$
+
+Consequently, the specific mathematical expression is used in order to generate random numbers. The function, below, takes as input the number of samples required and the parameter $\lambda$. Also,  the function runif is used to create the uniform random variables.
+
+```{r, echo=TRUE}
+exponential_rng <- function(sample,l){
+  set.seed(12223236)
+  variables <- runif(sample, min=0, max=1)
+  x <- -log(1-variables)/l
+  return(x)
+}
+```
+
+After, 3 different values for the $\lambda$ are taken and 1000 random samples have been created. For the $\lambda$, the values 1, 10 and 25 are used. The choice was done arbitrarily. Furthermore, a real exponential distribution with the specified parameter $\lambda$ is used by using the function rexp() from R.
+
+```{r, echo=TRUE}
+lambda <- c(1,10,25)
+sample <- 1000
+
+# Create an empty list to save the random numbers
+simulations <- list()
+real_exponential_distribution <- list()
+
+# For loop for the 3 different values of lambda parameter
+set.seed(12223236)
+for (l in lambda){
+  simulations <- c(simulations, list(exponential_rng(sample,l)))
+  
+  real_exponential_distribution <- c(real_exponential_distribution, 
+                                     list(rexp(sample, rate = l)))
+}
+```
+
+```{r, echo=TRUE, fig.width=8.5,fig.height=4, fig.cap="QQ plot for lambda 1"}
+par(mfrow = c(1, 2))
+qqnorm(simulations[[1]], main="Implementation Exponential Distribution")
+qqline(simulations[[1]])
+
+qqnorm(real_exponential_distribution[[1]], main="Real Exponential Distribution")
+qqline(real_exponential_distribution[[1]])
+```
+
+```{r, echo=TRUE, fig.width=8.5,fig.height=4, fig.cap="QQ plot for lambda 10"}
+par(mfrow = c(1, 2))
+qqnorm(simulations[[2]], main="Implementation Exponential Distribution")
+qqline(simulations[[2]])
+
+qqnorm(real_exponential_distribution[[2]], main="Real Exponential Distribution")
+qqline(real_exponential_distribution[[2]])
+```
+
+```{r, echo=TRUE, fig.width=8.5,fig.height=3.5,fig.cap="QQ plot for lambda 25"}
+par(mfrow = c(1, 2))
+qqnorm(simulations[[3]], main="Implementation Exponential Distribution")
+qqline(simulations[[3]])
+
+qqnorm(real_exponential_distribution[[3]], main="Real Exponential Distribution")
+qqline(real_exponential_distribution[[3]])
+```
+
+
+## Task 3
+
+The Beta distribution has the following pdf: $f(x;\alpha,\beta) = \frac{\Gamma{(\alpha+\beta)}}{\Gamma{(\alpha)}\Gamma{(\beta)}}x^{\alpha-1}(1-x)^{\beta-1}$
+
+Write a function which uses an acceptance-rejection approach to sample from a beta distribution. Argue what is a natural candidate for a proposal distribution.
+
++ Focus first on the case where both parameters of the beta distribution are 2. Find what is a good constant to keep the rejection proportion small.
+
++ Write a function based on this approach to sample from an arbitrary beta distribution and which adapts the constant to the user specified parameters assuming that both parameters are larger than 1.
+
+All functions above should take as input the number of samples to be created and if applicable also the parameters of the beta distribution.
+
+Evaluate the quality of your different functions visually.
+
+
+The f(x) is known, according to the instructions of the exercise, and it is a beta distribution with the following pdf: $f(x;\alpha,\beta) = \frac{\Gamma{(\alpha+\beta)}}{\Gamma{(\alpha)}\Gamma{(\beta)}}x^{\alpha-1}(1-x)^{\beta-1}$. Now, we have to find a density function g(x) so that the following inequality is fulfilled ($f(x) \le cg(x)$). Therefore, we are able to perform the acceptance-rejection method and generate the proper values. In our implementation, the uniform distribution has been chosen. Thus, the g(x) will be: $g(x) = \frac{1}{b-a}$ where $x \in [a,b]$. 
+
+The uniform distribution, despite not being as efficient as other distributions, is characterized for its simplicity and its flexibility and versatility. In our case, we know the boundaries of the x variable, which are [0,1], since we have the pdf of a beta distribution. Thus, we can easily apply g(x). In terms of flexibility, by slightly changing the parameters a and b from $f(x;\alpha,\beta)$, our curve will be different every time which means that we can easily adapt g(x) by choosing an appropriate value for the parameter c. 
+
+Below, the acceptance rejection function is presented.
+
+```{r, echo=TRUE}
+acceptance_rejection_method <- function(sample, a, b, c = 1){
+  set.seed(12223236)  # Set a seed for reproducibility
+  
+  x <- numeric(sample)
+  accepted <- 0
+  rejection <- 0
+  while (accepted < sample){
+    
+    u <- runif(1) # this is the u
+    y <- runif(1) # this is g(x)
+    f <- gamma(a+b)/(gamma(a)*gamma(b))*y^(a-1)*(1-y)^(b-1)
+    
+    # Check the acceptance
+    if (u<=f/(c*y)){
+      accepted <- accepted+1
+      x[accepted] <- y
+    }
+    else{
+      # Calculate the number of rejections in order to find rejection proportion 
+      rejection <- rejection + 1
+    }
+  }
+  return (list(x,rejection))
+}
+```
+
+The acceptance_rejection_method() function takes as input the sample size, the parameters a and b and constant parameter c. We set a seed for reproducibility purposes and we initialize the variables accepted and rejection which are responsible for number of accepted and rejected values, respectively. While the number of accepted values is lower than the sample size, the u and g(x) are generated and the f(x) is calculated. Afterwards, the value is accepted or not if the following condition is true: $u \leq \frac{f(x)}{cg(x)}$. If the condition is true, the accepted variable is increased by one and we accept the value. Otherwise, the rejection variable is increased by one. Finally, we return all the generated values and the number of rejected values in order to calculate then the rejection proportion. Our goal is to find a good constant to keep the rejection proportion small. 
+
+
+First, we focus on the case where both parameters of the beta distribution are 2. Therefore the initial values will be: 
+
+```{r, echo=TRUE}
+# initial values
+sample <- 1000
+a <- 2
+b <- 2
+```
+
+Regarding the constant c, multiple simulations were performed in order to find the optimal one.
+
+```{r, echo=TRUE}
+# Simulations for constant c
+con <- seq(1.5,20,0.1) # the 1.5 value is the maximum for the f function
+rejections <- c()
+for (c in con){
+  rejections <- c(rejections, acceptance_rejection_method(sample, a, b, c)[[2]])
+}
+cat("The minimum c, for g(x) to be uniform distribution, is:", con[which.min(rejections)])
+```
+
+It is worth mentioning that the constant c gets values from 1.5 to 20 with a step of 0.1. The starting value is 1.5 and it is chosen on purpose because $f(x;\alpha,\beta)$ has a maximum on y = 1.5 for x = 0.5. Therefore, if we take values for c lower than 1.5 the condition $f(x) \le cg(x)$ is not fulfilled.
+
+The next plot shows, also, why the $c = 1.5$ is the optimal value. As the c is increased, the number of rejections is increased as well. 
+
+```{r, echo=TRUE, fig.width=6,fig.height=5,fig.cap="Rejections vs Constant c"}
+plot(con,rejections, type = "l", lty = 1, ylab = "Number of rejections", xlab = "Constant c")
+```
+
+In this part of the exercise, it is needed to write a function based on this approach to sample from an arbitrary beta distribution and which adapts the constant to the user specified parameters assuming that both parameters are larger than 1. Basically, we are going to generalize the previous question and perform the acceptance-rejection approach for the beta distribution for every $\alpha$ and $\beta$ parameters chosen by the user. The function from the previous question will be used.
+
+In a repetitive manner, the uniform distribution as g(x) will be used. In order, however, to find the optimal constant c, we are going to calculate the maximum value of the $f(x;\alpha,\beta)$ for each $\alpha$ and $\beta$. Regarding the maximum value, the function optimize() from R will be used. 
+
+```{r, echo = TRUE}
+# This is the f(x)
+f = function(y,a,b) {
+  gamma(a+b)/(gamma(a)*gamma(b))*y^(a-1)*(1-y)^(b-1)
+}
+```
+
+The $\alpha$ and $\beta$ will be (these value could change depending on the user's preferences):
+
+```{r, echo = TRUE}
+# Few demonstrations about the f function/beta distribution
+# we take again uniform distribution
+# Initial values
+a <- 6
+b <- 8
+```
+
+Then, we calculate the max of the $f(x;\alpha,\beta)$:
+
+```{r, echo = TRUE}
+# find the maximum of f(x) within the interval [0, 1]
+ans = optimize(f, c(0,1), maximum = TRUE, a = a,b = b)
+
+x_max = ans$maximum
+y_max = ans$objective
+
+cat("The max value of the beta distribution is: ", y_max)
+```
+
+The plot below shows the $f(x;\alpha,\beta)$ and the maximum value. The abline() function indicates the pdf of the uniform distribution g(x).
+
+```{r, echo=TRUE, fig.width=6,fig.height=5,fig.cap="PDF of Beta Distribution"}
+# plot f(x)
+x = seq(0, 1, length.out = 100)
+plot(x, f(x,a,b), type = 'l')
+
+points(x_max, y_max, pch = 15)
+text(x = x_max, y = y_max, labels = 'Maximum',
+     pos = 4, col = 'blue')
+
+abline(h = y_max, col = "red")
+```
+
+The same procedure, as it was done in the previous question, is repeated but this time the constant c will take values from y_max (maximum value of the f(x)) to 20 with a step of 0.1. 
+
+```{r, echo=TRUE}
+# Simulations for constant c
+# We show that for c greater than the max of the function f, the rejections are increased
+con <- seq(y_max,20,0.1) # the y_max value is the maximum for the f function
+rejections <- c()
+for (c in con){
+  rejections <- c(rejections, acceptance_rejection_method(sample, a, b, c)[[2]])
+}
+cat("The minimum c, for g(x) to be uniform distribution, is:", con[which.min(rejections)])
+```
+
+The next plot shows, also, why the $c = y_{\text{max}}$ is the optimal value. As the c is increased, the number of rejections is increased as well.
+
+```{r, echo=TRUE, fig.width=6,fig.height=5,fig.cap="Rejections vs Constant c"}
+plot(con,rejections, type = "l", lty = 1, ylab = "Number of rejections", xlab = "Constant c")
+```
+
+
+ 
+
+
+
+
+
+
+
+
+
+

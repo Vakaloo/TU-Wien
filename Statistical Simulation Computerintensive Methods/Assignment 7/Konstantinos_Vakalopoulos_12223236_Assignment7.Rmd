@@ -1,0 +1,506 @@
+---
+title: "Exercise 7 - Comparing penalized regression estimators"
+author: "Konstantinos Vakalopoulos 12223236"
+date: "2023-11-29"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+toc: TRUE
+toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+## Task 1 
+
+### Task 1.1
+
+Write your own function for the lasso using the shooting algorithm. Give default values for the tolerance limit and the maximum number of iterations. Do not forget to compute the coefficient for the intercept.
+
+We are going to implement the lasso regression algorithm using the shooting algorithm according to the slides 32-34. First we introduce the soft function which corresponds to so-called soft thresholding.
+
+```{r, echo=TRUE}
+#softmax function
+softmax_R <- function(x, y){
+  sign(x) * pmax(abs(x) - y, 0)
+}
+```
+
+Then, in the next code block, the shooting algorithm is presented. Regarding the tolerance limit and the maximum number of iterations, $10^{-5}$ limit and 10000 iterations are taken intuitively. The function takes as input the X matrix, the y (response) variable, a lambda value (here we take lambda equals to 10), the tolerance limit and the maximum iterations. The output of the function is a list that contains the beta coefficients (including the intercept), the number of iterations and a Boolean variable in case the tolerance limit was exceeded. 
+
+It is worth noting that in order to avoid long execution times of the function, only a single for loop was used instead of two, as the second one was replaced by matrix multiplication using the crossprod() function.
+
+```{r, echo = TRUE}
+lasso_shoot_algorithm <- function(X,y,lambda = 10,epsilon = 1e-5, max_iter = 10000){
+  # Convert into a matrix (in case we didn't before the function was called)
+  X <- as.matrix(X)
+  
+  p <- ncol(X)
+  
+  # Initialize the beta coeffs
+  beta <- numeric(p)
+  
+  converged <- FALSE
+  iteration <- 0
+  
+  # Matrix multiplication
+  XX <- crossprod(X, X)
+  Xy <- crossprod(X, y)
+  
+  while (!converged & (iteration < max_iter)){
+    # Assign the previous betas to compare them with the new ones
+    beta_prev <- beta
+    for (j in 1:p){
+      # Calculation of alpha
+      a <- 2 * XX[j,j]
+      # Calculation of c
+      c <- 2 * (Xy[j] - sum(XX[j,] %*% beta) + beta[j] * XX[j,j])
+      # calculation of beta using the soft function
+      beta[j] <- softmax_R(c/a, lambda/a)
+    }
+    iteration <- iteration + 1
+    converged <- sum(abs(beta - beta_prev)) < epsilon
+  }
+  # Add the intercept
+  beta <- c(mean(y),beta)
+  beta_coef <- list(beta = beta, n_iter = iteration, converged = converged)
+  return(beta_coef)
+}
+```
+
+For demonstration purposes, the artificial data set from the slides was used in order to perform the shooting algorithm.
+
+```{r, echo = TRUE}
+# Create artificial data
+set.seed(12223236)
+n <- 500
+p <- 20
+X <- matrix(rnorm(n*p), ncol=p)
+X <- scale(X, center=TRUE, scale=FALSE)
+eps <- rnorm(n, sd=5)
+beta <- 3:5
+y <- 2 + X[,1:3] %*% beta + eps
+```
+
+Then, we execute the function. Below, the beta coefficients are presented along with the execution time.
+
+```{r, echo = TRUE}
+startTime <- Sys.time()
+lasso_shoot_algorithm(X,y)
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+### Task 1.2
+
+Write a function which computes the lasso using your algorithm for a vector of $\lambda s$  and which returns the matrix of coefficients and the corresponding $\lambda$ values.
+
+In this part of the exercise, we are going to call for each lambda value the above shooting algorithm in order to return the matrix of coefficients and the corresponding $\lambda$ values. Our function, now, takes as input the a sequence of lambda values, the X matrix and the y variable. 
+
+```{r, echo = TRUE}
+lasso_shoot_algorithm_multiple_lambdas <- function(X,y, lambda){
+  
+  p <- ncol(X)
+  # the dimension is length(lambda) for the rows and for the columns p+1 
+  # for all the coefs plus the intercept
+  beta_coef <- matrix(0, nrow = length(lambda), ncol = p+1)
+  
+  for (k in 1:length(lambda)){
+    betas <- lasso_shoot_algorithm(X,y,lambda[k])
+    beta_coef[k,] <- betas$beta
+  }
+  return(beta_coef)
+}
+```
+
+For 20 different values of lambda, the result will be:
+
+```{r, echo = TRUE}
+lambda.grid <- 10^seq(-2,10, length=20)
+# Print the 12 rows
+lasso_implementation <- lasso_shoot_algorithm_multiple_lambdas(X,y,lambda.grid)
+# Change the rownames
+# The names indicate the lambda values
+rownames(lasso_implementation) <- as.character(lambda.grid) 
+head(lasso_implementation,12)
+```
+
+As we could see, while the lambda is increasing and so as the penalty, the beta coefficients become zero.
+
+
+### Task 1.3
+
+Compare the performance and output of your functions against the lasso implementation from glmnet.
+
+First, we import the glmnet library. Afterwards, using the microbenchmark function, we compare the performance of out function against the lasso implementation from glmnet.
+
+```{r, echo=TRUE, warning=FALSE}
+library(glmnet)
+microbenchmark::microbenchmark("Own Implementation of Lasso" = 
+                      lasso_shoot_algorithm_multiple_lambdas(X,y,lambda.grid),
+                               "Glmnet Lasso Implementation" = 
+                      glmnet(x=X, y=y, alpha=1, lambda=lambda.grid))
+```
+
+As is evident from the table, the implementation using the glmnet library is computationally much faster. Also, the output of the glmnet will be:
+
+```{r, echo=TRUE}
+model_glmnet_impl <- glmnet(x=X, y=y, alpha=1, lambda=lambda.grid)
+model_glmnet_impl$beta
+```
+
+The dots in the table above are translated as zeros, which mean that while the lambda increases, the beta coefficients are getting close to zero or they are actually zero. Now, comparing the two cases for the initial values of lambda, the results are approximately the same. However, as lambda increases, the results differ. It is also worth noting that in the results of the glmnet function, the intercept is not included. In our application, we include the intercept.
+
+
+
+
+### Task 1.4
+
+Write a function to perform 10-fold cross-validation for the lasso using MSE as the performance measure. The object should be similarly to the cv.glmnet give the same plot and return the $\lambda$ which minimizes the Root Mean Squared Error and Mean Squared Error, respectively.
+
+The below function performs 10-fold cross-validation for the lasso using MSE as the performance measure. Takes as input the X matrix, the y variable, the sequence of lambda, the performance measure (default value is MSE) and the number of folds. The output of the function is an object similar to cv.glmnet function. The different parts of the object were calculated according to https://www.rdocumentation.org/packages/glmnet/versions/4.1-8/topics/cv.glmnet or by typing the command ?cv.glmnet.
+
+The object will contain: 
+
+1. **cvm:** The mean cross-validated error, a vector of length "length(lambda)".
+2. **cvsd:** Estimate of the standard error of cvm.
+3. **lambda:** The values of lambda used in the fits.
+4. **cvup:** Upper curve = cvm + cvsd.
+5. **cvlo:** Lower curve = cvm - cvsd.
+6. **name:** A text string indicating the type of measure (for plotting purposes).
+7. **lambda:** The values of lambda used in the fits.
+8. **index:** A one-column matrix with the indices of "lambda.min" and "lambda.1se" in the sequence of coefficients, fits, etc.
+9. **lambda.min:** Value of lambda that gives the minimum cvm.
+10. **lambda.1se:** Largest value of lambda such that the error is within 1 standard error of the minimum.
+
+```{r, echo=TRUE}
+cross_validation <- function(X,y,lambda.grid = c(1,10),type.measure = "mse", num_folds = 10){
+  X <- as.matrix(X)
+  n <- length(lambda.grid)
+  #Initializations for the object
+  cvm <- numeric(n)
+  cvsd <- numeric(n)
+  cvup <- numeric(n)
+  cvlo <- numeric(n)
+  nzero <- numeric(n)
+  lambda.min <- 0
+  lambda.1se <- 0
+  index <- matrix(c(NA,NA),nrow=2)
+  
+  for (i in 1:n){
+    fold_size <- nrow(X) / num_folds
+    cv.error <- numeric(num_folds)
+    betas <- matrix(0,nrow = num_folds, ncol = ncol(X))
+    set.seed(12223236)
+    for (fold in 1:num_folds){
+      
+      # Create the validation sets 
+      validation_indices <- ((fold - 1) * fold_size + 1):(fold * fold_size)
+      validation_set_X <- X[validation_indices, ]
+      validation_set_y <- y[validation_indices]
+      
+      # Create the training sets 
+      training_indices <- setdiff(1:nrow(X), validation_indices)
+      training_set_X <- X[training_indices, ]
+      training_set_y <- y[training_indices]
+      
+      # Calculate the betas using our own lasso implementation
+      coeff <- lasso_shoot_algorithm(training_set_X, training_set_y,lambda.grid[i])
+      
+      # The prediction is done by multiplying the validation X set with the betas
+      # In the validation set we add a column of 1s for the intercept
+      pred <- cbind(rep(1,length(validation_indices)),validation_set_X) %*% coeff$beta
+      
+      # We also want to return the betas 
+      # So we remove the intercept
+      beta.coef <- coeff$beta[-1]
+      betas[fold,] <- beta.coef
+      
+      # Calculate the corresponding performance measure
+      if (type.measure == "mse"){
+        cv.error[fold] <- mean((validation_set_y-pred)^2)
+        name = "Mean Squared Error"
+      }
+      else if (type.measure == "rmse"){
+        cv.error[fold] <- sqrt(mean((validation_set_y-pred)^2))
+        name = "Root Mean Squared Error"
+      }
+    }
+    # Calculations based on the cv.glmnet object
+    cvm[i] <- mean(cv.error)
+    cvsd[i] <- sd(cv.error)
+    nzero[i] <- sum(rowMeans(betas)!=0)
+    
+  }
+  # Calculations based on the cv.glmnet object
+  cvup <- cvm + cvsd
+  cvlo <- cvm - cvsd
+  
+  # Calculations based on the cv.glmnet object
+  df <- data.frame(cvm=cvm,cvsd=cvsd,lambda.grid = lambda.grid,id=1:n)
+  index[1,]<- which.min(df$cvm)
+  lambda.min <- lambda.grid[index[1,]]
+  df_filter <- df[min(df$cvm)+df$cvsd[index[1,]]>=df$cvm,]
+  df_filter <- dplyr::filter(df_filter,cvm==max(cvm))
+  index[2,] <- df_filter$id
+  lambda.1se <- lambda.grid[index[2,]]
+  
+  output <- list(cvm = cvm,
+                 cvsd = cvsd,
+                 name=name,
+                 cvup = cvup,
+                 cvlo = cvlo,
+                 index=index,
+                 lambda.1se=lambda.1se,
+                 lambda.min=lambda.min,
+                 lambda=lambda.grid,
+                 nzero=nzero)
+
+  attr(output,"class") <- "cv.glmnet"
+  return(output)
+}
+```
+
+Therefor, if we run the above function using as performance measure the MSE, the result will be:
+
+```{r, echo = TRUE}
+lambda.grid <- 10^seq(-2,10, length=20)
+res.MSE <- cross_validation(X,y,lambda.grid)
+res.MSE
+```
+
+For the performance measure RMSE: 
+
+```{r, echo = TRUE}
+res.RMSE <- cross_validation(X,y,lambda.grid, type.measure = "rmse")
+res.RMSE
+```
+
+The $\lambda$ which minimizes the Root Mean Squared Error and Mean Squared Error, respectively:
+```{r, echo = TRUE}
+cat("For the Mean Squared Error: ", res.MSE$lambda.min)
+cat("For the Root Mean Squared Error: ", res.RMSE$lambda.min)
+```
+
+Below, two plots are presented, one regarding our implementation and the second for the cv.glmnet. The plots show the MSE for lambda value. 
+
+```{r,echo=TRUE, fig.width=6,fig.height=4,fig.cap="Own Implementation of Lasso algorithm"}
+plot(res.MSE)
+```
+
+```{r,echo=TRUE, fig.width=6,fig.height=4,fig.cap="Glmnet Implementation of Lasso algorithm"}
+plot(cv.glmnet(X,y,nfolds = 10,lambda = lambda.grid))
+```
+
+## Task 2
+
+We will work with the Hitters data in the ISLR package. Take the salary variable as the response variable and create the model matrix x based on all other variables in the data set. Then divide the data into training and testing data with a ratio of 70:30.
+
+First, we install the package "ISLR" and import the same library. From the package "ISLR", the "Hitters" data set is introduced. Using the commands str() and head(), we get an idea about the type of the variables and the data itself. 
+
+```{r, echo=TRUE, warning=FALSE}
+# uncomment for installation
+# install.packages("ISLR")
+library(ISLR)
+data("Hitters")
+str(Hitters)
+head(Hitters)
+```
+
+As it is observed, all the variables are integers except of 3, which are factors. Therefore, data preprocessing is needed in order to proceed to the next tasks. 
+
+First, we remove the NAs observations and we assign to the X, all the variables except the response variable, which is the Salary variable. The response is assigned to the y. Then, we convert our factor variables to integer and we split the data into training and testing with a ratio of 70:30. To avoid data leakage, we center our integer variables for the train and the test set, seperately, because it is needed for the lasso algorithm. Finally, we convert the training and testing data into a matrix. 
+
+```{r, echo=TRUE}
+df_hitters <- Hitters
+
+# Remove the NAs
+df_hitters <- na.omit(df_hitters)
+
+y <- df_hitters$Salary
+X <- df_hitters[,!names(df_hitters) %in% "Salary"]
+
+#Convert the factor variables to integer
+indx <- sapply(X, is.factor)
+X[indx] <- lapply(X[indx], function(x) as.integer(x))
+
+# X <- as.matrix(X)
+
+# Split the data into training and testing data with a ratio of 70:30
+set.seed(12223236)
+n <- nrow(X)
+train <- sample(1:n,round(n*0.7))
+test <- (1:n)[-train]
+
+train_X <- X[train,]
+train_y <- y[train]
+
+#center the integer variables for the train
+indx <- sapply(X, is.integer)
+train_X[indx] <- lapply(train_X[indx], function(x) scale(x,center = TRUE, scale = FALSE))
+
+train_X <- as.matrix(train_X)
+
+test_X <- X[test,]
+test_y <- y[test]
+
+#center the integer variables for the test
+indx <- sapply(X, is.integer)
+test_X[indx] <- lapply(test_X[indx], function(x) scale(x,center = TRUE, scale = FALSE))
+test_X <- as.matrix(test_X)
+```
+
+### Task 2.1
+
+Use your lasso function to decide which lambda is best here. Plot also the whole path for the coefficients.
+
+For the same sequence of lambdas, as before, we use our lasso function. 
+
+```{r, echo=TRUE}
+lambda.grid <- 10^seq(-2,10, length=20)
+# Own lasso implementation
+startTime <- Sys.time()
+own.res <- cross_validation(train_X, train_y, lambda.grid)
+endTime <- Sys.time()
+# prints recorded time
+print(endTime - startTime)
+```
+
+Therefore the best lambda is:
+
+```{r, echo=TRUE}
+cat("The best lambda that minimizes the MSE is: ", own.res$lambda.min)
+```
+
+In order to plot the whole path of the coefficients, we are going to call the function from task 1.2 using our lambda sequence. We remove the intercept and then we convert the beta matrix to a data frame. Finally, we change the names of the columns. 
+
+```{r, echo=TRUE}
+beta.df <- lasso_shoot_algorithm_multiple_lambdas(train_X,train_y,lambda.grid)[,-1]
+beta.df <- as.data.frame(beta.df)
+
+beta_vector <- character(ncol(X))
+for (i in 1:length(beta_vector)) {
+  beta_vector[i] <- paste0("Beta_", i)
+}
+# Change the names
+colnames(beta.df) <- beta_vector
+# We add as a column the lambda values
+beta.df <- cbind(beta.df, lambda.grid)
+```
+
+Using the ggplot2 and tidyverse libraries, we plot the whole path for the coefficients.
+
+```{r,echo=TRUE,warning = FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+beta.df <- beta.df %>%
+  gather(key = "variable", value = "value", -lambda.grid)
+```
+
+```{r,echo=TRUE, warning = FALSE, fig.width=8,fig.height=6,fig.cap="Coefficients Path"}
+ggplot(beta.df, aes(x = log(lambda.grid), y = value)) + 
+  geom_line(aes(color = variable), size = 0.8) + 
+  ggtitle("Path for the Coefficients") +
+  xlab("Log(lambda)") + 
+  ylab("Beta Values") + 
+  labs(color = "Beta Coefficients")
+```
+
+
+### Task 2.2
+
+Compare your fit against the lasso implementation from glmnet.
+
+When we refer to fit, we, basically, test our model not to the testing data but to the training data. Therefore, for the glmnet implementation:
+
+```{r, echo=TRUE}
+cv.glmnet.res <- cv.glmnet(train_X,train_y,nfolds = 10,lambda = lambda.grid)
+res.glmnet.lasso <- glmnet(train_X,train_y, alpha=1, lambda = cv.glmnet.res$lambda.min)
+```
+
+More specifically, we first call the cv.glmnet in order to find the minimum lambda and based on that lambda we call the glmnet function. In order to implement the lasso algorithm, we assign 1 to the parameter alpha. The MSE and RMSE on the training data will be:
+
+```{r, echo=TRUE}
+# GLMNET implementation
+pred.lasso <- predict(res.glmnet.lasso, newx = train_X, s = cv.glmnet.res$lambda.min)
+cat("The MSE is: ", mean((train_y-pred.lasso)^2))
+cat("\nThe RMSE is: ", sqrt(mean((train_y-pred.lasso)^2)))
+```
+Regarding our implementation, we perform the same procedure. We use the function from task 1.1 using as input the training data and the minimum lambda from the 10 fold cross validation.
+
+
+```{r, echo=TRUE}
+# OWN LASSO implementation
+res.own.lasso <- lasso_shoot_algorithm(train_X, train_y,own.res$lambda.min)
+pred.own <- cbind(rep(1,nrow(train_X)),train_X) %*% res.own.lasso$beta
+
+cat("The MSE is: ", mean((train_y-pred.own)^2))
+cat("\nThe RMSE is: ", sqrt(mean((train_y-pred.own)^2)))
+```
+
+As it is observed, the results in both cases are relatively close but not identical.
+
+### Task 2.3
+
+Fit also a ridge regression and a least squares regression for the data (you can use here glmnet).
+
+To implement ridge regression, we have to change the alpha parameter from 1 to 0. Also, for the least squares regression, we use the lm() function. Also, for the least squares regression we use the not centered data. Therefore:
+
+```{r, echo=TRUE}
+# Ridge model
+ridge.regression <- glmnet(train_X,train_y, alpha=0)
+# LS model
+ls.regression <- lm(Salary~.,data=df_hitters[train,])
+```
+
+### Task 2.4
+
+Compute the lasso, ridge regression and ls regression predictions for the testing data. Which method gives the better predictions? Interpret all three models and argue about their performances.
+
+The table below presents the results for the three models. The performance measures are the RMSE and MSE. 
+
+```{r, echo=TRUE}
+# Lasso
+pred.lasso <- predict(res.glmnet.lasso, newx = test_X, s = cv.glmnet.res$lambda.min)
+
+# Ridge
+pred.ridge<- predict(ridge.regression, newx = test_X)
+
+# Least squares (best model)
+pred.ls <- predict(ls.regression, newdata = df_hitters[test,])
+
+data <- data.frame(
+  Method = c("Lasso", "Ridge", "Least Squares"),
+  MeanSquaredError = c(mean((test_y-pred.lasso)^2),
+                       mean((test_y-pred.ridge)^2), 
+                       mean((test_y-pred.ls)^2)),
+  RootMeanSquaredError = c(sqrt(mean((test_y-pred.lasso)^2)), 
+                           sqrt(mean((test_y-pred.ridge)^2)), 
+                           sqrt(mean((test_y-pred.ls)^2)))
+)
+
+knitr::kable(data, format = "markdown")
+```
+
+According to the results, the best model, in terms of performance, is the least squares model. It makes sense that is the best because it takes into account all the variables in the data set. As mentioned below, in the cases of ridge and lasso model, some form of feature selection occurs as the lambda parameter takes larger values. Thus, the lasso and ridge regression models are simpler versions of the LS model, which tend to overfit. 
+
+
+Regarding the interpretation of the models, the ridge model is mentioned in task 3 and lasso model is mentioned in task 1.3 and task 3. As for the least squares model, all the coefficients are used to predict the response variable. There is no penalty term in the residual sum of squares, and thus, it is evident that the LS model tends to overfit the data.
+
+## Task 3
+
+Explain the notion of regularized regression, shrinkage and how Ridge regression and LASSO regression differ.
+
+The biggest problem in least squares regression is the multicollinearity, which is a statistical concept where several independent variables in a model are correlated. In LS regression, When the independent variables are correlated, the values of the beta coeffecients tend to have very large values. In order, then, to avoid these large values, we have to shrink the beta coefficients by imposing a penalty on their size. This penalty applies in the residual sum of squares by adding a penalty/complexity parameter $\lambda$. This procedure is called Regularized regression, also known as shrinkage method. 
+
+There are two shrinkage methods, the ridge and lasso regression. In ridge regression our goal is to minimize the regular linear regression cost function along with a "L2 regularization" term. On the other hand, lasso regression minimizes the regular linear regression cost function along with an "L1 regularization" term. A significant difference between ridge and lasso regression, is that in ridge regression, while the lambda parameter tends to infinity, the beta coefficients tend to zero but they are never zero. However, lasso regression can lead to some coefficients becoming exactly zero, which can be used, effectively, to select a subset of features.
+
+
+

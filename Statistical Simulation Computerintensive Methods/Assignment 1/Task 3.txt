@@ -1,0 +1,83 @@
+############## Task 3############## 
+
+
+# Table Summarize for the scale invariance property for different values
+mb_shift <- microbenchmark(
+  "Min" = shift(x, summary(x)[1]),
+  "1st Qu" = shift(x,summary(x)[2]),
+  "Median" = shift(x,summary(x)[3]),
+  "Mean" = shift(x,summary(x)[4]),
+  "3rd Qu" = shift(x,summary(x)[5]),
+  "Max" = shift(x,summary(x)[6]),
+  times = 100
+)
+print(mb_shift) 
+
+#Graphically summarize
+boxplot(mb_shift, main="Execution Time Comparison", ylab="Time (milliseconds)")
+
+################################# 
+set.seed(12223236)
+x1 <- rnorm(100)
+set.seed(12223236)
+x2 <- rnorm(100, mean=1000000)
+######### Task 3 Bullet 1 ######### 
+# First data set Comparison 1
+gold<- gold_standard(x1)
+rest <- c(precise(x1),excel(x1),shift(x1),online(x1))
+
+gold == rest
+print("Function identical is used.")
+for (v in rest){
+  print(identical(gold,v))
+}
+
+print("Function all.equal is used.")
+for (v in rest){
+  print(all.equal(gold,v))
+}
+
+# Second data set Comparison 1
+gold<- gold_standard(x2)
+rest <- c(precise(x2),excel(x2),shift(x2),online(x2))
+
+gold == rest
+print("Function identical is used.")
+for (v in rest){
+  print(identical(gold,v))
+}
+
+print("Function all.equal is used.")
+for (v in rest){
+  print(all.equal(gold,v))
+}
+
+# First data set Comparison 2
+mb_1 <- microbenchmark(
+  "Gold Standard" = gold_standard(x1),
+  "Precise" = precise(x1),
+  "Excel" = excel(x1),
+  "Shift" = shift(x1),
+  "Online" = online(x1),
+  times = 100
+)
+
+# Second data set Comparison 2
+mb_2 <- microbenchmark(
+  "Gold Standard" = gold_standard(x2),
+  "Precise" = precise(x2),
+  "Excel" = excel(x2),
+  "Shift" = shift(x2),
+  "Online" = online(x2),
+  times = 100
+)
+
+######### Task 3 Bullet 2 #########
+
+# Tables
+print(mb_1)
+print(mb_2)
+
+# Boxplots
+boxplot(mb_1, main="Execution Time Comparison for mean = 0", ylab="Time (milliseconds)")
+boxplot(mb_2, main="Execution Time Comparison for mean = 1000000", ylab="Time (milliseconds)")
